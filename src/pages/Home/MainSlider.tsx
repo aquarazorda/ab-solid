@@ -25,7 +25,7 @@ export const MainSlider = () => {
 						<div class="desktop _s_display-i-f _s_overflow-hidden _s_position-relative _s_size-w-percent--25 _s_size-h-percent--25 _s_lg-b-radius-sm">
 							<div class="_s_size-w-percent--25 _s_cursor-pointer _s_flex _s_flex-j-center">
 								<div class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_flex-a-center _s_flex-j-center _s_color-bg-primary-0">
-									<img class="swiper-lazy _s_lg-size-w-percent--25 swiper-lazy-loaded" src={`https://newstatic.adjarabet.com/static${slide.img}`} loading="lazy" />
+									<img alt={slide.name} class="swiper-lazy _s_lg-size-w-percent--25 swiper-lazy-loaded" src={`https://newstatic.adjarabet.com/static${slide.img}`} loading="lazy" />
 								</div>
 								<div class="_s_flex _s_flex-a-center _s_position-absolute _s_position-b-px--4 _s_position-l-px--0 _s_lg-position-b-px--6 _s_pl-5 _s_pr-5 _s_size-w-percent--25 _s_z-2" />
 							</div>

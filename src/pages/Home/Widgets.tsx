@@ -36,7 +36,7 @@ export const Widgets = () => {
 												</div>
 												<div class="_s_flex _s_flex-wrap _s_position-relative _s_size-h-percent--25 _s_flex-j-center _s_cursor-pointer">
 													<div class="_s_flex _s_flex-a-start _s_flex-j-center _s_size-w-percent--25">
-														<img class="_s_flex _s_flex-a-center _s_flex-j-center" src={`https://newstatic.adjarabet.com/static/${banner.img}_ka.jpg`} loading='lazy' />
+														<img alt={t(banner.title.langId)} class="_s_flex _s_flex-a-center _s_flex-j-center" src={`https://newstatic.adjarabet.com/static/${banner.img}_ka.jpg`} loading='lazy' />
 													</div>
 												</div>
 											</div>
