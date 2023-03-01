@@ -45,3 +45,5 @@ export const MainSlider = () => {
 		</div>
 	</div>;
 };
+
+export default MainSlider;

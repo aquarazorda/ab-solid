@@ -39,3 +39,5 @@ export const SlotsSlider = () => {
 		</div>
 	</div>;
 };
+
+export default SlotsSlider;

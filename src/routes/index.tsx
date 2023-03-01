@@ -1,8 +1,11 @@
-import { MainSlider } from '~/pages/Home/MainSlider';
-import { SlotsSlider } from '~/pages/Home/SlotsSlider';
-import { Widgets } from '~/pages/Home/Widgets';
+import { unstable_island } from 'solid-start';
+// import { MainSlider } from '~/pages/Home/MainSlider';
+// import { SlotsSlider } from '~/pages/Home/SlotsSlider';
+// import { Widgets } from '~/pages/Home/Widgets';
 
-
+const MainSlider = unstable_island(() => import('../pages/Home/MainSlider'));
+const Widgets = unstable_island(() => import('../pages/Home/Widgets'));
+const SlotsSlider = unstable_island(() => import('../pages/Home/SlotsSlider'));
 
 export default function Home() {
 	

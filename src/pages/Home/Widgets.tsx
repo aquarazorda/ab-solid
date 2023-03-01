@@ -1,9 +1,6 @@
 import { createResource, For } from 'solid-js';
 import { SwiperContainer, SwiperSlide } from '~/components/Swiper';
-import { register } from 'swiper/element/bundle';
 import { useI18n } from '@solid-primitives/i18n';
-
-register();
 
 const fetchBanners = async () => await (await fetch('https://newstatic.adjarabet.com/static/widgetsCarouselData.json?v=1677603423')).json();
 
@@ -57,3 +54,5 @@ export const Widgets = () => {
 		</div>
 	</div>;
 };
+
+export default Widgets;
