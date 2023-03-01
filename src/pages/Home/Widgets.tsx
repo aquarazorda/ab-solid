@@ -1,26 +1,26 @@
-import { createResource, For } from 'solid-js';
-import { SwiperContainer, SwiperSlide } from '~/components/Swiper';
+import { createResource, For, onMount } from 'solid-js';
 import { useI18n } from '@solid-primitives/i18n';
 
 const fetchBanners = async () => await (await fetch('https://newstatic.adjarabet.com/static/widgetsCarouselData.json?v=1677603423')).json();
 
 export const Widgets = () => {
+	let swiper;
 	const [banners] = createResource(fetchBanners);
 	const [t] = useI18n();
 
 	return <div class="_s_display-b _s_overflow-hidden _s_lg-pl-2-5 _s_position-relative _s_lg-pr-2-5 _s_size-h-px--87 _s_z-2">
 		<div class="_s_position-relative _s_overflow-hidden _s_z-1 _s_display-b _s_size-h-percent--25">
 			<div class="_s_display-b _s_overflow-hidden _s_position-relative _s_size-h-px--87 _s_z-2 _s_mb-5">
-				<SwiperContainer
+				<swiper-container
+					ref={swiper}
 					slides-per-view="3.3"
-					space-between={20}
+					space-between="20"
 					loop={true}
-					initial={1}
 					class="_s_size-h-px--96 _s_lg-size-h-px--109"
 				>
 					<For each={banners()?.list} >
 						{banner =>
-							<SwiperSlide lazy={true}>
+							<swiper-slide lazy={true}>
 								<div class="_s_overflow-hidden _s_display-i-b _s_size-h-px--87 _s_size-w-percent--25">
 									<div class="_s_size-h-percent--25">
 										<div class="_s_color-bg-primary-6 _s_mb-2 _s_mt-none _s_position-relative _s_overflow-hidden _s_size-h-percent--25">
@@ -40,10 +40,10 @@ export const Widgets = () => {
 										</div>
 									</div>
 								</div>
-							</SwiperSlide>
+							</swiper-slide>
 						}
 					</For>
-				</SwiperContainer>
+				</swiper-container>
 				<div class="_s_cursor-pointer _s_ml-none _s_icon _s_icon-xl _s_position-absolute _s_position-t-px--41 _s_position-minus-l-px--5 _s_b-radius-full _s_color-rgba-bg-primary-0-0--7 _s_z-3">
 					<i class="_s_icon _s_icon-sm _s_adj-arrow-left _s_mr-none" />
 				</div>
