@@ -5,8 +5,8 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [solid({
 		ssr: true,
-		islands: true,
-		islandsRouter: true,
+		// islands: true,
+		// islandsRouter: true,
 		adapter: vercel({
 			prerender: {
 				expiration: 60
