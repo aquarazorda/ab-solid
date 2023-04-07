@@ -25,6 +25,8 @@
   "dependencies": {
     "@solid-primitives/i18n": "^1.2.4",
     "@solid-primitives/script-loader": "^2.0.2",
+    "@solid-primitives/storage": "^1.3.9",
+    "@solid-primitives/utils": "^6.0.0",
     "@solidjs/meta": "^0.28.4",
     "@solidjs/router": "^0.8.2",
     "add": "^2.0.6",

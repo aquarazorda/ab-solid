@@ -1,23 +1,21 @@
 // @refresh reload
-import { Suspense, useContext } from "solid-js";
-import {
-  Body,
-  ErrorBoundary,
-  Head,
-  Html,
-  Link,
-  Meta,
-  Routes,
-  Scripts,
-  Title,
-  useRouteData,
-  useRoutes,
-} from "solid-start";
+import { Show, Suspense, createSignal, onMount } from "solid-js";
+import { Body, ErrorBoundary, Head, Html, Link, Meta, Scripts, Title } from "solid-start";
 import { App } from "./App";
 import { ConfigProvider } from "./config";
 import { CacheBoundary } from "solid-cache";
+import { I18nContext, createI18nContext } from "@solid-primitives/i18n";
+import { cookieStorage } from "@solid-primitives/storage";
+import { Langs } from "./utils/language";
+
+export const [defaultLang, setDefaultLang] = createSignal<Langs>();
 
 export default function Root() {
+  const i18nContext = createI18nContext();
+  onMount(() => {
+    setDefaultLang((cookieStorage.getItem("lang") as Langs) || "ka");
+  });
+
   return (
     <Html lang="en">
       <Head>
@@ -38,9 +36,13 @@ export default function Root() {
         <Suspense>
           <ErrorBoundary>
             <ConfigProvider>
-              <CacheBoundary>
-                <App />
-              </CacheBoundary>
+              <I18nContext.Provider value={i18nContext}>
+                <CacheBoundary>
+                  <Show when={defaultLang()}>
+                    <App />
+                  </Show>
+                </CacheBoundary>
+              </I18nContext.Provider>
             </ConfigProvider>
           </ErrorBoundary>
         </Suspense>

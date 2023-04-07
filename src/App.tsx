@@ -1,27 +1,16 @@
-import { createI18nContext, I18nContext } from "@solid-primitives/i18n";
-import { createMemo, createResource, on } from "solid-js";
 import { FileRoutes, Routes } from "solid-start";
-
-const fetchLangs = async () =>
-  (
-    await fetch(
-      "https://newstatic.adjarabet.com/static/langkaNew.json?v=1677585424"
-    )
-  ).json();
+import { initializeLangs } from "./utils/language";
+import { Show } from "solid-js";
+import { useI18n } from "@solid-primitives/i18n";
 
 export const App = () => {
-  const [langDict] = createResource(fetchLangs);
-
-  const langs = createMemo(
-    on(langDict, () => createI18nContext({ ka: langDict?.() }, "ka"))
-  );
-
+  initializeLangs();
+  const [, { locale }] = useI18n();
   return (
-    <I18nContext.Provider value={langs?.()}>
-      <Routes>
+    <Routes>
+      <Show when={locale()}>
         <FileRoutes />
-      </Routes>
-      {/* <Footer /> */}
-    </I18nContext.Provider>
+      </Show>
+    </Routes>
   );
 };
