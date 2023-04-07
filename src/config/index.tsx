@@ -3,12 +3,13 @@ import { createContext, useContext } from "solid-js";
 type Config = {
   staticPath: string;
   domain: "com" | "am";
+  isMobile: boolean;
 };
 
 const defaultValue: Config = {
   staticPath: "https://newstatic.adjarabet.com/static",
-  // @ts-ignore
   domain: "com",
+  isMobile: true,
   // domain: window.location.hostname.split(".").pop(),
 };
 

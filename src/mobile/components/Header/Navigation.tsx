@@ -16,15 +16,16 @@ export const Navigation = () => {
         <For each={navList()?.list}>
           {(item) => (
             <A
-              href={item.route}
+              href={item.route === "/" ? "/mobile" : item.route}
               class="_s_flex _s_flex-a-center _s_flex-d-column _s_ml-1 _s_mr-1"
               activeClass="_s_a-color"
+              end={true}
             >
               <div class="_s_flex _s_flex-d-column _s_flex-a-center _s_position-relative">
                 <span
                   class={`_s_color-primary-8 _s_icon _s_icon-md _s_aitem-color-primary-1 _s_mb-1 _s_adj-${item.icon}`}
-                ></span>
-                <div class="_s_position-absolute _s_position-t-px--5"></div>
+                />
+                <div class="_s_position-absolute _s_position-t-px--5" />
                 <span class="_s_color-primary-8 _s_label _s_label-sm _s_white-space-nowrap _s_aitem-color-primary-1 _s_mt-1">
                   {t(item.title?.langId)}
                 </span>

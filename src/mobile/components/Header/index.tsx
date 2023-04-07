@@ -1,16 +1,27 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { A } from "solid-start";
+import { A, useLocation } from "solid-start";
 import { Navigation } from "./Navigation";
-import { Show, createSignal } from "solid-js";
+import { Show, createMemo } from "solid-js";
+import { createStore } from "solid-js/store";
+
+export const [mobileHeaderState, setMobileHeaderState] = createStore({
+  navOpen: true,
+});
 
 export const Header = () => {
   const [t] = useI18n();
-  const [navOpen, setNavOpen] = createSignal(true);
+  const location = useLocation();
+  const toggleNav = () => setMobileHeaderState("navOpen", (p) => !p);
+
+  const isSportsbook = createMemo(() => location.pathname.includes("Sportsbook"));
 
   return (
     <div class="_s_flex _s_size-w-percent--25 _s_flex-d-column">
       <div
-        style={{ position: "fixed" }}
+        classList={{
+          "_s_position-fixed": !isSportsbook(),
+          "_s_position-relative": isSportsbook(),
+        }}
         class="_s_position-t-px--0 _s_position-l-px--0 _s_z-6 _s_size-w-percent--25 _s_size-w-min-percent--25 _s_flex-shrink-0"
       >
         <div class="_s_transition-0--3 _s_size-h-min-px--10">
@@ -20,6 +31,7 @@ export const Header = () => {
                 data-id="mobile-header-main"
                 class="_s_label _s_label-md _s_label-t-u _s_aitem-opacity-0 _s_position-relative _s_transition-0--3 _s_a-color"
                 href="/mobile"
+                end={true}
               >
                 {t("__lang__main")}
               </A>
@@ -28,7 +40,7 @@ export const Header = () => {
               <a
                 data-id="mobile-ab-logo"
                 class="_s_size-w-px--8 _s_size-h-px--8 _s_size-w-min-px--8 _s_size-h-min-px--8 _s_position-relative _s_cursor-pointer _s_bg-img-logoSm _s_bg-position-center _s_bg-no-repeat _s_bg-size-full"
-                onClick={() => setNavOpen((p) => !p)}
+                onClick={toggleNav}
               />
             </div>
             <div class="_s_position-relative _s_z-1 _s_pl-7 _s_pl-5 _s_pr-5 _s_flex _s_col _s_col-4 _s_flex-j-end">
@@ -42,7 +54,7 @@ export const Header = () => {
             </div>
           </div>
         </div>
-        <Show when={navOpen()}>
+        <Show when={mobileHeaderState.navOpen}>
           <Navigation />
         </Show>
       </div>

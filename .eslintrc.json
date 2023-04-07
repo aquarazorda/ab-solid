@@ -27,21 +27,14 @@
                 // "ignoreRegExpLiterals": true
             }
         ],
-        "indent": [
-            "error",
-            "space"
-        ],
         "linebreak-style": [
             "error",
             "unix"
         ],
-        "quotes": [
-            "error",
-            "single"
-        ],
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "@typescript-eslint/no-namespace": "off"
     }
 }
