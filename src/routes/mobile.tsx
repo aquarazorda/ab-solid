@@ -1,0 +1,41 @@
+import { Outlet } from "solid-start";
+import { Footer } from "~/mobile/components/Footer";
+import { Header } from "~/mobile/components/Header";
+import { createStaticResource } from "~/queries/utils";
+
+export type MobileRootData = typeof routeData;
+
+type RouteItem = {
+  title: {
+    lang: boolean;
+    langId: string;
+  };
+  icon: string;
+  route: string;
+  pathMatch?: "full";
+  size?: "lg";
+  height?: "auto";
+};
+
+export const routeData = () => {
+  const [navList] = createStaticResource<{ list: RouteItem[] }>(
+    "headerMobileNavListTest",
+    {
+      lang: true,
+    }
+  );
+
+  return { navList };
+};
+
+export default function Index() {
+  return (
+    <div class="_s_color-bg-primary-4 _s_size-h-min-px--10">
+      <Header />
+      <div class="_s_flex _s_flex-d-column _s_color-bg-primary-5">
+        <Outlet />
+      </div>
+      <Footer />
+    </div>
+  );
+}

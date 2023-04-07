@@ -3,14 +3,14 @@ import vercel from 'solid-start-vercel';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-	plugins: [solid({
-		ssr: true,
-		// islands: true,
-		// islandsRouter: true,
-		adapter: vercel({
-			prerender: {
-				expiration: 60
-			}
-		})
-	})]
+	plugins: [solid({ ssr: true })]
 });
+
+
+// islands: true,
+// islandsRouter: true,
+// adapter: vercel({
+// 	prerender: {
+// 		expiration: 60
+// 	}
+// })

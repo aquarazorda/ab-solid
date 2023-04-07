@@ -17,7 +17,7 @@ export const SlotsSlider = () => {
 				</A>
 			</div>
 			<div class="_swiper-reset _s_b-radius-sm _s_flex _s_position-relative _s_size-h-percent--25 _s_z-1 _s_lg-overflow-hidden _s_size-h-min-px--30">
-				<swiper-container slides-per-view='7' slides-per-group={7} space-between={20}>
+				{/* <swiper-container slides-per-view='7' slides-per-group={7} space-between={20}>
 					<For each={slides()?.list}>
 						{(slide) => <swiper-slide lazy={true}>
 							<div class="_s_cursor-pointer _s_display-f _s_overflow-hidden">
@@ -27,7 +27,7 @@ export const SlotsSlider = () => {
 							</div>
 						</swiper-slide>}
 					</For>
-				</swiper-container>
+				</swiper-container> */}
 				<div class="_s_b-radius-full _s_color-rgba-bg-primary-0-0--7 _s_cursor-pointer _s_icon _s_icon-xl _s_mr-none _s_position-absolute _s_position-minus-l-px--7 _s_position-t-px--10 _s_z-1">
 					<i class="_s_icon _s_icon-sm _s_adj-arrow-left _s_mr-none" />
 				</div>
