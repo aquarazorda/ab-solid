@@ -4,8 +4,8 @@ export const FooterDescription = () => {
   const [t] = useI18n();
 
   return (
-    <div class="_s_flex _s_pb-5">
-      <i class="_s_color-primary-8 _s_icon _s_icon-lg _s_adj-25"></i>
+    <div class="_s_flex _s_pb-5 _s_pt-5">
+      <i class="_s_color-primary-8 _s_icon _s_icon-lg _s_adj-25" />
       <div>
         <div>
           <div class="_s_label _s_label-sm _s_color-primary-8 _s_cursor-pointer">
