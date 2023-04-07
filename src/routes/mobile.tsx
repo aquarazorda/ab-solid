@@ -2,6 +2,7 @@ import { Outlet } from "solid-start";
 import { Footer } from "~/mobile/components/Footer";
 import { Header } from "~/mobile/components/Header";
 import { createStaticResource } from "~/queries/utils";
+import "solid-slider/slider.css";
 
 export type MobileRootData = typeof routeData;
 
@@ -18,12 +19,9 @@ type RouteItem = {
 };
 
 export const routeData = () => {
-  const [navList] = createStaticResource<{ list: RouteItem[] }>(
-    "headerMobileNavListTest",
-    {
-      lang: true,
-    }
-  );
+  const [navList] = createStaticResource<{ list: RouteItem[] }>("headerMobileNavListTest", {
+    lang: true,
+  });
 
   return { navList };
 };
