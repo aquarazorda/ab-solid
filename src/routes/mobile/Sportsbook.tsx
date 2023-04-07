@@ -1,7 +1,7 @@
 import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
 import { match } from "ts-pattern";
-import { setFooterState } from "~/mobile/components/Footer";
-import { mobileHeaderState } from "~/mobile/components/Header";
+import { setFooterState } from "~/components/mobile/Footer";
+import { mobileHeaderState } from "~/components/mobile/Header";
 import { mountSportsbook } from "~/utils/sportsbook";
 
 export default function MobileSportsbook() {

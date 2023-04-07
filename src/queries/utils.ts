@@ -6,6 +6,7 @@ import { createResource } from "solid-js";
 
 type Proxy = Partial<{
   lang: boolean;
+  domain: boolean;
 }>;
 
 export const createStaticResource = <T>(fileName: string, proxy?: Proxy) => {
@@ -18,7 +19,5 @@ export const createStaticResource = <T>(fileName: string, proxy?: Proxy) => {
     })
     .otherwise(() => fileName);
 
-  return createResource<T>(() =>
-    fetch(`${staticPath}/${fName}.json`).then((res) => res.json())
-  );
+  return createResource<T>(() => fetch(`${staticPath}/${fName}.json`).then((res) => res.json()));
 };

@@ -1,7 +1,7 @@
 import { useI18n } from "@solid-primitives/i18n";
 import { A } from "solid-start";
-import PlayButtonBig from "~/mobile/components/Buttons/PlayButtonBig";
-import { MainSlider } from "~/mobile/components/Sliders/HomeSlider";
+import PlayButtonBig from "~/components/mobile/Buttons/PlayButtonBig";
+import { MainSlider } from "~/components/mobile/Sliders/HomeSlider";
 import { getAllSliders } from "~/queries/sliders";
 import { BannerData } from "~/types/banner";
 

@@ -1,9 +1,9 @@
 import { useI18n } from "@solid-primitives/i18n";
 import { Show, createMemo } from "solid-js";
 import { A, useRouteData } from "solid-start";
-import { AviatorWidget } from "~/mobile/components/Sliders/Aviator";
-import { MainSlider, homePageSliderFilterFn } from "~/mobile/components/Sliders/HomeSlider";
-import { WidgetSlider } from "~/mobile/components/Sliders/WidgetSlider";
+import { AviatorWidget } from "~/components/mobile/Sliders/Aviator";
+import { MainSlider, homePageSliderFilterFn } from "~/components/mobile/Sliders/HomeSlider";
+import { WidgetSlider } from "~/components/mobile/Sliders/WidgetSlider";
 import { generateWidgetData } from "~/utils/games";
 import { createStaticResource } from "~/queries/utils";
 import { getAllSliders } from "~/queries/sliders";

@@ -1,6 +1,6 @@
 import { Outlet } from "solid-start";
-import { Footer } from "~/mobile/components/Footer";
-import { Header } from "~/mobile/components/Header";
+import { Footer } from "~/components/mobile/Footer";
+import { Header } from "~/components/mobile/Header";
 import { createStaticResource } from "~/queries/utils";
 import "solid-slider/slider.css";
 

@@ -2,7 +2,7 @@ import { useI18n } from "@solid-primitives/i18n";
 import { A } from "@solidjs/router";
 import { For } from "solid-js";
 import { useConfig } from "~/config";
-import { MainSlider } from "~/mobile/components/Sliders/HomeSlider";
+import { MainSlider } from "~/components/mobile/Sliders/HomeSlider";
 import { getAllSliders } from "~/queries/sliders";
 import { BannerData } from "~/types/banner";
 
