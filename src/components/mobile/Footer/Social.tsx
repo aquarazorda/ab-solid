@@ -35,9 +35,7 @@ export const FooterSocial = () => {
 
   return (
     <div class="_s_flex _s_flex-a-center _s_flex-j-center _s_p-5">
-      <For
-        each={domain === "com" ? footerHeadingsMobile : footerHeadingsMobileAm}
-      >
+      <For each={domain === "com" ? footerHeadingsMobile : footerHeadingsMobileAm}>
         {(item) => (
           <a
             target="_blank"

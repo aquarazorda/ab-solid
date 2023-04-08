@@ -1,5 +1,5 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { JSX } from "solid-js";
+import { JSX, Show } from "solid-js";
 
 type ContactItemProps = {
   children: JSX.Element;
@@ -20,14 +20,19 @@ const ContactItem = (props: ContactItemProps) => (
   </div>
 );
 
-export const CashdeskContact = () => {
+export const CashdeskContact = (props: { withTitle?: boolean }) => {
   const [t] = useI18n();
   return (
     <>
-      <span class="_s_label _s_label-md _s_label-t-u _s_md-mt-none _s_mt-5">
-        {t("__lang_footer_contact")}
-      </span>
-      <div class="_s_b-primary-7 _s_b-radius-md _s_b-solid _s_bw-1 _s_color-bg-primary-6 _s_flex _s_flex-a-start _s_flex-wrap _s_mb-10 _s_pl-5 _s_pr-5 _s_pt-5">
+      <Show when={props.withTitle}>
+        <span class="_s_label _s_label-md _s_label-t-u _s_md-mt-none _s_mt-5 _s_mb-5">
+          {t("__lang_footer_contact")}
+        </span>
+      </Show>
+      <div
+        class="_s_b-primary-7 _s_b-radius-md _s_b-solid _s_bw-1 _s_color-bg-primary-6 _s_flex 
+        _s_flex-a-start _s_flex-wrap _s_pl-5 _s_pr-5 _s_pt-5"
+      >
         <ContactItem icon="email" label={t("_lang_email_our_team")}>
           <a href={`mailto:${t("_lang_contact_us_mail_new")}`}>{t("_lang_contact_us_mail_new")}</a>
         </ContactItem>

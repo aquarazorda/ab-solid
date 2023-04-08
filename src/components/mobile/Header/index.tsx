@@ -2,14 +2,9 @@ import { useI18n } from "@solid-primitives/i18n";
 import { A, useLocation } from "solid-start";
 import { Navigation } from "./Navigation";
 import { Show, createEffect } from "solid-js";
-import { createStore } from "solid-js/store";
+import { mobileHeaderState, setMobileHeaderState } from "~/states/header";
 
-export const [mobileHeaderState, setMobileHeaderState] = createStore({
-  navOpen: true,
-  isTransparent: false,
-});
-
-const transparentRoutes = ["Sportsbook", "Slots", "Casino", "Games", "Poker", "Aviator", "Keno", "Promos"];
+const transparentRoutes = ["Slots", "Casino", "Games", "Poker", "Aviator", "Keno", "Promos"];
 
 export const Header = () => {
   const [t] = useI18n();

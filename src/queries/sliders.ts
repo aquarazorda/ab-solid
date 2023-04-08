@@ -8,7 +8,9 @@ type SliderFilterFn = (banners: BannerData[]) => BannerData[];
 export const getAllSliders = (filterFn: SliderFilterFn) => {
   const { isMobile } = useConfig();
 
-  const [slidersData] = createStaticResource<BannerData[]>(isMobile ? "allSlidersDataMobile" : "allSlidersData");
+  const [slidersData] = createStaticResource<BannerData[]>(
+    isMobile ? "allSlidersDataMobile" : "allSlidersData"
+  );
   const slides = createMemo(() => (slidersData() ? filterFn(slidersData() || []) : []));
 
   return [slides];

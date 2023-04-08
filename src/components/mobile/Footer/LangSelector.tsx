@@ -49,7 +49,10 @@ export const LangSelector = () => {
         <For each={langList[domain]}>
           {(item) => (
             <Show when={item.value !== locale()}>
-              <div onClick={() => onLangChange(item.value)} class="_s_aitem-display-b _s_display-n _cs_child">
+              <div
+                onClick={() => onLangChange(item.value)}
+                class="_s_aitem-display-b _s_display-n _cs_child"
+              >
                 <div class="_none-1 _s_p-3 _s_flex _s_flex-a-center _s_bd-primary-7 _s_bw-1 _s_bd-solid">
                   <span class="_s_label _s_color-primary-1 _s_label-sm english">{item.label}</span>
                 </div>

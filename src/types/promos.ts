@@ -1,0 +1,25 @@
+export type Promotion = {
+  id: number;
+  image: string;
+  imageEn: string;
+  imageRu: string;
+  imageMobile: string;
+  imageMobileEn: string;
+  imageMobileRu: string;
+  title: string;
+  titleEn: string;
+  titleRu: string;
+  description: string;
+  descriptionEn: string;
+  descriptionRu: string;
+  promoLink: string;
+  promoLinkEn: string;
+  promoLinkRu: string;
+  isScheduled: number;
+  endDate: string;
+  startDate: string;
+  category: string;
+  promoType: string;
+  segmentIds: number[];
+  newTab: number;
+};

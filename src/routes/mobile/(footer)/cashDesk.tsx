@@ -22,7 +22,7 @@ export default function CashDeskPage() {
     >
       <CashdeskFilter />
       <CashdeskBranches />
-      <CashdeskContact />
+      <CashdeskContact withTitle={true} />
     </div>
   );
 }

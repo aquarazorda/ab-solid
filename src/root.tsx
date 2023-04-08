@@ -7,6 +7,7 @@ import { CacheBoundary } from "solid-cache";
 import { I18nContext, createI18nContext } from "@solid-primitives/i18n";
 import { cookieStorage } from "@solid-primitives/storage";
 import { Langs } from "./utils/language";
+import "./root.css";
 
 export const [defaultLang, setDefaultLang] = createSignal<Langs>();
 
