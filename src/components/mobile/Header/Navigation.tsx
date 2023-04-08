@@ -1,16 +1,21 @@
 import { useI18n } from "@solid-primitives/i18n";
 import { For, Show } from "solid-js";
 import { A, useRouteData } from "solid-start";
-import { HomeMobileData } from "~/routes/mobile";
+import { MobileRootData } from "~/routes/mobile";
+import { mobileHeaderState } from "~/states/header";
 
 export const Navigation = () => {
   const [t] = useI18n();
-  const { navList } = useRouteData<HomeMobileData>();
+  const { navList } = useRouteData<MobileRootData>();
 
   return (
     <div
       data-id="mobile-header-navigation"
-      class="_s_display-f _s_flex-j-between _s_scroll-0 _s_overflow-x-scroll _s_pl-2 _s_pr-2 _s_pt-2 _s_pb-2 _s_size-w-percent--25 _s_color-rgba-bg-primary-0-0--8"
+      class="_s_display-f _s_flex-j-between _s_scroll-0 _s_overflow-x-scroll _s_pl-2 _s_pr-2 _s_pt-2 _s_pb-2 _s_size-w-percent--25"
+      classList={{
+        "_s_color-rgba-bg-primary-0-0--8": mobileHeaderState.isTransparent,
+        "_s_color-bg-primary-6": !mobileHeaderState.isTransparent,
+      }}
     >
       <Show when={navList()?.list}>
         <For each={navList()?.list}>

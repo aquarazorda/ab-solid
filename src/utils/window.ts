@@ -1,3 +1,5 @@
+import { useNavigate } from "solid-start";
+
 export const scrollToTop = () => window.scrollTo(0, 0);
 
 export const searchParamsToPartial = <T extends object>(search: string): Partial<T> => {
@@ -10,4 +12,9 @@ export const searchParamsToPartial = <T extends object>(search: string): Partial
   }
 
   return queryObject;
+};
+
+export const useNavigateBack = () => {
+  const navigate = useNavigate();
+  return () => navigate(-1);
 };
