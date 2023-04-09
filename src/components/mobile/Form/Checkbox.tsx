@@ -42,3 +42,45 @@ export const BigCheckbox = (props: CheckboxProps) => {
     </div>
   );
 };
+
+type RadioProps = {
+  value: boolean;
+  onClick: () => void;
+};
+
+export const Radio = (props: RadioProps) => {
+  return (
+    <div
+      classList={{
+        "_s_a-color _s_a-p": !props.value,
+      }}
+    >
+      <div
+        class="_s_user-select-none _s_flex _s_size-w-px--11 _s_size-h-px--6 
+      _s_ml-auto _s_pl-1 _s_pr-1 _s_b-radius-xxl _s_color-bg-primary-4"
+        onClick={() => props.onClick()}
+      >
+        {/* <input
+        type="checkbox"
+        name="onoffswitch"
+        id="myonoffswitch"
+        class="_s_display-n"
+        value={Number(props.value)}
+      /> */}
+        <label
+          for="myonoffswitch"
+          class="_s_position-relative _s_aitem-pl-5 _s_transition-0--2 
+        _s_flex _s_flex-a-center _s_size-w-percent--25 _s_size-h-percent--25 _s_oveflow-hidden _s_cursor-pointer _s_b-radius-xxl"
+        >
+          <i
+            class="_s_icon _s_icon-sm _s_m-none _s_adj-circle 
+        _s_color-primary-6 _s_transition-0--2 _s_position-relative _s_position-l-px--0"
+            classList={{
+              "_s_position-l-px--4 _s_aitem-color-primary-2": props.value,
+            }}
+          />
+        </label>
+      </div>
+    </div>
+  );
+};

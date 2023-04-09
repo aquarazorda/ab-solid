@@ -4,7 +4,7 @@ import { createStore } from "solid-js/store";
 import { createUserData, isSessionActive } from "~/queries/user";
 import { User } from "~/types/user";
 
-export const [user, setUser] = createStore<Partial<User>>();
+export const [user, setUser] = createStore<User>({} as User);
 
 export const initializeUser = () => {
   onMount(() => {
@@ -27,4 +27,12 @@ export const isAuthenticated = createMemo(() => !!user?.UserID && !!user?.Name);
 
 export const setUserData = (data: Partial<User>) => {
   setUser(data);
+};
+
+export const logOut = (byUser?: boolean) => {
+  setUser({});
+  cookieStorage.removeItem("userId");
+  if (byUser) {
+    // todo
+  }
 };

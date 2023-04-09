@@ -102,4 +102,25 @@ export const coreApiActionMap = {
     queryKey: () => ["getUserInfo", user.UserID],
     enabled: () => !!user.UserID,
   },
+  getBalance: {
+    method: "POST",
+    path: "WebsiteService?",
+    schema: {
+      userID: P.number,
+      currencyID: P.number,
+    },
+    responseSchema: {
+      StatusCode: P.number,
+      BalanceAmount: P.number,
+      BonusAmount: P.optional(P.number),
+      CurrencyID: P.number,
+      LockedAmount: P.optional(P.number),
+    },
+    default: {
+      isSingle: 0,
+      req: "getBalance",
+    },
+    queryKey: () => ["getBalance", user.UserID],
+    enabled: () => !!user.UserID,
+  },
 } as const satisfies CoreApiActionMap;

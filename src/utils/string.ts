@@ -8,3 +8,11 @@ export const createStaticUrl = (path: string) => {
 
   return `${staticPath}${path}`;
 };
+
+export const dec2bin = (dec: number) => {
+  if (!dec) return 0;
+  let decimal = dec.toString(2);
+  decimal = decimal.split("").reverse().join("");
+
+  return decimal;
+};

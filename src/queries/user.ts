@@ -9,7 +9,6 @@ import { createMemo } from "solid-js";
 // };
 
 export const isSessionActive = () => {
-  if (!user.UserID) return () => false;
   const query = createCoreApiQuery(
     "sessionActive",
     {
@@ -33,10 +32,8 @@ export const isSessionActive = () => {
   return isActive;
 };
 
-export const createUserData = () => {
-  if (!user.UserID) return;
-
-  return createCoreApiQuery(
+export const createUserData = () =>
+  createCoreApiQuery(
     "getUserInfo",
     {
       userID: user.UserID,
@@ -54,4 +51,9 @@ export const createUserData = () => {
       },
     }
   );
-};
+
+export const getUserBalance = () =>
+  createCoreApiQuery("getBalance", {
+    currencyID: user.PreferredCurrencyID,
+    userID: user.UserID,
+  });

@@ -57,7 +57,10 @@ export const Header = () => {
                   {t("__lang__main")}
                 </A>
               </div>
-              <div class="_s_display-f _s_flex-j-center _s_flex-a-center _s_position-relative _s_z-1 _s_aitem-opacity-0">
+              <div
+                class="_s_display-f _s_flex-j-center _s_flex-a-center _s_position-absolute _s_z-1 _s_aitem-opacity-0"
+                style={{ "margin-left": "47%" }}
+              >
                 <a
                   data-id="mobile-ab-logo"
                   class="_s_size-w-px--8 _s_size-h-px--8 _s_size-w-min-px--8 _s_size-h-min-px--8 
