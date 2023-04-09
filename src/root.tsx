@@ -15,6 +15,7 @@ const queryClient = new QueryClient();
 
 export default function Root() {
   const i18nContext = createI18nContext();
+
   onMount(() => {
     setDefaultLang((cookieStorage.getItem("lang") as Langs) || "ka");
   });

@@ -1,8 +1,7 @@
 import { Field, Form } from "@modular-forms/solid";
 import { useI18n } from "@solid-primitives/i18n";
-import { createSignal } from "solid-js";
+import { createMemo, createSignal, Show } from "solid-js";
 import { P, isMatching } from "ts-pattern";
-import { createCoreApiMutation } from "~/queries/utils";
 import { blockSubNav } from "~/states/header";
 import { FormValues, FormValuesPattern, createForm } from "~/utils/forms";
 
@@ -16,7 +15,7 @@ const loginPattern = {
     { pattern: P.when(minValue(4)), message: "_lang_reg_username_mincharacter_error_text" },
   ],
   password: [
-    { pattern: P.when(minValue(4)), message: "_lang_reg_username_mincharacter_error_text" },
+    { pattern: P.when(minValue(4)), message: "_lang_reg_password_mincharacter_error_text" },
   ],
 };
 
@@ -25,11 +24,20 @@ export default function LoginMobile() {
   const [t] = useI18n();
   const [passwordVisible, setPasswordVisible] = createSignal(false);
   const [errorMessage, setErrorMessage] = createSignal("");
-  const loginMutate = createCoreApiMutation("logIn");
 
-  const loginForm = createForm(loginPattern, {
-    userIdentifier: "",
-    password: "",
+  // const loginMutate = createCoreApiMutation("logIn");
+
+  const loginForm = createForm(
+    loginPattern,
+    {
+      userIdentifier: "",
+      password: "",
+    },
+    { revalidateOn: "submit" }
+  );
+
+  const fieldErrors = createMemo(() => {
+    return loginForm.getError("userIdentifier") || loginForm.getError("password");
   });
 
   const onSubmit = (sms?: boolean) => (values: FormValues<typeof loginPattern>) => {
@@ -43,7 +51,7 @@ export default function LoginMobile() {
       loginForm.setValue("password", "");
     }
 
-    loginMutate(values).then(console.log);
+    // loginMutate(values).then(console.log);
   };
 
   return (
@@ -104,6 +112,17 @@ export default function LoginMobile() {
             </div>
           )}
         </Field>
+        <Show when={fieldErrors()}>
+          {(error) => (
+            <div
+              data-id="mobile-authorization-error-messages"
+              class="_s_flex _s_position-r _s_position-l-percent--0 _s_position-t-percent--25 _s_aitem-scroll-scrolled-none _s_pl-2 _s_mb-3"
+            >
+              <span class="_s_adj-alert _s_icon-sm _s_color-primary-3" />
+              <span class="_s_label _s_label-sm _s_ml-1 _s_color-primary-3">{t(error())}</span>
+            </div>
+          )}
+        </Show>
         <div class="_s_mb-7 _s_mt-3 _s_flex _s_flex-a-center">
           <a
             data-id="mobile-sms-authorization"
@@ -112,7 +131,15 @@ export default function LoginMobile() {
             {t("_lang_login_with_sms2")}
           </a>
         </div>
-        <button type="submit">Inshalla</button>
+        <div class="_s_mb-5">
+          <button
+            type="submit"
+            data-id="mobile-login-btn"
+            class="_s_btn _s_btn-positive _s_size-w-percent--25"
+          >
+            <span class="_s_label _s_label-md">{t("_lang_login_button_login")}</span>
+          </button>
+        </div>
       </Form>
     </div>
   );

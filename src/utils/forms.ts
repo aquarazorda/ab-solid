@@ -62,7 +62,8 @@ export const createForm = <T extends FormValuesPattern<any>>(
     values,
     isValid: () => validate(form),
     validateField: (name: FieldPath<FormValues<T>>) => validate(form, name),
-    getError: (name: FieldPath<FormValues<T>>) => createMemo(() => ge(form, name)),
+    getError: (name: FieldPath<FormValues<T>>) => ge(form, name),
+    // getError: (name: FieldPath<FormValues<T>>) => createMemo(() => ge(form, name)),
     setValue: (
       name: FieldPath<FormValues<T>>,
       value: FieldPathValue<FormValues<T>, FieldPath<FormValues<T>>>
