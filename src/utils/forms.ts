@@ -1,31 +1,71 @@
 import {
   DeepPartial,
+  FieldPath,
+  FieldPathValue,
   FieldValues,
-  ValidateForm,
+  FormErrors,
   ValidationMode,
   createForm as cf,
+  getError as ge,
   getValues,
+  setValue as sv,
+  validate,
 } from "@modular-forms/solid";
 import { createMemo } from "solid-js";
 import { P, isMatching } from "ts-pattern";
 
-type FormOptions<TFieldValues extends FieldValues> = Partial<{
-  initialValues: DeepPartial<TFieldValues>;
+export type FormValuesPattern<T extends object> = {
+  [key in keyof T]: Array<{
+    pattern: P.Pattern<unknown>;
+    message?: string;
+  }>;
+};
+
+export type FormValues<T extends FormValuesPattern<any>> = Record<
+  keyof T,
+  P.infer<T[keyof T][number]["pattern"]>
+>;
+
+type FormOptions = Partial<{
   validateOn: ValidationMode;
   revalidateOn: ValidationMode;
-  validate: ValidateForm<TFieldValues>;
 }>;
 
-export const createForm = <T extends FieldValues>(
-  pattern: P.Pattern<T>,
-  options?: FormOptions<T>
+const validateForm =
+  <T extends FieldValues>(pattern: FormValuesPattern<T>) =>
+  (values: DeepPartial<T>) => {
+    const errors = Object.entries(pattern).reduce((acc, [key, value]) => {
+      const field = values[key as keyof DeepPartial<T>];
+      const error = value.find((v) => !isMatching(v.pattern, field));
+      return error ? { ...acc, [key]: error.message || "" } : acc;
+    }, {} as FormErrors<T>);
+
+    return errors;
+  };
+
+export const createForm = <T extends FormValuesPattern<any>>(
+  pattern: T,
+  initialValues: FormValues<T>,
+  partialOptions?: FormOptions
 ) => {
-  const form = cf<T>(options);
+  const options = {
+    ...partialOptions,
+    initialValues: initialValues as DeepPartial<FormValues<T>>,
+    validate: validateForm(pattern),
+  };
+
+  const form = cf<FormValues<T>>(options);
   const values = createMemo(() => getValues(form));
 
   return {
     form,
     values,
-    isValid: () => isMatching(pattern, values()),
+    isValid: () => validate(form),
+    validateField: (name: FieldPath<FormValues<T>>) => validate(form, name),
+    getError: (name: FieldPath<FormValues<T>>) => createMemo(() => ge(form, name)),
+    setValue: (
+      name: FieldPath<FormValues<T>>,
+      value: FieldPathValue<FormValues<T>, FieldPath<FormValues<T>>>
+    ) => sv(form, name, value as any),
   };
 };

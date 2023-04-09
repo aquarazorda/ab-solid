@@ -2,14 +2,22 @@ import { Field, Form } from "@modular-forms/solid";
 import { useI18n } from "@solid-primitives/i18n";
 import { createSignal } from "solid-js";
 import { P, isMatching } from "ts-pattern";
+import { createCoreApiMutation } from "~/queries/utils";
 import { blockSubNav } from "~/states/header";
-import { createForm } from "~/utils/forms";
+import { FormValues, FormValuesPattern, createForm } from "~/utils/forms";
 
-const minValue = (x: unknown): x is string => typeof x === "string" && x.length > 4;
+const minValue =
+  (val: number) =>
+  (x: unknown): x is string =>
+    typeof x === "string" && x.length > val;
 
 const loginPattern = {
-  userIdentifier: P.when(minValue),
-  password: P.when(minValue),
+  userIdentifier: [
+    { pattern: P.when(minValue(4)), message: "_lang_reg_username_mincharacter_error_text" },
+  ],
+  password: [
+    { pattern: P.when(minValue(4)), message: "_lang_reg_username_mincharacter_error_text" },
+  ],
 };
 
 export default function LoginMobile() {
@@ -17,23 +25,25 @@ export default function LoginMobile() {
   const [t] = useI18n();
   const [passwordVisible, setPasswordVisible] = createSignal(false);
   const [errorMessage, setErrorMessage] = createSignal("");
+  const loginMutate = createCoreApiMutation("logIn");
 
-  const loginForm = createForm<P.infer<typeof loginPattern>>(loginPattern, {
-    initialValues: {
-      userIdentifier: "",
-      password: "",
-    },
+  const loginForm = createForm(loginPattern, {
+    userIdentifier: "",
+    password: "",
   });
 
-  const onSubmit = (sms?: boolean) => (values: P.infer<typeof loginPattern>) => {
+  const onSubmit = (sms?: boolean) => (values: FormValues<typeof loginPattern>) => {
     if (sms) {
       if (!isMatching(loginPattern.userIdentifier, values.userIdentifier)) {
         setErrorMessage("_lang_reg_username_mincharacter_error_text");
         return;
       }
-
+      loginForm.values;
       setErrorMessage("");
+      loginForm.setValue("password", "");
     }
+
+    loginMutate(values).then(console.log);
   };
 
   return (
@@ -102,6 +112,7 @@ export default function LoginMobile() {
             {t("_lang_login_with_sms2")}
           </a>
         </div>
+        <button type="submit">Inshalla</button>
       </Form>
     </div>
   );

@@ -3,13 +3,15 @@ import { Show, Suspense, createSignal, onMount } from "solid-js";
 import { Body, ErrorBoundary, Head, Html, Link, Meta, Scripts, Title } from "solid-start";
 import { App } from "./App";
 import { ConfigProvider } from "./config";
-import { CacheBoundary } from "solid-cache";
 import { I18nContext, createI18nContext } from "@solid-primitives/i18n";
 import { cookieStorage } from "@solid-primitives/storage";
 import { Langs } from "./utils/language";
 import "./root.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/solid-query";
 
 export const [defaultLang, setDefaultLang] = createSignal<Langs>();
+
+const queryClient = new QueryClient();
 
 export default function Root() {
   const i18nContext = createI18nContext();
@@ -38,11 +40,11 @@ export default function Root() {
           <ErrorBoundary>
             <ConfigProvider>
               <I18nContext.Provider value={i18nContext}>
-                <CacheBoundary>
+                <QueryClientProvider client={queryClient}>
                   <Show when={defaultLang()}>
                     <App />
                   </Show>
-                </CacheBoundary>
+                </QueryClientProvider>
               </I18nContext.Provider>
             </ConfigProvider>
           </ErrorBoundary>
