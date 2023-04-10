@@ -18,13 +18,11 @@ export const FooterLinks = () => {
                 ? item.url + locale()
                 : item.url
             }`}
+            aria-label={item.label}
             target="_blank"
             class={item.itemClass}
           >
-            <img
-              src={createStaticUrl(item.img.img)}
-              class={item.img.className}
-            />
+            <img src={createStaticUrl(item.img.img)} class={item.img.className} alt={item.label} />
           </a>
         )}
       </For>
@@ -34,6 +32,7 @@ export const FooterLinks = () => {
 
 const footerLinks = [
   {
+    label: "Initiative",
     url: "https://www.iniciativa.ge/",
     itemClass: "",
     hasLangEnd: true,
@@ -44,6 +43,7 @@ const footerLinks = [
     },
   },
   {
+    label: "Adjarabet Awards",
     url: "https://www.adjarabetawards.com/",
     itemClass: "_s_pl-3",
     urlLangRedirect: {
@@ -58,6 +58,7 @@ const footerLinks = [
     },
   },
   {
+    label: "Rule Your Games",
     url: "http://martetamashi.ge/",
     itemClass: "_s_pl-3",
     img: {
@@ -67,6 +68,7 @@ const footerLinks = [
     },
   },
   {
+    label: "Moedani",
     url: "https://www.adjarabetawards.com/",
     itemClass: "_s_pl-3",
     urlLangRedirect: {

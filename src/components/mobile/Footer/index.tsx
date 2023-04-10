@@ -25,7 +25,7 @@ export const Footer = () => {
           <FooterNav />
           <FooterLinks />
           <FooterDescription />
-          <a
+          <div
             tabindex="0"
             data-id="back-top-top"
             class="_s_btn _s_btn-transparent _s_size-w-percent--24 _s_bw-1 _s_b-solid _s_b-primary-7"
@@ -37,7 +37,7 @@ export const Footer = () => {
                 {t("_lang_top")}
               </span>
             </span>
-          </a>
+          </div>
         </div>
       </div>
     </Show>

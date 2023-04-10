@@ -53,11 +53,13 @@ export const MainSlider = () => {
                       _s_flex-j-center _s_color-bg-primary-0"
                       data-id={`slider-item-offer-link${slide.id}`}
                       href={slide.route || "/"}
+                      aria-label={slide.name}
                     >
                       <img
                         class="swiper-lazy _s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25"
                         src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
-                        data-id={t(slide.title.langId)}
+                        data-id={slide.name}
+                        alt={slide.name}
                       />
                     </A>
                   </div>

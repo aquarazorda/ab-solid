@@ -14,6 +14,7 @@ const LoginButton = () => {
         data-id="mobile-login"
         class="_s_label _s_label-md _s_label-t-u _s_aitem-opacity-0 _s_position-relative _s_transition-0--3"
         href="/mobile/Login"
+        aria-label={t("_lang_login_button_login")}
       >
         {t("_lang_login_button_login")}
       </A>

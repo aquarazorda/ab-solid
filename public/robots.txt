@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://newstatic.adjarabet.com/static/sitemap.xml

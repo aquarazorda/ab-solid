@@ -52,6 +52,7 @@ export const Header = () => {
                   class="_s_label _s_label-md _s_label-t-u _s_aitem-opacity-0 _s_position-relative 
                   _s_transition-0--3 _s_a-color"
                   href="/mobile"
+                  aria-label={t("__lang__main")}
                   end={true}
                 >
                   {t("__lang__main")}
@@ -61,7 +62,7 @@ export const Header = () => {
                 class="_s_display-f _s_flex-j-center _s_flex-a-center _s_position-absolute _s_z-1 _s_aitem-opacity-0"
                 style={{ "margin-left": "47%" }}
               >
-                <a
+                <div
                   data-id="mobile-ab-logo"
                   class="_s_size-w-px--8 _s_size-h-px--8 _s_size-w-min-px--8 _s_size-h-min-px--8 
                   _s_position-relative _s_cursor-pointer _s_bg-img-logoSm _s_bg-position-center _s_bg-no-repeat _s_bg-size-full"
