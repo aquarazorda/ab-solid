@@ -41,9 +41,9 @@ export default function Index() {
       </div>
       <div class="_s_mt-5">
         <Show when={games()}>
-          <WidgetSlider title="__lang__slots" url="/Slots" games={games().slots} />
-          <WidgetSlider title="__lang__casino" url="/Casino" games={games().casino} />
-          <WidgetSlider title="_lang_id_poker_and_games" url="/Games" games={games().poker} />
+          <WidgetSlider title="__lang__slots" url="Slots" games={games().slots} />
+          <WidgetSlider title="__lang__casino" url="Casino" games={games().casino} />
+          <WidgetSlider title="_lang_id_poker_and_games" url="Games" games={games().poker} />
           <AviatorWidget />
         </Show>
       </div>

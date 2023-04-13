@@ -22,8 +22,7 @@ export default function MobilePokerPage() {
     <>
       <MainSlider />
       <div class="_s_color-rgba-bg-primary-0-0--3 _s_p-5 _s_position-relative _s_z-1">
-        {/* Todo */}
-        <PlayButtonBig href="/Poker" icon="poker">
+        <PlayButtonBig gameId={541964} icon="poker">
           {t("_lang_play_poker")}
         </PlayButtonBig>
       </div>

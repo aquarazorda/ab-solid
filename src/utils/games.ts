@@ -1,3 +1,7 @@
+import { useNavigate } from "solid-start";
+import { isAuthenticated } from "~/states/user";
+import { Game, GamesList } from "~/types/game";
+
 export const generateWidgetData = (gamesList: GamesList) => {
   const defaultValues = {
     slots: [] as Game[],
@@ -29,8 +33,18 @@ export const generateWidgetData = (gamesList: GamesList) => {
   return {
     poker: poker.sort((a, b) => a.byTags.t_p2p?.order - b.byTags.t_p2p?.order),
     slots: slots.sort((a, b) => a.byTags.top?.order - b.byTags.top?.order),
-    casino: casino.sort(
-      (a, b) => a.byTags.t_home?.order - b.byTags.t_home.order
-    ),
+    casino: casino.sort((a, b) => a.byTags.t_home?.order - b.byTags.t_home.order),
+  };
+};
+
+export const useOpenGame = () => {
+  const navigate = useNavigate();
+
+  return (gameId: number | string) => {
+    if (!isAuthenticated()) {
+      return;
+    }
+
+    navigate("/mobile/ingame/" + gameId);
   };
 };

@@ -4,6 +4,7 @@ import { For, createEffect, createMemo } from "solid-js";
 import { createStaticUrl } from "~/utils/string";
 import { useI18n } from "@solid-primitives/i18n";
 import { isAuthenticated } from "~/states/user";
+import { openGame } from "~/utils/games";
 
 export default function CasinoCategoryView() {
   const params = useParams();
@@ -21,15 +22,6 @@ export default function CasinoCategoryView() {
       )
   );
 
-  const onClick = (game: Game) => {
-    console.log("KLIKD");
-    if (!isAuthenticated()) {
-      return;
-    }
-
-    navigate("/mobile/ingame/" + game.id);
-  };
-
   return (
     <div class="_s_flex _s_flex-wrap _s_position-relative _s_pt-1 _s_z-1">
       <For each={games()}>
@@ -43,7 +35,7 @@ export default function CasinoCategoryView() {
                 class="_s_col-12 _s_transition-0--5 _s_color-rgba-bg-primary-0-0--1"
                 src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
                 alt={t(game.title.langId)}
-                onClick={() => onClick(game)}
+                onClick={() => openGame(game)}
                 loading="lazy"
               />
             </div>

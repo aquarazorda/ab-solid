@@ -17,7 +17,11 @@ type GameProviders = {
 export const routeData = ({ params }: RouteDataArgs) => {
   const allGames = getAllGamesData();
   const [providers] = createStaticResource<GameProviders>("gameProviders");
-  const game = createMemo(() => allGames()?.list.find((game) => game.id === Number(params.gameId)));
+  const game = createMemo(() =>
+    allGames()?.list.find(
+      (game) => game.id === Number(params.gameId) || game.gameId === params.gameId
+    )
+  );
   const provider = createMemo(() =>
     match(game()?.pid)
       .with(P.number, (pid) => providers()?.[pid])

@@ -5,6 +5,7 @@ import { useConfig } from "~/config";
 import { MainSlider } from "~/components/mobile/Sliders/HomeSlider";
 import { getAllSliders } from "~/queries/sliders";
 import { BannerData } from "~/types/banner";
+import { useOpenGame } from "~/utils/games";
 
 const gameSlidesFilterFn = (slides: BannerData[]) =>
   slides
@@ -19,6 +20,7 @@ export const routeData = () => {
 export default function MobileGamesPage() {
   const { isAm } = useConfig();
   const [t] = useI18n();
+  const openGame = useOpenGame();
   const games = isAm ? gameListTypesAm : gameListTypes;
 
   return (
@@ -28,8 +30,8 @@ export default function MobileGamesPage() {
         <For each={games}>
           {(game) => (
             // TODO
-            <A
-              href="/Game/id"
+            <div
+              onClick={() => openGame(game.game.gameId)}
               class={`_s_flex _s_flex-a-center _s_b-radius-sm _s_p-7 _s_mb-2 _s_size-w-percent--25 _s_color-bg-${game.bgColor}`}
             >
               <div class="_s_flex _s_flex-a-center _s_size-w-percent--25">
@@ -39,7 +41,7 @@ export default function MobileGamesPage() {
                   <span class="_s_icon _s_icon-sm _s_ml-auto _s_mr-none _s_adj-arrow-right" />
                 </div>
               </div>
-            </A>
+            </div>
           )}
         </For>
       </div>

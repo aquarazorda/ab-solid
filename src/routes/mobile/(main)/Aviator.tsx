@@ -7,7 +7,9 @@ import { BannerData } from "~/types/banner";
 
 const aviatorSlidesFilterFn = (slides: BannerData[]) =>
   slides
-    ?.filter(({ byTags, segments }) => (byTags.aviator && !segments?.length) || byTags.visitor_aviator)
+    ?.filter(
+      ({ byTags, segments }) => (byTags.aviator && !segments?.length) || byTags.visitor_aviator
+    )
     .sort((slide1, slide2) => slide1.byTags?.aviator?.order - slide2.byTags?.aviator?.order);
 
 export const routeData = () => {
@@ -22,8 +24,7 @@ export default function MobileAviatorPage() {
     <>
       <MainSlider />
       <div class="_s_color-rgba-bg-primary-0-0--3 _s_p-5 _s_position-relative _s_z-1">
-        {/* Todo */}
-        <PlayButtonBig href="/Aviator" icon="aviator">
+        <PlayButtonBig gameId={4934} icon="aviator">
           {t("_lang_play_aviator")}
         </PlayButtonBig>
       </div>
