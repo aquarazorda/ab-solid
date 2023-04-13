@@ -1,16 +1,15 @@
-import { A, useNavigate, useParams, useRouteData } from "solid-start";
+import { useNavigate, useParams, useRouteData } from "solid-start";
 import { CasinoMobileData } from "../Casino";
-import { For, createEffect, createMemo } from "solid-js";
+import { For, createMemo } from "solid-js";
 import { createStaticUrl } from "~/utils/string";
 import { useI18n } from "@solid-primitives/i18n";
-import { isAuthenticated } from "~/states/user";
-import { openGame } from "~/utils/games";
+import { useOpenGame } from "~/utils/games";
 
 export default function CasinoCategoryView() {
   const params = useParams();
   const [t, { locale }] = useI18n();
   const { casinoGames } = useRouteData<CasinoMobileData>();
-  const navigate = useNavigate();
+  const openGame = useOpenGame();
 
   const games = createMemo(() =>
     casinoGames()
@@ -35,7 +34,7 @@ export default function CasinoCategoryView() {
                 class="_s_col-12 _s_transition-0--5 _s_color-rgba-bg-primary-0-0--1"
                 src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
                 alt={t(game.title.langId)}
-                onClick={() => openGame(game)}
+                onClick={() => openGame(game.id)}
                 loading="lazy"
               />
             </div>
