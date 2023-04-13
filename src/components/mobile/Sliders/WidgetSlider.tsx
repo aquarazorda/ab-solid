@@ -11,21 +11,16 @@ export const WidgetSliderHeader = (props: HeaderProps) => {
 
   return (
     <div class="_s_flex _s_flex-a-center _s_p-3">
-      <div class="_s_icon _s_icon-md _s_color-primary-3 _s_adj-slots"></div>
+      <div class="_s_icon _s_icon-md _s_color-primary-3 _s_adj-slots" />
       <A href={`/mobile/${props.url}`}>
-        <span class="_s_label _s_label-md _s_label-t-u _s_z-1">
-          {t(props.title)}
-        </span>
+        <span class="_s_label _s_label-md _s_label-t-u _s_z-1">{t(props.title)}</span>
       </A>
       <a class="_s_ml-auto ng-star-inserted" href="/mobile/ka/Slots">
         <div class="_s_flex _s_flex-a-center">
           <span data-id="all" class="_s_label _s_label-sm">
             {t("_lang_slots_allgames")}
           </span>
-          <i
-            data-id="all"
-            class="_s_adj-arrow-right _s_icon _s_icon-xs _s_m-none"
-          ></i>
+          <i data-id="all" class="_s_adj-arrow-right _s_icon _s_icon-xs _s_m-none" />
         </div>
       </a>
     </div>
@@ -59,9 +54,7 @@ export const WidgetSlider = (props: Props) => {
                   <img
                     loading="lazy"
                     class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"
-                    src={createStaticUrl(
-                      `/images/common/${game.id}_${locale()}.jpg`
-                    )}
+                    src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
                     // src="https://newstatic.adjarabet.com/static/images/common/550131_en.jpg"
                     alt={t(game.title.langId)}
                     data-id="empty"

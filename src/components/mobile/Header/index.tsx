@@ -27,7 +27,7 @@ export const Header = () => {
   });
 
   return (
-    <>
+    <Show when={!mobileHeaderState.hidden}>
       <div class="_s_flex _s_size-w-percent--25 _s_flex-d-column">
         <div
           classList={{
@@ -77,6 +77,6 @@ export const Header = () => {
           </Show>
         </div>
       </div>
-    </>
+    </Show>
   );
 };

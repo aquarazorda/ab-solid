@@ -1,3 +1,4 @@
+import { QueryOptions } from "@tanstack/solid-query";
 import { P } from "ts-pattern";
 import { user } from "~/states/user";
 import { userSchema } from "~/types/user";
@@ -34,6 +35,7 @@ type ActionMapItem = {
   };
   queryKey?: () => readonly any[];
   enabled?: () => boolean;
+  queryOptions?: QueryOptions;
 };
 
 type CoreApiActionMap = {
@@ -50,6 +52,7 @@ export const coreApiActionMap = {
     },
     responseSchema: {
       StatusCode: P.number,
+      UserID: P.number,
     },
     default: {
       req: "login",
@@ -122,5 +125,20 @@ export const coreApiActionMap = {
     },
     queryKey: () => ["getBalance", user.UserID],
     enabled: () => !!user.UserID,
+  },
+  getServiceAuthToken: {
+    method: "POST",
+    path: "WebsiteService?",
+    schema: {
+      userID: P.number,
+      providerID: P.string,
+    },
+    responseSchema: {
+      StatusCode: P.number,
+      Token: P.string,
+    },
+    default: {
+      req: "getServiceAuthToken",
+    },
   },
 } as const satisfies CoreApiActionMap;

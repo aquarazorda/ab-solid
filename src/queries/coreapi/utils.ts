@@ -62,7 +62,11 @@ export const createCoreApiQuery = <T extends CoreApiQuery>(
   const actionData: CoreApiActionData<T> = coreApiActionMap[action];
   const queryFn = createCoreApiFetchFn(actionData);
 
-  return createQuery<undefined | CoreApiResponseType<T>>(
+  return createQuery<
+    undefined | CoreApiResponseType<T>,
+    unknown,
+    undefined | CoreApiResponseType<T>
+  >(
     actionData.queryKey,
     () => queryFn(data),
     // eslint-disable-next-line
@@ -73,6 +77,7 @@ export const createCoreApiQuery = <T extends CoreApiQuery>(
       },
       refetchOnWindowFocus: false,
       staleTime: 1000 * 60 * 5,
+      ...actionData.queryOptions,
       ...options,
     }
   );
@@ -98,4 +103,12 @@ export const createCoreApiMutation = <T extends CoreApiAction>(
   const { mutateAsync } = createMutation(mutationFn, options);
 
   return mutateAsync;
+};
+
+export const createCreateCoreApiFetch = <T extends CoreApiAction>(
+  action: T,
+  data: CoreApiDataType<T>
+) => {
+  const actionData = coreApiActionMap[action];
+  return createCoreApiFetchFn(actionData)(data);
 };

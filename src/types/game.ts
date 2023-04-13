@@ -3,7 +3,7 @@ type Currency = {
   max: number;
 };
 
-type Game = {
+export type Game = {
   id: number;
   gameId: string;
   pid: number;
@@ -31,4 +31,13 @@ type Game = {
   };
 };
 
-type GamesList = Game[];
+export type GamesList = Game[];
+
+export type GameProvider = {
+  action: string;
+  params: string[];
+  pid: string;
+  type: string;
+  url: string;
+  urlMobile: string;
+};

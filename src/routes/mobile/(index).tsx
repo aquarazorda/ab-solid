@@ -1,19 +1,18 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { Show, Suspense, createMemo } from "solid-js";
+import { Show, createMemo } from "solid-js";
 import { A, useRouteData } from "solid-start";
 import { AviatorWidget } from "~/components/mobile/Sliders/Aviator";
 import { MainSlider, homePageSliderFilterFn } from "~/components/mobile/Sliders/HomeSlider";
 import { WidgetSlider } from "~/components/mobile/Sliders/WidgetSlider";
 import { generateWidgetData } from "~/utils/games";
-import { createStaticResource } from "~/queries/utils";
 import { getAllSliders } from "~/queries/sliders";
+import { getAllGamesData } from "~/queries/games";
 
 export type HomeMobileData = typeof routeData;
 
 export const routeData = () => {
   const [slides] = getAllSliders(homePageSliderFilterFn);
-
-  const [allGamesData] = createStaticResource<{ list: GamesList }>("allGamesDataMobile");
+  const allGamesData = getAllGamesData();
 
   return { slides, allGamesData };
 };
@@ -41,14 +40,12 @@ export default function Index() {
         </A>
       </div>
       <div class="_s_mt-5">
-        <Suspense>
-          <Show when={games()}>
-            <WidgetSlider title="__lang__slots" url="/Slots" games={games().slots} />
-            <WidgetSlider title="__lang__casino" url="/Casino" games={games().casino} />
-            <WidgetSlider title="_lang_id_poker_and_games" url="/Games" games={games().poker} />
-            <AviatorWidget />
-          </Show>
-        </Suspense>
+        <Show when={games()}>
+          <WidgetSlider title="__lang__slots" url="/Slots" games={games().slots} />
+          <WidgetSlider title="__lang__casino" url="/Casino" games={games().casino} />
+          <WidgetSlider title="_lang_id_poker_and_games" url="/Games" games={games().poker} />
+          <AviatorWidget />
+        </Show>
       </div>
     </div>
   );

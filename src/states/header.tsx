@@ -8,6 +8,7 @@ export const [mobileHeaderState, setMobileHeaderState] = createStore({
   navBlocked: false,
   showBalance: false,
   accountLayerOpen: false,
+  hidden: false,
 });
 
 export const blockSubNav = () => {

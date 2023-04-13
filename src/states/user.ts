@@ -10,9 +10,10 @@ export const initializeUser = () => {
   onMount(() => {
     const UserID = cookieStorage.getItem("userId");
     if (UserID) setUser({ UserID: Number(UserID) });
-    const session = isSessionActive();
 
     createEffect(() => {
+      const session = isSessionActive();
+
       if (session()) {
         createUserData();
         return;
@@ -26,6 +27,12 @@ export const initializeUser = () => {
 export const isAuthenticated = createMemo(() => !!user?.UserID && !!user?.Name);
 
 export const setUserData = (data: Partial<User>) => {
+  if (data.UserID) {
+    cookieStorage.setItem("userId", String(data.UserID));
+  } else {
+    cookieStorage.removeItem("userId");
+  }
+
   setUser(data);
 };
 

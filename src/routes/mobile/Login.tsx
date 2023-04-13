@@ -1,9 +1,14 @@
 import { Field, Form } from "@modular-forms/solid";
 import { useI18n } from "@solid-primitives/i18n";
 import { createMemo, createSignal, Show } from "solid-js";
+import { useNavigate } from "solid-start";
 import { P, isMatching } from "ts-pattern";
+import { createCoreApiMutation } from "~/queries/coreapi/utils";
 import { blockSubNav } from "~/states/header";
 import { FormValues, FormValuesPattern, createForm } from "~/utils/forms";
+import { initializeUser, setUser } from "~/states/user";
+import { cookieStorage } from "@solid-primitives/storage";
+import { createUserData } from "~/queries/user";
 
 const minValue =
   (val: number) =>
@@ -24,8 +29,15 @@ export default function LoginMobile() {
   const [t] = useI18n();
   const [passwordVisible, setPasswordVisible] = createSignal(false);
   const [errorMessage, setErrorMessage] = createSignal("");
+  const navigate = useNavigate();
 
-  // const loginMutate = createCoreApiMutation("logIn");
+  const loginMutate = createCoreApiMutation("logIn", {
+    onSuccess: (data) => {
+      if (data?.StatusCode === 10 && data?.UserID) {
+        setUser({ UserID: data.UserID });
+      }
+    },
+  });
 
   const loginForm = createForm(
     loginPattern,
@@ -51,7 +63,9 @@ export default function LoginMobile() {
       loginForm.setValue("password", "");
     }
 
-    // loginMutate(values).then(console.log);
+    loginMutate(values).then(() => {
+      navigate("/mobile");
+    });
   };
 
   return (
