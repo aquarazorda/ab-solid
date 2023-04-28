@@ -1,8 +1,9 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { Accessor, For, Index, createEffect, onCleanup } from "solid-js";
+import { Accessor, For, Index, Show, createEffect, createSignal, onCleanup } from "solid-js";
 import { createStore } from "solid-js/store";
 import { createSlider } from "solid-slider";
 import { A, useRouteData } from "solid-start";
+import { Loader } from "~/components/Loader";
 import { BannerData } from "~/types/banner";
 import { createStaticUrl } from "~/utils/string";
 
@@ -39,6 +40,7 @@ export const MainSlider = () => {
 
   createEffect(() => {
     setLoaded(current(), true);
+    setLoaded(current() + 1, true);
   });
 
   return (
@@ -46,36 +48,42 @@ export const MainSlider = () => {
       <div class="_s_size-h-px--90 _s_lg-size-h-px--109 _s_flex">
         <div use:slider>
           <For each={slides()}>
-            {(slide, idx) => (
-              <div
-                class="desktop _s_display-i-f _s_overflow-hidden _s_position-relative _s_size-w-percent--25 
-                _s_size-h-percent--25 _s_lg-b-radius-sm ng-star-inserted"
-                data-id={t(slide.title.langId)}
-              >
-                <div class="_s_size-w-percent--25 _s_cursor-pointer">
-                  <div class="_s_flex _s_flex-j-center _s_size-h-percent--25">
-                    <A
-                      class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_flex-a-center 
-                      _s_flex-j-center _s_color-bg-primary-0"
-                      data-id={`slider-item-offer-link${slide.id}`}
-                      href={slide.route || "/"}
-                      aria-label={slide.name}
-                    >
-                      <img
-                        class="swiper-lazy _s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25"
-                        src={
-                          loaded[idx()] && locale()
-                            ? createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)
-                            : ""
-                        }
-                        data-id={slide.name}
-                        alt={slide.name}
-                      />
-                    </A>
+            {(slide, idx) => {
+              const [imgLoaded, setImgLoaded] = createSignal(false);
+
+              return (
+                <div
+                  class="desktop _s_display-i-f _s_overflow-hidden _s_position-relative _s_size-w-percent--25 
+              _s_size-h-percent--25 _s_lg-b-radius-sm ng-star-inserted"
+                  data-id={t(slide.title.langId)}
+                >
+                  <div class="_s_size-w-percent--25 _s_cursor-pointer">
+                    <div class="_s_flex _s_flex-j-center _s_size-h-percent--25">
+                      <A
+                        class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_flex-a-center 
+                    _s_flex-j-center _s_color-bg-primary-0"
+                        data-id={`slider-item-offer-link${slide.id}`}
+                        href={slide.route || "/"}
+                        aria-label={slide.name}
+                      >
+                        <Show when={!imgLoaded()}>
+                          <Loader />
+                        </Show>
+                        <Show when={loaded[idx()] && locale()}>
+                          <img
+                            class="swiper-lazy _s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25"
+                            src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
+                            data-id={slide.name}
+                            alt={slide.name}
+                            onLoad={() => setImgLoaded(true)}
+                          />
+                        </Show>
+                      </A>
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              );
+            }}
           </For>
         </div>
       </div>
