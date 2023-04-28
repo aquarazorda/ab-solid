@@ -67,11 +67,14 @@ export const MainSlider = () => {
                         aria-label={slide.name}
                       >
                         <Show when={!imgLoaded()}>
-                          <Loader />
+                          <div class="_s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25 _s_flex-a-center _s_position-absolute _s_flex">
+                            <Loader />
+                          </div>
                         </Show>
                         <Show when={loaded[idx()] && locale()}>
                           <img
-                            class="swiper-lazy _s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25"
+                            loading={idx() > 0 ? "lazy" : "eager"}
+                            class="_s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25"
                             src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
                             data-id={slide.name}
                             alt={slide.name}

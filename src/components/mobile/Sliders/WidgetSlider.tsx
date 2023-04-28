@@ -39,7 +39,7 @@ type Props = {
 
 export const WidgetSlider = (props: Props) => {
   const [t, { locale }] = useI18n();
-  const [slider, { current }] = createSlider({
+  const [slider, { current, details }] = createSlider({
     slides: {
       perView: 2,
     },
@@ -70,11 +70,13 @@ export const WidgetSlider = (props: Props) => {
                 >
                   <div class="_s_size-w-percent--25 _s_flex _s_overflow-hidden _s_pl-1 _s_pr-1 _s_lg-pl-none _s_lg-pr-none">
                     <Show when={!imgLoaded()}>
-                      <Loader />
+                      <div class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none _s_flex-a-center _s_position-absolute">
+                        <Loader />
+                      </div>
                     </Show>
                     <Show when={loaded[idx()] && locale()}>
                       <img
-                        loading="lazy"
+                        loading={idx() > 1 ? "lazy" : "eager"}
                         class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"
                         src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
                         alt={t(game.title.langId)}
