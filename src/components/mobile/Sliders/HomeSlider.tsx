@@ -1,5 +1,6 @@
 import { useI18n } from "@solid-primitives/i18n";
 import { Accessor, For, Index, createEffect, onCleanup } from "solid-js";
+import { createStore } from "solid-js/store";
 import { createSlider } from "solid-slider";
 import { A, useRouteData } from "solid-start";
 import { BannerData } from "~/types/banner";
@@ -17,6 +18,7 @@ export const homePageSliderFilterFn = (slides: BannerData[]) =>
 export const MainSlider = () => {
   const { slides } = useRouteData<{ slides: Accessor<BannerData[]> }>();
   const [t, { locale }] = useI18n();
+  const [loaded, setLoaded] = createStore<Record<number, boolean>>({});
 
   const [slider, { current, next, moveTo }] = createSlider({
     loop: true,
@@ -35,12 +37,16 @@ export const MainSlider = () => {
     onCleanup(() => clearInterval(interval));
   });
 
+  createEffect(() => {
+    setLoaded(current(), true);
+  });
+
   return (
     <div data-id="home-main-slider" class="_s_position-relative">
       <div class="_s_size-h-px--90 _s_lg-size-h-px--109 _s_flex">
         <div use:slider>
           <For each={slides()}>
-            {(slide) => (
+            {(slide, idx) => (
               <div
                 class="desktop _s_display-i-f _s_overflow-hidden _s_position-relative _s_size-w-percent--25 
                 _s_size-h-percent--25 _s_lg-b-radius-sm ng-star-inserted"
@@ -57,7 +63,11 @@ export const MainSlider = () => {
                     >
                       <img
                         class="swiper-lazy _s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25"
-                        src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
+                        src={
+                          loaded[idx()] && locale()
+                            ? createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)
+                            : ""
+                        }
                         data-id={slide.name}
                         alt={slide.name}
                       />

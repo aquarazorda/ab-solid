@@ -6,8 +6,8 @@ import { defaultLang } from "~/root";
 
 export type Langs = "en" | "ka" | "ru" | "hy";
 
-export const fetchLangs = async (lang: string) =>
-  await fetch(`https://newstatic.adjarabet.com/static/lang${lang}New.json`).then((res) => res.json());
+export const fetchLangs = (lang: string) =>
+  fetch(`https://newstatic.adjarabet.com/static/lang${lang}New.json`).then((res) => res.json());
 
 const [fetchedLangs, setFetchedLangs] = createStore({
   en: false,
@@ -23,6 +23,8 @@ export const initializeLangs = () => {
       changeLang(defaultLang()!, { locale, add });
     }
   });
+
+  return defaultLang;
 };
 
 type Props = {
@@ -31,15 +33,19 @@ type Props = {
 };
 
 export const changeLang = async (lang: Langs, { locale, add }: Props) => {
-  const dictRes = await fetchLangs(lang);
+  const [dictRes] = createResource(() => fetchLangs(lang));
 
-  if (!fetchedLangs[lang]) {
-    add(lang, dictRes);
-    setFetchedLangs(lang, true);
-  }
+  createEffect(() => {
+    if (!fetchedLangs[lang] && dictRes()) {
+      add(lang, dictRes());
+      setFetchedLangs(lang, true);
+    }
 
-  locale(lang);
-  cookieStorage.setItem("lang", lang);
+    if (fetchedLangs[lang] || dictRes()) {
+      locale(lang);
+      cookieStorage.setItem("lang", lang);
+    }
+  });
 
   return lang;
 };

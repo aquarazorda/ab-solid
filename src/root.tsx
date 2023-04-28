@@ -2,7 +2,7 @@
 import { Show, Suspense, createSignal, onMount } from "solid-js";
 import { Body, ErrorBoundary, Head, Html, Link, Meta, Scripts, Title } from "solid-start";
 import { App } from "./App";
-import { ConfigProvider } from "./config";
+import { ConfigProvider, useConfig } from "./config";
 import { I18nContext, createI18nContext } from "@solid-primitives/i18n";
 import { cookieStorage } from "@solid-primitives/storage";
 import { Langs } from "./utils/language";
@@ -15,6 +15,7 @@ const queryClient = new QueryClient();
 
 export default function Root() {
   const i18nContext = createI18nContext();
+  const { staticPath } = useConfig();
 
   onMount(() => {
     setDefaultLang((cookieStorage.getItem("lang") as Langs) || "ka");
@@ -30,6 +31,7 @@ export default function Root() {
           name="description"
           content="adjarabet.com / აჭარაბეთი - ონლაინ კაზინო და ტოტალიზატორი ყველაზე დიდი მოგებებით და საუკეთესო თამაშებით: სლოტები, სპორტი ავიატორი, პოკერი, სამაგიდო თამაშები, ლაივ კაზინო, betfair exchange, კენო, ვირტუალური სპორტი,  ითამაშე შენს მოედანზე."
         />
+        <Link rel="preconnect" href={staticPath} />
         <Link rel="preload" href="/styles/styles.min.css" as="style" />
         <Link rel="stylesheet" href="/styles/styles.min.css" />
         <Link rel="preload" href="/styles/new-fonts.css" as="style" />
@@ -42,9 +44,7 @@ export default function Root() {
             <ConfigProvider>
               <I18nContext.Provider value={i18nContext}>
                 <QueryClientProvider client={queryClient}>
-                  <Show when={defaultLang()}>
-                    <App />
-                  </Show>
+                  <App />
                 </QueryClientProvider>
               </I18nContext.Provider>
             </ConfigProvider>

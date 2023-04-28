@@ -1,18 +1,15 @@
 import { FileRoutes, Routes } from "solid-start";
 import { initializeLangs } from "./utils/language";
-import { Show } from "solid-js";
-import { useI18n } from "@solid-primitives/i18n";
 import { initializeUser } from "./states/user";
+import { Show } from "solid-js";
 
 export const App = () => {
-  initializeLangs();
+  const defaultLang = initializeLangs();
   initializeUser();
-
-  const [, { locale }] = useI18n();
 
   return (
     <Routes>
-      <Show when={locale()}>
+      <Show when={defaultLang()}>
         <FileRoutes />
       </Show>
     </Routes>

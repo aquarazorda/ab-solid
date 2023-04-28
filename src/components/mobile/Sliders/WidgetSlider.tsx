@@ -1,5 +1,6 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { For } from "solid-js";
+import { For, createEffect, createSignal } from "solid-js";
+import { createStore } from "solid-js/store";
 import { createSlider } from "solid-slider";
 import { A } from "solid-start";
 import { GamesList } from "~/types/game";
@@ -37,13 +38,20 @@ type Props = {
 
 export const WidgetSlider = (props: Props) => {
   const [t, { locale }] = useI18n();
-  const [slider] = createSlider({
+  const [slider, { current }] = createSlider({
     slides: {
       perView: 2,
     },
     loop: true,
   });
+
+  const [loaded, setLoaded] = createStore<Record<number, boolean>>({});
   const openGame = useOpenGame();
+
+  createEffect(() => {
+    setLoaded(current(), true);
+    setLoaded(current() + 1, true);
+  });
 
   return (
     <div class="_s_color-rgba-bg-primary-0-0--5 _s_mt-none _s_overflow-hidden _s_position-relative _s_size-h-percent--25 _s_mb-5">
@@ -51,7 +59,7 @@ export const WidgetSlider = (props: Props) => {
       <div class="_s_b-radius-sm _s_flex _s_position-relative _s_size-h-percent--25 _s_z-1 _s_lg-overflow-hidden _s_size-h-min-px--30">
         <div use:slider>
           <For each={props.games}>
-            {(game) => (
+            {(game, idx) => (
               <div
                 class="_s_cursor-pointer _s_display-f _s_overflow-hidden"
                 onClick={() => openGame(game.id)}
@@ -60,7 +68,11 @@ export const WidgetSlider = (props: Props) => {
                   <img
                     loading="lazy"
                     class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"
-                    src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
+                    src={
+                      loaded[idx()] && locale()
+                        ? createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)
+                        : ""
+                    }
                     alt={t(game.title.langId)}
                     data-id="empty"
                   />

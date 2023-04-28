@@ -9,9 +9,13 @@
     "jsx": "preserve",
     "strict": true,
     "types": ["solid-start/env"],
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "solid-js": ["node_modules/solid-js"],
+      "solid-js/*": ["node_modules/solid-js/*"],
+      "@solidjs/router": ["node_modules/@solidjs/router"],
+      "@solidjs/router/*": ["node_modules/@solidjs/router/*"]
     }
   }
 }
