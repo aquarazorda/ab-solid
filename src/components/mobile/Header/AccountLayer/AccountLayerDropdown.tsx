@@ -10,6 +10,8 @@ import {
 import { formatBalance, getCurrencySymbol } from "~/utils/currency";
 import { Radio } from "../../Form/Checkbox";
 import { AccountLayerMenu } from "./Menu";
+import { user } from "~/states/user";
+import { openDepositPopup } from "~/components/Popups/DepositPopup";
 
 export const AccountLayerDropdownHead = () => {
   return (
@@ -78,22 +80,25 @@ const BalanceBox = () => {
           <div class="_s_col-6 _s_flex _s_flex-d-column">
             <div class="_s_flex _s_flex-a-center _s_pb-1 ng-star-inserted">
               <span class="_s_adj-check-badge _s_color-primary-2 _s_icon _s_icon-sm _s_m-none" />
-              <span class="_s_label _s_label-sm _s_ml-1 _s_color-primary-1">pro_gel8</span>
+              <span class="_s_label _s_label-sm _s_ml-1 _s_color-primary-1">{user.UserName}</span>
             </div>
             <div class="_s_flex _s_flex-a-center">
               <div class="_s_flex _s_flex-a-center _s_cursor-pointer ng-star-inserted">
                 <span class="_s_label _s_label-sm _s_color-primary-8 _s_size-w-min-px--4 _s_flex-j-center">
                   ID
                 </span>
-                <span class="_s_label _s_label-sm _s_ml-2 _s_color-primary-1">3048468</span>
+                <span class="_s_label _s_label-sm _s_ml-2 _s_color-primary-1">{user.UserID}</span>
                 <span class="_s_icon _s_icon-xs _s_adj-copy" />
               </div>
             </div>
           </div>
           <div class="_s_col-6">
-            <a class="_s_btn _s_btn-positive _s_btn-sm _s_size-w-percent--25 _s_m-none">
+            <button
+              class="_s_btn _s_btn-positive _s_btn-sm _s_size-w-percent--25 _s_m-none"
+              onClick={openDepositPopup}
+            >
               <span class="_s_label _s_label-md">{t("__lang_profile_tabs_cashier_deposit")}</span>
-            </a>
+            </button>
           </div>
         </div>
         <div class="_s_flex _s_mt-2">

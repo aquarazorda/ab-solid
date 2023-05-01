@@ -1,11 +1,12 @@
 import {
-  DeepPartial,
   FieldPath,
   FieldPathValue,
   FieldValues,
   FormErrors,
+  Maybe,
+  PartialValues,
   ValidationMode,
-  createForm as cf,
+  createFormStore as cf,
   getError as ge,
   getValues,
   setValue as sv,
@@ -33,9 +34,9 @@ type FormOptions = Partial<{
 
 const validateForm =
   <T extends FieldValues>(pattern: FormValuesPattern<T>) =>
-  (values: DeepPartial<T>) => {
+  (values: Maybe<PartialValues<T>>) => {
     const errors = Object.entries(pattern).reduce((acc, [key, value]) => {
-      const field = values[key as keyof DeepPartial<T>];
+      const field = values?.[key as keyof PartialValues<T>];
       const error = value.find((v) => !isMatching(v.pattern, field));
       return error ? { ...acc, [key]: error.message || "" } : acc;
     }, {} as FormErrors<T>);
@@ -50,7 +51,7 @@ export const createForm = <T extends FormValuesPattern<any>>(
 ) => {
   const options = {
     ...partialOptions,
-    initialValues: initialValues as DeepPartial<FormValues<T>>,
+    initialValues: initialValues as PartialValues<FormValues<T>>,
     validate: validateForm(pattern),
   };
 

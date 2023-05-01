@@ -5,10 +5,8 @@ import { useNavigate } from "solid-start";
 import { P, isMatching } from "ts-pattern";
 import { createCoreApiMutation } from "~/queries/coreapi/utils";
 import { blockSubNav } from "~/states/header";
-import { FormValues, FormValuesPattern, createForm } from "~/utils/forms";
-import { initializeUser, setUser } from "~/states/user";
-import { cookieStorage } from "@solid-primitives/storage";
-import { createUserData } from "~/queries/user";
+import { FormValues, createForm } from "~/utils/forms";
+import { setUser } from "~/states/user";
 
 const minValue =
   (val: number) =>
@@ -72,11 +70,11 @@ export default function LoginMobile() {
     <div class="_s_pt-5 _s_pl-5 _s_pr-5 _s_pb-10 _s_color-bg-primary-6">
       <Form of={loginForm.form} onSubmit={onSubmit(false)}>
         <Field of={loginForm.form} name="userIdentifier">
-          {(field) => (
+          {(field, props) => (
             <div class="_s_position-relative _s_valid _s_valid-hide-success _s_color-bg-primary-5 _s_mb-2">
               <input
                 type="text"
-                {...field.props}
+                {...props}
                 class="_s_input _s_input-md _s_pt-2 _s_size-w-percent--25"
                 classList={{
                   "_s_has-value": !!loginForm.values().userIdentifier,
@@ -98,11 +96,11 @@ export default function LoginMobile() {
           )}
         </Field>
         <Field of={loginForm.form} name="password">
-          {(field) => (
+          {(field, props) => (
             <div class="_s_position-relative _s_valid _s_valid-hide-success _s_color-bg-primary-5 _s_mb-2">
               <input
                 type={passwordVisible() ? "text" : "password"}
-                {...field.props}
+                {...props}
                 class="_s_input _s_input-md _s_pt-2 _s_size-w-percent--25"
                 classList={{
                   "_s_has-value": !!loginForm.values().password,
