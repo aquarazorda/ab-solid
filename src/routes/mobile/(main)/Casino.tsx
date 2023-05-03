@@ -4,7 +4,7 @@ import { FilterNavBar, FilterNavItem } from "~/components/mobile/Games/FilterNav
 import { MainSlider } from "~/components/mobile/Sliders/HomeSlider";
 import { getAllGamesData } from "~/queries/games";
 import { getAllSliders } from "~/queries/sliders";
-import { createStaticResource } from "~/queries/utils";
+import { createStaticResource } from "~/queries/static";
 import { BannerData } from "~/types/banner";
 
 const casinoSlidesFilterFn = (slides: BannerData[]) =>

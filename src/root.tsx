@@ -1,5 +1,5 @@
 // @refresh reload
-import { Show, Suspense, createSignal, onMount } from "solid-js";
+import { Suspense, createSignal, onMount } from "solid-js";
 import { Body, ErrorBoundary, Head, Html, Link, Meta, Scripts, Title } from "solid-start";
 import { App } from "./App";
 import { ConfigProvider, useConfig } from "./config";

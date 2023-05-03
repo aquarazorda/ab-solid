@@ -1,7 +1,7 @@
 import { useI18n } from "@solid-primitives/i18n";
 import { For, Show } from "solid-js";
 import { A } from "solid-start";
-import { createStaticResource } from "~/queries/utils";
+import { createStaticResource } from "~/queries/static";
 
 type MenuData = {
   list: {

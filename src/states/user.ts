@@ -24,7 +24,7 @@ export const initializeUser = () => {
   });
 };
 
-export const isAuthenticated = createMemo(() => !!user?.UserID && !!user?.Name);
+export const isAuthenticated = createMemo(() => !!user?.UserID);
 
 export const setUserData = (data: Partial<User>) => {
   if (data.UserID) {

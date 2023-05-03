@@ -1,15 +1,16 @@
-import { QueryOptions } from "@tanstack/solid-query";
+import { CreateQueryOptions } from "@tanstack/solid-query";
 import { P } from "ts-pattern";
 import { user } from "~/states/user";
 import { userSchema } from "~/types/user";
 
 export type CoreApiAction = keyof typeof coreApiActionMap;
-export type CoreApiActionData<T extends CoreApiAction> = typeof coreApiActionMap[T] & ActionMapItem;
+export type CoreApiActionData<T extends CoreApiAction> = (typeof coreApiActionMap)[T] &
+  ActionMapItem;
 export type CoreApiDataType<T extends CoreApiAction> = P.infer<
-  typeof coreApiActionMap[T]["schema"]
+  (typeof coreApiActionMap)[T]["schema"]
 >;
 export type CoreApiResponseType<T extends CoreApiAction> = P.infer<
-  typeof coreApiActionMap[T]["responseSchema"]
+  (typeof coreApiActionMap)[T]["responseSchema"]
 >;
 
 export type HasQueryEnabled<T> = {
@@ -23,6 +24,17 @@ export type HasQueryEnabled<T> = {
 
 export type CoreApiQuery = HasQueryEnabled<typeof coreApiActionMap>;
 export type CoreApiQueryData = CoreApiActionData<CoreApiQuery>;
+export type CoreApiQueryOptions<T extends CoreApiQuery> = Omit<
+  CreateQueryOptions<
+    undefined | CoreApiResponseType<T>,
+    unknown,
+    undefined | CoreApiResponseType<T>,
+    CoreApiQueryData["queryKey"]
+  >,
+  "queryKey" | "queryFn" | "initialData" | "enabled"
+> & {
+  initialData?: () => undefined;
+};
 
 type ActionMapItem = {
   method: "POST" | "GET";
@@ -35,7 +47,7 @@ type ActionMapItem = {
   };
   queryKey?: () => readonly any[];
   enabled?: () => boolean;
-  queryOptions?: QueryOptions;
+  queryOptions?: CoreApiQueryOptions<CoreApiQuery>;
 };
 
 type CoreApiActionMap = {
@@ -123,8 +135,8 @@ export const coreApiActionMap = {
       isSingle: 0,
       req: "getBalance",
     },
-    queryKey: () => ["getBalance", user.UserID],
-    enabled: () => !!user.UserID,
+    queryKey: () => ["getBalance", user.UserID, user.PreferredCurrencyID],
+    enabled: () => !!user.UserID && !!user.PreferredCurrencyID,
   },
   getServiceAuthToken: {
     method: "POST",

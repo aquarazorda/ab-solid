@@ -4,23 +4,19 @@ import {
   CoreApiActionData,
   CoreApiDataType,
   CoreApiQuery,
-  CoreApiQueryData,
+  CoreApiQueryOptions,
   CoreApiResponseType,
   coreApiActionMap,
 } from ".";
 import { isMatching } from "ts-pattern";
-import {
-  CreateMutationOptions,
-  CreateQueryOptions,
-  createMutation,
-  createQuery,
-} from "@tanstack/solid-query";
+import { CreateMutationOptions, createMutation, createQuery } from "@tanstack/solid-query";
 
 const createCoreApiFetchFn = <T extends CoreApiAction>(actionData: CoreApiActionData<T>) => {
   const { coreApiPath } = useConfig();
 
   return async (data: CoreApiDataType<T>) => {
     if (!isMatching(actionData.schema, data)) {
+      console.error("CoreApiFetchFn: Schema mismatch", actionData.default.req, data);
       return undefined;
     }
 
@@ -46,18 +42,8 @@ const createCoreApiFetchFn = <T extends CoreApiAction>(actionData: CoreApiAction
 
 export const createCoreApiQuery = <T extends CoreApiQuery>(
   action: T,
-  data: CoreApiDataType<T>,
-  options?: Omit<
-    CreateQueryOptions<
-      undefined | CoreApiResponseType<T>,
-      unknown,
-      undefined | CoreApiResponseType<T>,
-      CoreApiQueryData["queryKey"]
-    >,
-    "queryKey" | "queryFn" | "initialData" | "enabled"
-  > & {
-    initialData?: () => undefined;
-  }
+  data: () => CoreApiDataType<T>,
+  options?: CoreApiQueryOptions<T>
 ) => {
   const actionData: CoreApiActionData<T> = coreApiActionMap[action];
   const queryFn = createCoreApiFetchFn(actionData);
@@ -66,21 +52,17 @@ export const createCoreApiQuery = <T extends CoreApiQuery>(
     undefined | CoreApiResponseType<T>,
     unknown,
     undefined | CoreApiResponseType<T>
-  >(
-    actionData.queryKey,
-    () => queryFn(data),
+  >(actionData.queryKey, () => queryFn(data()), {
+    get enabled() {
+      return actionData.enabled ? actionData.enabled() : true;
+    },
     // eslint-disable-next-line
     // @ts-ignore
-    {
-      get enabled() {
-        return actionData.enabled ? actionData.enabled() : true;
-      },
-      refetchOnWindowFocus: false,
-      staleTime: 1000 * 60 * 5,
-      ...actionData.queryOptions,
-      ...options,
-    }
-  );
+    refetchOnWindowFocus: false,
+    staleTime: 1000 * 60 * 5,
+    ...(actionData?.queryOptions ? actionData.queryOptions : {}),
+    ...options,
+  });
 };
 
 export const createCoreApiMutation = <T extends CoreApiAction>(

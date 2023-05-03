@@ -1,40 +1,33 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:@typescript-eslint/recommended",
-        "plugin:solid/typescript"
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:solid/typescript"
+  ],
+  "overrides": [],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["solid"],
+  "rules": {
+    "max-len": [
+      "warn",
+      {
+        "code": 140,
+        "ignoreComments": true
+        // "ignoreStrings": true,
+        // "ignoreTemplateLiterals": true,
+        // "ignoreRegExpLiterals": true
+      }
     ],
-    "overrides": [],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "project": "./tsconfig.json"
-    },
-    "plugins": [
-        "solid"
-    ],
-    "rules": {
-        "max-len": [
-            "warn",
-            {
-                "code": 140,
-                "ignoreComments": true
-                // "ignoreStrings": true,
-                // "ignoreTemplateLiterals": true,
-                // "ignoreRegExpLiterals": true
-            }
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ],
-        "@typescript-eslint/no-namespace": "off"
-    }
+    "linebreak-style": ["error", "unix"],
+    "semi": ["error", "always"],
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/ban-types": "off"
+  }
 }

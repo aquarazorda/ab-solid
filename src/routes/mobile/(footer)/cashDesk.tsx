@@ -2,7 +2,7 @@ import { CashdeskBranches } from "~/components/mobile/CashDesk/Branches";
 import { CashdeskContact } from "~/components/mobile/CashDesk/Contact";
 import { CashdeskFilter } from "~/components/mobile/CashDesk/Filter";
 import { BranchAddress } from "~/components/mobile/CashDesk/data";
-import { createStaticResource } from "~/queries/utils";
+import { createStaticResource } from "~/queries/static";
 
 export type CashdeskMobileRouteData = typeof routeData;
 

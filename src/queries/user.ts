@@ -11,9 +11,9 @@ import { createMemo } from "solid-js";
 export const isSessionActive = () => {
   const query = createCoreApiQuery(
     "sessionActive",
-    {
+    () => ({
       userID: user.UserID,
-    },
+    }),
     {
       staleTime: 1000 * 60 * 5,
       onSuccess: (data) => {
@@ -35,9 +35,9 @@ export const isSessionActive = () => {
 export const createUserData = () =>
   createCoreApiQuery(
     "getUserInfo",
-    {
+    () => ({
       userID: user.UserID,
-    },
+    }),
     {
       staleTime: 1000 * 60 * 5,
       onSuccess: (data) => {
@@ -53,7 +53,7 @@ export const createUserData = () =>
   );
 
 export const getUserBalance = () =>
-  createCoreApiQuery("getBalance", {
+  createCoreApiQuery("getBalance", () => ({
     currencyID: user.PreferredCurrencyID,
     userID: user.UserID,
-  });
+  }));

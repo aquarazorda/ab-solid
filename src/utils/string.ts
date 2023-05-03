@@ -16,3 +16,6 @@ export const dec2bin = (dec: number) => {
 
   return decimal;
 };
+
+export const objToQueryString = (obj: object) =>
+  "?" + decodeURIComponent(new URLSearchParams(obj as unknown as string).toString());

@@ -1,5 +1,5 @@
 import { createMemo } from "solid-js";
-import { createStaticResource } from "./utils";
+import { createStaticResource } from "./static";
 
 export const createPageData = (pageId: string) => {
   const [pagesData] = createStaticResource<Record<string, string>>("pagesNew", { lang: true });

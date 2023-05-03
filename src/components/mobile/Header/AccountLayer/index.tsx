@@ -25,7 +25,7 @@ export const AccountLayer = () => {
             >
               {user.UserName}
             </span>
-            <Show when={balance.data?.BalanceAmount && mobileHeaderState.showBalance}>
+            <Show when={balance?.data?.BalanceAmount && mobileHeaderState.showBalance}>
               <span class="_s_label _s_label-md _s_label-bold _s_white-space-nowrap">
                 {formatBalance(balance.data!.BalanceAmount!)} {getCurrencySymbol()}
               </span>

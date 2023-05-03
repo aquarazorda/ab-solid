@@ -1,6 +1,5 @@
 import { useI18n } from "@solid-primitives/i18n";
 import { Accessor, For, Index, Show, createEffect, createSignal, onCleanup } from "solid-js";
-import { createStore } from "solid-js/store";
 import { createSlider } from "solid-slider";
 import { A, useRouteData } from "solid-start";
 import { Loader } from "~/components/Loader";
@@ -41,7 +40,7 @@ export const MainSlider = () => {
   });
 
   createEffect(() => {
-    setLoaded({ [slides()?.length - 1]: true });
+    setLoaded({ [slides?.()?.length - 1]: true });
   });
 
   createEffect(() => {
@@ -52,7 +51,7 @@ export const MainSlider = () => {
     <div data-id="home-main-slider" class="_s_lg-pl-2-5 _s_lg-pr-2-5">
       <div class="_s_flex _s_size-h-min-px--50 _s_size-h-px--50 _s_mb-2 _s_mt-2 _s_position-relative">
         <div use:slider class="_s_size-w-percent--25">
-          <For each={slides()}>
+          <For each={slides?.()}>
             {(slide, idx) => {
               const [imgLoaded, setImgLoaded] = createSignal(false);
 
@@ -103,7 +102,7 @@ export const MainSlider = () => {
           </For>
         </div>
         <div data-id="swiper-paginator-container" class="owl-dots">
-          <Index each={slides()}>
+          <Index each={slides?.()}>
             {(_, idx) => (
               <span
                 onClick={() => moveTo(idx)}

@@ -1,6 +1,6 @@
 import { useI18n } from "@solid-primitives/i18n";
 import { cookieStorage } from "@solid-primitives/storage";
-import { Accessor, createEffect, createMemo, createResource, onMount } from "solid-js";
+import { createEffect, createResource } from "solid-js";
 import { createStore } from "solid-js/store";
 import { defaultLang } from "~/root";
 

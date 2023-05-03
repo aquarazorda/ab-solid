@@ -1,7 +1,7 @@
 import { Outlet } from "solid-start";
 import { Footer } from "~/components/mobile/Footer";
 import { Header } from "~/components/mobile/Header";
-import { createStaticResource } from "~/queries/utils";
+import { createStaticResource } from "~/queries/static";
 import "solid-slider/slider.css";
 import { Suspense } from "solid-js";
 
@@ -31,7 +31,7 @@ export default function Index() {
   return (
     <div class="_s_color-bg-primary-4 _s_size-h-min-px--10">
       <Header />
-      <div class="_s_flex _s_flex-d-column _s_color-bg-primary-5">
+      <div class="_s_flex _s_flex-d-column _s_color-bg-primary-0">
         <Outlet />
       </div>
       <Footer />

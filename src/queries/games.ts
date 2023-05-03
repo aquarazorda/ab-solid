@@ -1,5 +1,5 @@
 import { GameProvider, GamesList, Game } from "~/types/game";
-import { createStaticResource } from "./utils";
+import { createStaticResource } from "./static";
 import { match } from "ts-pattern";
 import { createCoreApiQuery, createCreateCoreApiFetch } from "./coreapi/utils";
 import { user } from "~/states/user";

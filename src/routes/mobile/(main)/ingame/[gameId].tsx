@@ -6,7 +6,7 @@ import { RouteDataArgs, useParams } from "solid-start";
 import { P, match } from "ts-pattern";
 import { setFooterState } from "~/components/mobile/Footer";
 import { generateGameUrl, getAllGamesData } from "~/queries/games";
-import { createStaticResource } from "~/queries/utils";
+import { createStaticResource } from "~/queries/static";
 import { setMobileHeaderState } from "~/states/header";
 import { GameProvider } from "~/types/game";
 

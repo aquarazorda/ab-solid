@@ -96,7 +96,7 @@ const BalanceBox = () => {
         <div class="_s_flex _s_mt-2">
           <div class="_s_col-4">
             <div class="_s_label _s_label-xs _s_color-primary-8">{t("__lang__main")}</div>
-            <Show when={balance.data?.BalanceAmount}>
+            <Show when={balance?.data?.BalanceAmount}>
               {(b) => (
                 <div data-id="current-balance" class="_s_label _s_label-sm _s_color-primary-1">
                   {formatBalance(b())} {getCurrencySymbol()}

@@ -1,21 +1,19 @@
 import { FileRoutes, Routes } from "solid-start";
 import { initializeLangs } from "./utils/language";
-import { initializeUser } from "./states/user";
 import { Show } from "solid-js";
 import { Popup } from "./states/popup";
+import { initializeUser } from "./states/user";
 
 export const App = () => {
-  const defaultLang = initializeLangs();
   initializeUser();
+  const defaultLang = initializeLangs();
 
   return (
-    <>
+    <Show when={defaultLang()}>
       <Routes>
-        <Show when={defaultLang()}>
-          <FileRoutes />
-        </Show>
+        <FileRoutes />
       </Routes>
       <Popup />
-    </>
+    </Show>
   );
 };

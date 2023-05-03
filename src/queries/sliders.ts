@@ -1,5 +1,5 @@
 import { BannerData } from "~/types/banner";
-import { createStaticResource } from "./utils";
+import { createStaticResource } from "./static";
 import { createMemo } from "solid-js";
 import { useConfig } from "~/config";
 

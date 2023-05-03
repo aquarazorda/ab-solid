@@ -5,7 +5,7 @@ import { DescriptionPage } from "~/components/mobile/DescriptionPage";
 import { PromoEmptyContainer } from "~/components/mobile/Promos/EmptyContainer";
 import { PromoItem } from "~/components/mobile/Promos/PromoItem";
 import { promoFilters } from "~/data/promos";
-import { createStaticResource } from "~/queries/utils";
+import { createStaticResource } from "~/queries/static";
 import { Promotion } from "~/types/promos";
 
 export const routeData = () => {
