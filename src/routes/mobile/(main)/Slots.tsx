@@ -1,6 +1,7 @@
 import { Show, Suspense, createEffect } from "solid-js";
 import { Outlet, useParams, useRouteData } from "solid-start";
 import { MainSlider } from "~/components/mobile/Sliders/HomeSlider";
+import SlotsCategoryNavigation from "~/components/mobile/Slots/CategoryNavigation";
 import JackpotsComponent from "~/components/mobile/Slots/Jackpots";
 import ProviderNavigation from "~/components/mobile/Slots/ProviderNavigation";
 import { getAllSliders } from "~/queries/sliders";
@@ -30,17 +31,17 @@ export const routeData = () => {
     (data) => data.slice(1)
   );
 
-  const filters = createWebApiQuery<SlotsFilter[]>("games/filters", () => ({
+  const categories = createWebApiQuery<SlotsFilter[]>("games/filters", () => ({
     device: "mobile",
     type: "slot",
     isLoggedIn: isAuthenticated(),
   }));
 
-  return { slides, providers, filters };
+  return { slides, providers, categories };
 };
 
 export default function SlotsMobile() {
-  const { providers } = useRouteData<SlotsRouteData>();
+  const { providers, categories } = useRouteData<SlotsRouteData>();
   const params = useParams<{ provider: string }>();
 
   return (
@@ -48,6 +49,9 @@ export default function SlotsMobile() {
       <MainSlider />
       <Suspense>
         <ProviderNavigation providers={providers() || []} />
+      </Suspense>
+      <Suspense>
+        <SlotsCategoryNavigation categories={categories() || []} />
       </Suspense>
       <Show when={!params.provider || params.provider === "EGT"}>
         <JackpotsComponent type="EGT_MOBILE_NEW_SLOTS" />

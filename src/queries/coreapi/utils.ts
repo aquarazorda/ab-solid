@@ -10,6 +10,8 @@ import {
 } from ".";
 import { isMatching } from "ts-pattern";
 import { CreateMutationOptions, createMutation, createQuery } from "@tanstack/solid-query";
+import { setUserData } from "~/states/user";
+import { logOut } from "~/states/user";
 
 const createCoreApiFetchFn = <T extends CoreApiAction>(actionData: CoreApiActionData<T>) => {
   const { coreApiPath } = useConfig();
@@ -36,7 +38,14 @@ const createCoreApiFetchFn = <T extends CoreApiAction>(actionData: CoreApiAction
         "Content-Type": "application/x-www-form-urlencoded",
         "X-Requested-With": "XMLHttpRequest",
       },
-    }).then((res) => res.json())) as Promise<CoreApiResponseType<T>>;
+    })
+      .then((res) => res.json())
+      .then((res: CoreApiResponseType<T>) => {
+        if (res?.StatusCode === 126) {
+          logOut();
+        }
+        return res;
+      })) as Promise<CoreApiResponseType<T>>;
   };
 };
 
