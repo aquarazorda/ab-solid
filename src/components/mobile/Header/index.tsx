@@ -1,24 +1,14 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { A, useLocation } from "solid-start";
+import { A } from "solid-start";
 import { Navigation } from "./Navigation";
 import { Show, createEffect } from "solid-js";
 import { mobileHeaderState, setMobileHeaderState } from "~/states/header";
 import { RightSideHeader } from "./RightSide";
 
-const transparentRoutes = ["Slots", "Casino", "Games", "Poker", "Aviator", "Keno"];
-
 export const Header = () => {
   const [t] = useI18n();
-  const location = useLocation();
   const toggleNav = () =>
     !mobileHeaderState.navBlocked && setMobileHeaderState("navOpen", (p) => !p);
-
-  createEffect(() => {
-    setMobileHeaderState(
-      "isTransparent",
-      transparentRoutes.includes(location.pathname.split("/")[2]) || location.pathname === "/mobile"
-    );
-  });
 
   createEffect(() => {
     if (mobileHeaderState.navBlocked) {
@@ -28,23 +18,15 @@ export const Header = () => {
 
   return (
     <Show when={!mobileHeaderState.hidden}>
-      <div class="_s_flex _s_size-w-percent--25 _s_flex-d-column">
+      <div class="_s_flex _s_size-w-percent--25 _s_flex-d-column _s_position-relative">
         <div
-          classList={{
-            "_s_position-fixed": mobileHeaderState.isTransparent,
-            "_s_position-relative": !mobileHeaderState.isTransparent,
-          }}
           class="_s_position-t-px--0 _s_position-l-px--0 _s_z-6 _s_size-w-percent--25 _s_size-w-min-percent--25 
           _s_flex-shrink-0"
         >
           <div class="_s_transition-0--3 _s_size-h-min-px--10">
             <div
               class="_s_position-relative _s_flex _s_flex-a-center _s_flex-j-between _s_size-w-min-percent--25 
-                _s_size-h-min-px--15 _s_pt-2 _s_pb-2"
-              classList={{
-                "_s_color-rgba-bg-primary-0-0--7": mobileHeaderState.isTransparent,
-                "_s_color-bg-primary-4": !mobileHeaderState.isTransparent,
-              }}
+                _s_size-h-min-px--15 _s_pt-2 _s_pb-2 _s_color-bg-primary-4"
             >
               <div class="_s_position-relative _s_z-1 _s_pl-7 _s_pl-5 _s_pr-5 _s_flex _s_col _s_col-4 _s_flex-j-start">
                 <A

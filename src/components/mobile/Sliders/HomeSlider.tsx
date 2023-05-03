@@ -7,6 +7,8 @@ import { Loader } from "~/components/Loader";
 import { BannerData } from "~/types/banner";
 import { createStaticUrl } from "~/utils/string";
 
+import "./HomeSlider.css";
+
 export const homePageSliderFilterFn = (slides: BannerData[]) =>
   slides
     ?.filter(({ byTags, segments }) => (byTags.empty && !segments?.length) || byTags.visitor)
@@ -19,14 +21,14 @@ export const homePageSliderFilterFn = (slides: BannerData[]) =>
 export const MainSlider = () => {
   const { slides } = useRouteData<{ slides: Accessor<BannerData[]> }>();
   const [t, { locale }] = useI18n();
-  const [loaded, setLoaded] = createStore<Record<number, boolean>>({});
+  const [loaded, setLoaded] = createSignal<Record<number, boolean>>({});
 
   const [slider, { current, next, moveTo }] = createSlider({
     loop: true,
     slides: {
-      perView: 1,
+      perView: 1.1,
       origin: "center",
-      spacing: 0,
+      spacing: 8,
     },
   });
 
@@ -39,49 +41,60 @@ export const MainSlider = () => {
   });
 
   createEffect(() => {
-    setLoaded(current(), true);
-    setLoaded(current() + 1, true);
+    setLoaded({ [slides()?.length - 1]: true });
+  });
+
+  createEffect(() => {
+    setLoaded((l) => ({ ...l, [current()]: true, [current() + 1]: true }));
   });
 
   return (
-    <div data-id="home-main-slider" class="_s_position-relative">
-      <div class="_s_size-h-px--90 _s_lg-size-h-px--109 _s_flex">
-        <div use:slider>
+    <div data-id="home-main-slider" class="_s_lg-pl-2-5 _s_lg-pr-2-5">
+      <div class="_s_flex _s_size-h-min-px--50 _s_size-h-px--50 _s_mb-2 _s_mt-2 _s_position-relative">
+        <div use:slider class="_s_size-w-percent--25">
           <For each={slides()}>
             {(slide, idx) => {
               const [imgLoaded, setImgLoaded] = createSignal(false);
 
               return (
                 <div
-                  class="desktop _s_display-i-f _s_overflow-hidden _s_position-relative _s_size-w-percent--25 
-              _s_size-h-percent--25 _s_lg-b-radius-sm ng-star-inserted"
+                  class="_s_display-f _s_size-h-percent-25 _s_size-w-percent--25"
                   data-id={t(slide.title.langId)}
                 >
-                  <div class="_s_size-w-percent--25 _s_cursor-pointer">
-                    <div class="_s_flex _s_flex-j-center _s_size-h-percent--25">
-                      <A
-                        class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_flex-a-center 
-                    _s_flex-j-center _s_color-bg-primary-0"
-                        data-id={`slider-item-offer-link${slide.id}`}
-                        href={slide.route || "/"}
-                        aria-label={slide.name}
-                      >
-                        <Show when={!imgLoaded()}>
-                          <div class="_s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25 _s_flex-a-center _s_position-absolute _s_flex">
-                            <Loader />
-                          </div>
-                        </Show>
-                        <Show when={loaded[idx()] && locale()}>
-                          <img
-                            loading={idx() > 0 ? "lazy" : "eager"}
-                            class="_s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25"
-                            src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
-                            data-id={slide.name}
-                            alt={slide.name}
-                            onLoad={() => setImgLoaded(true)}
-                          />
-                        </Show>
-                      </A>
+                  <div
+                    class="_s_size-h-px--50 _s_display-i-f _s_position-relative _s_size-w-percent--25 
+                    _s_size-h-percent--25 _s_b-radius-md"
+                  >
+                    <div class="_s_size-w-percent--25 _s_cursor-pointer">
+                      <div class="_s_flex _s_flex-j-center _s_size-h-percent--25">
+                        <A
+                          class="_s_size-w-percent--25 _s_overflow-hidden _s_size-h-percent--25 _s_flex _s_flex-a-end 
+                        _s_flex-j-center _s_color-bg-primary-0 _s_b-radius-md"
+                          data-id={`slider-item-offer-link${slide.id}`}
+                          href={slide.route || "/"}
+                          aria-label={slide.name}
+                        >
+                          <Show when={!imgLoaded()}>
+                            <div
+                              class="_s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25
+                          _s_flex-a-center _s_position-absolute _s_flex"
+                            >
+                              <Loader />
+                            </div>
+                          </Show>
+                          <Show when={loaded()[idx()] && locale()}>
+                            <img
+                              loading={idx() > 0 ? "lazy" : "eager"}
+                              class="swiper-lazy _s_b-radius-md"
+                              src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
+                              data-id={slide.name}
+                              alt={slide.name}
+                              style={{ height: "155%" }}
+                              onLoad={() => setImgLoaded(true)}
+                            />
+                          </Show>
+                        </A>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -89,24 +102,15 @@ export const MainSlider = () => {
             }}
           </For>
         </div>
-      </div>
-      <div data-id="swiper-paginator-wrapper">
-        <div
-          id="swiper_pagination"
-          data-id="swiper-paginator-container"
-          class="_s_position-absolute _s_z-5 _s_pl-1 _s_pr-1 _s_position-b-px--1 _s_lg-position-b-px--5 
-          _s_position-l-percent--50 _s_transform-translateX-minus-percent--50 _s_flex _s_flex-j-center 
-          _s_a-color swiper-pagination-clickable bullets swiper-pagination-horizontal"
-        >
+        <div data-id="swiper-paginator-container" class="owl-dots">
           <Index each={slides()}>
             {(_, idx) => (
               <span
                 onClick={() => moveTo(idx)}
                 classList={{
-                  "_s_a-color _s_aitem-color-primary-1": current() === idx,
+                  active: current() === idx,
                 }}
-                class="_s_icon _s_adj-minus-large _s_ml-none _s_mr-none _s_cursor-pointer 
-                _s_color-rgba-primary-1-0--3 _s_icon-md"
+                class="owl-dot"
               />
             )}
           </Index>

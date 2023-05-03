@@ -1,5 +1,5 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { Show, onCleanup, onMount } from "solid-js";
+import { Show } from "solid-js";
 import { getUserBalance } from "~/queries/user";
 import {
   mobileHeaderState,
@@ -36,14 +36,6 @@ export const AccountLayerDropdownHead = () => {
 };
 
 export const AccountLayerDropdown = () => {
-  const wasTransparent = mobileHeaderState.isTransparent;
-
-  onMount(() => {
-    setMobileHeaderState("isTransparent", false);
-  });
-
-  onCleanup(() => setMobileHeaderState("isTransparent", wasTransparent));
-
   return (
     <>
       <div
