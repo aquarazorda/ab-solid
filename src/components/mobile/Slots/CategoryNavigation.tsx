@@ -2,6 +2,7 @@ import { useI18n } from "@solid-primitives/i18n";
 import { For, Show } from "solid-js";
 import { useSearchParams } from "solid-start";
 import { SlotsFilter } from "~/types/slots";
+import MobileSearchBox from "./SearchBox";
 
 type Props = {
   categories: SlotsFilter[];
@@ -14,7 +15,7 @@ const SlotsCategoryNavigation = (props: Props) => {
   return (
     <div class="_s_overflow-x-scroll _s_scroll-0 _s_mb-4 _s_pt-2">
       <div class="_s_flex _s_color-bg-primary-5">
-        {/* <app-adj-games-search mode="normal" size="small" (search)="search.emit($event)"></app-adj-games-search> */}
+        <MobileSearchBox />
         <For each={props.categories}>
           {(subItem, idx) => (
             <div

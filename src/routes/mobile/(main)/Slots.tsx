@@ -1,5 +1,5 @@
-import { Show, Suspense, createEffect } from "solid-js";
-import { Outlet, useParams, useRouteData } from "solid-start";
+import { Show, Suspense } from "solid-js";
+import { Outlet, useParams, useRouteData, useSearchParams } from "solid-start";
 import { MainSlider } from "~/components/mobile/Sliders/HomeSlider";
 import SlotsCategoryNavigation from "~/components/mobile/Slots/CategoryNavigation";
 import JackpotsComponent from "~/components/mobile/Slots/Jackpots";
@@ -43,15 +43,16 @@ export const routeData = () => {
 export default function SlotsMobile() {
   const { providers, categories } = useRouteData<SlotsRouteData>();
   const params = useParams<{ provider: string }>();
+  const [search] = useSearchParams<{ name: string }>();
 
   return (
     <>
       <MainSlider />
       <Suspense>
-        <ProviderNavigation providers={providers() || []} />
+        <ProviderNavigation providers={providers.data || []} />
       </Suspense>
       <Suspense>
-        <SlotsCategoryNavigation categories={categories() || []} />
+        <SlotsCategoryNavigation categories={categories.data || []} />
       </Suspense>
       <Show when={!params.provider || params.provider === "EGT"}>
         <JackpotsComponent type="EGT_MOBILE_NEW_SLOTS" />

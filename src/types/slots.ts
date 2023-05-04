@@ -34,3 +34,56 @@ export type SlotsFilter = {
   iconImg: null | string;
   filterType: null | string;
 };
+
+export type SlotsGame = {
+  cmsId: number;
+  gameId: string;
+  type: string;
+  openMode: string;
+  isNew: boolean;
+  isJackpot: boolean;
+  isPopular: boolean;
+  categoriesProvider: {
+    id: string;
+    order: string;
+    name: {
+      ka: string;
+      en: string;
+      ru: string;
+    };
+  }[];
+  categoriesFilter: {
+    id: string;
+    order: string;
+    name: {
+      ka: string;
+      en: string;
+      ru: string;
+    };
+  }[];
+  thematicTag: {
+    id: string;
+  }[];
+  provider: {
+    id: number;
+    pid: string;
+    openNewTab: boolean;
+  };
+  isIos: boolean;
+  isAndroid: boolean;
+  gameName: string;
+  imageCommon: string;
+  imageBackground: string;
+  imageDesktop: string;
+  isHot: boolean;
+  isExclusive: boolean;
+  downtime?: {
+    hasDowntime: boolean;
+  };
+  isFavorite: boolean;
+};
+
+export type ProviderGameData = {
+  games: SlotsGame[];
+  providerId: string;
+};

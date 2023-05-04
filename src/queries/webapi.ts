@@ -1,33 +1,46 @@
 import { createQuery } from "@tanstack/solid-query";
-import { createMemo } from "solid-js";
 import { useConfig } from "~/config";
 import { objToQueryString } from "~/utils/string";
 
-export const createWebApiQuery = <T>(
+export const createWebApiFetchFn = <T>(
   path: string,
-  params?: () => object,
-  post?: boolean,
-  filterFn?: (j: T) => T
+  params?: () => object | undefined,
+  post?: boolean
 ) => {
   const { webApiPath } = useConfig();
 
+  return fetch(
+    `${webApiPath}/${path}${!post && params && params() ? objToQueryString(params()!) : ""}`,
+    {
+      method: post ? "POST" : "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: post ? JSON.stringify(params?.()) : undefined,
+    }
+  ).then((res) => res.json()) as Promise<T>;
+};
+
+export const createWebApiQuery = <T>(
+  path: string,
+  params?: () => object | undefined,
+  post?: boolean,
+  filterFn?: (j: T) => T
+) => {
   const data = createQuery<T>(
     () => [path, params?.()],
     () =>
-      fetch(`${webApiPath}/${path}${!post && params ? objToQueryString(params()) : ""}`, {
-        method: post ? "POST" : "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: post ? JSON.stringify(params?.()) : undefined,
-      })
-        .then((res) => res.json())
-        .then((data) => (filterFn ? filterFn(data) : data)),
-    { refetchOnMount: false, refetchOnWindowFocus: false, refetchOnReconnect: false }
+      createWebApiFetchFn<T>(path, params, post).then((data) => (filterFn ? filterFn(data) : data)),
+    {
+      refetchOnMount: false,
+      refetchOnWindowFocus: false,
+      refetchOnReconnect: false,
+      get enabled() {
+        return post ? !!params?.() : true;
+      },
+    }
   );
 
-  const returnData = createMemo(() => data.data);
-
-  return returnData;
+  return data;
 };
