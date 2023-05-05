@@ -48,10 +48,10 @@ const MobileGameProviderHorizontal = (props: Props) => {
           <For each={props.gameData.games}>
             {(game) => <MobileGameWidgetItem providerName={title()} game={game} />}
           </For>
-          <Show when={currentProvider?.route}>
+          <Show when={currentProvider?.id}>
             <div class="_s_flex _s_flex-shrink-0 _s_size-w-percent--11 _s_pb-1">
               <A
-                href={`./${currentProvider?.route}`}
+                href={`./${currentProvider?.id}`}
                 class="_s_size-w-percent--25 _s_color-bg-primary-4 _s_size-h-percent--25 
                   _s_b-radius-md _s_flex _s_flex-a-center _s_flex-j-center"
               >
