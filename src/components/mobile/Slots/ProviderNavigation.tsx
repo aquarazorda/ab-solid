@@ -40,14 +40,17 @@ const ProviderNavigation = (props: Props) => {
         {(item) => (
           <div
             class="_s_position-relative"
-            classList={{ "_s_a-opacity _s_a-b": item.route === params.provider, new: item?.new }}
-            data-provider-active={item.route === params.provider || undefined}
+            classList={{
+              "_s_a-opacity _s_a-b": item.id === Number(params.provider),
+              new: item?.new,
+            }}
+            data-provider-active={item.id === Number(params.provider) || undefined}
             data-provider-name={item.name[locale()]}
           >
             <div class="_s_opacity-0--5 _s_aitem-opacity-1">
               <A
                 class="_s_flex _s_flex-d-column _s_flex-a-center _s_size-w-px--18"
-                href={`./${item.route}`}
+                href={`./${item.id}`}
                 data-id={`${item?.name[locale()]}-lobby-icon`}
               >
                 <span

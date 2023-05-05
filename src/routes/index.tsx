@@ -1,7 +1,7 @@
 import { useNavigate } from "solid-start";
-import { MainSlider } from "~/pages/Home/MainSlider";
-import { SlotsSlider } from "~/pages/Home/SlotsSlider";
-import { Widgets } from "~/pages/Home/Widgets";
+import { MainSlider } from "~/components/pages/Home/MainSlider";
+import { SlotsSlider } from "~/components/pages/Home/SlotsSlider";
+import { Widgets } from "~/components/pages/Home/Widgets";
 
 export default function Home() {
   const navigate = useNavigate();

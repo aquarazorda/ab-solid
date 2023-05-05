@@ -87,3 +87,9 @@ export type ProviderGameData = {
   games: SlotsGame[];
   providerId: string;
 };
+
+export type SearchGameData = {
+  itemsPerPage: number;
+  totalCount: number;
+  items: SlotsGame[];
+};

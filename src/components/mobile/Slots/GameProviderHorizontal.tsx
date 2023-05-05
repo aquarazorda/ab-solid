@@ -1,16 +1,14 @@
-import { For, Show, createEffect, createSignal } from "solid-js";
+import { For, Show } from "solid-js";
 import { useI18n } from "@solid-primitives/i18n";
 import { ProviderGameData, SlotsProvider } from "~/types/slots";
 import MobileGameWidgetItem from "./GameWidgetItem";
 import { A } from "solid-start";
-import { createVisibilityObserver } from "@solid-primitives/intersection-observer";
+import { VisibilityProps, useVisibility } from "~/utils/directives/visibility";
 
 type Props = {
   providers?: SlotsProvider[];
   gameData: ProviderGameData;
-  shouldObserve?: boolean;
-  onObserve?: (e: boolean) => void;
-};
+} & VisibilityProps;
 
 const MobileGameProviderHorizontal = (props: Props) => {
   let ref: HTMLDivElement | undefined;
@@ -19,15 +17,10 @@ const MobileGameProviderHorizontal = (props: Props) => {
     ({ id }) => String(id) === props.gameData.providerId
   );
 
-  const [wasVisible, setWasVisible] = createSignal(false);
-  const useVisibilityObserver = props.shouldObserve && createVisibilityObserver({ threshold: 0.1 });
-  const visible = useVisibilityObserver ? useVisibilityObserver(() => ref) : () => false;
-
-  createEffect(() => {
-    if (!wasVisible() && props.shouldObserve && ref && visible()) {
-      setWasVisible(true);
-      props.onObserve?.(visible());
-    }
+  useVisibility({
+    ref: () => ref,
+    onObserve: props.onObserve,
+    shouldObserve: props.shouldObserve,
   });
 
   return (
@@ -51,7 +44,8 @@ const MobileGameProviderHorizontal = (props: Props) => {
             <div class="_s_flex _s_flex-shrink-0 _s_size-w-percent--11 _s_pb-1">
               <A
                 href={`./${provider().route}`}
-                class="_s_size-w-percent--25 _s_color-bg-primary-4 _s_size-h-percent--25 _s_b-radius-md _s_flex _s_flex-a-center _s_flex-j-center"
+                class="_s_size-w-percent--25 _s_color-bg-primary-4 _s_size-h-percent--25 
+                  _s_b-radius-md _s_flex _s_flex-a-center _s_flex-j-center"
               >
                 <span class="_s_label _s_label-sm _s_label-t-u _s_label-font-setting-case-on _s_color-primary-8">
                   {t("__lang_view_all")}

@@ -12,6 +12,10 @@ const SlotsCategoryNavigation = (props: Props) => {
   const [search, setSearchParams] = useSearchParams<{ category: string }>();
   const [, { locale }] = useI18n();
 
+  const onClick = (id: number) => {
+    setSearchParams({ category: search.category === String(id) ? "" : String(id) });
+  };
+
   return (
     <div class="_s_overflow-x-scroll _s_scroll-0 _s_mb-4 _s_pt-2">
       <div class="_s_flex _s_color-bg-primary-5">
@@ -19,13 +23,13 @@ const SlotsCategoryNavigation = (props: Props) => {
         <For each={props.categories}>
           {(subItem, idx) => (
             <div
-              classList={{ "_s_a-color _s_a-b": subItem.route === search.category }}
+              classList={{ "_s_a-color _s_a-b": subItem.id === Number(search.category) }}
               class="_s_flex _s_flex-a-center _s_color-bg-primary-5"
             >
               <a
-                onClick={() => setSearchParams({ category: subItem.route })}
+                onClick={() => onClick(subItem.id)}
                 data-id={subItem?.name[locale()] + "-lobby"}
-                data-filter-active={subItem?.route === search.category || undefined}
+                data-filter-active={subItem?.id === Number(search.category) || undefined}
                 class="_s_mr-1 _s_flex _s_flex-a-center _s_pl-1 _s_pr-1 _s_pt-3 _s_pb-3 _s_position-relative"
               >
                 <Show when={subItem.new}>

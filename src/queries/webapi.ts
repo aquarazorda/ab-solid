@@ -22,25 +22,29 @@ export const createWebApiFetchFn = <T>(
   ).then((res) => res.json()) as Promise<T>;
 };
 
-export const createWebApiQuery = <T>(
-  path: string,
-  params?: () => object | undefined,
-  post?: boolean,
-  filterFn?: (j: T) => T
-) => {
-  const data = createQuery<T>(
-    () => [path, params?.()],
+type Props<T> = {
+  path: string;
+  key?: () => unknown;
+  params?: () => object | undefined;
+  options?: {
+    post?: boolean;
+    filterFn?: (j: T) => T;
+  };
+};
+
+export const createWebApiQuery = <T>(props: Props<T>) =>
+  createQuery<T>(
+    () => ["webApi" + props.path, props.key?.() || props.params?.()],
     () =>
-      createWebApiFetchFn<T>(path, params, post).then((data) => (filterFn ? filterFn(data) : data)),
+      createWebApiFetchFn<T>(props.path, props.params, props.options?.post).then((data) =>
+        props.options?.filterFn ? props.options.filterFn(data) : data
+      ),
     {
       refetchOnMount: false,
       refetchOnWindowFocus: false,
       refetchOnReconnect: false,
       get enabled() {
-        return post ? !!params?.() : true;
+        return props.options?.post ? !!props.params?.() : true;
       },
     }
   );
-
-  return data;
-};

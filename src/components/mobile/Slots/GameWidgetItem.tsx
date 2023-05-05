@@ -1,17 +1,35 @@
 import { useI18n } from "@solid-primitives/i18n";
 import { Show } from "solid-js";
 import { SlotsGame } from "~/types/slots";
+import { VisibilityProps, useVisibility } from "~/utils/directives/visibility";
 
 type Props = {
   game: SlotsGame;
-  providerName: string;
-};
+  providerName?: string;
+  big?: boolean;
+} & VisibilityProps;
 
 const MobileGameWidgetItem = (props: Props) => {
   const [t] = useI18n();
+  let ref: HTMLDivElement | undefined;
+
+  if (props.shouldObserve) {
+    useVisibility({
+      ref: () => ref,
+      onObserve: props.onObserve,
+      shouldObserve: props.shouldObserve,
+    });
+  }
 
   return (
-    <div class="_s_flex-shrink-0 _s_mr-2 _s_size-w-percent--11 _s_position-relative">
+    <div
+      ref={ref}
+      class={
+        props.big
+          ? "_s_size-slot-item _s_mb-3"
+          : "_s_flex-shrink-0 _s_mr-2 _s_size-w-percent--11 _s_position-relative"
+      }
+    >
       {/* (click)="openGame()" */}
       <div
         class="_s_size-w-percent--25 _s_position-relative"
