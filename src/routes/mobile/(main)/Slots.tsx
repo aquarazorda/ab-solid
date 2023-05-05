@@ -45,7 +45,6 @@ export const routeData = () => {
     key: () => (isAuthenticated() ? "auth" : "noAuth"),
     params: () => ({
       ...slotsRouteDefaultParams,
-      isLoggedIn: isAuthenticated(),
     }),
   });
 

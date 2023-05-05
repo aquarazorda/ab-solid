@@ -13,7 +13,7 @@ const MobileGameWidgetLoader = (props: Props) => (
           <div class="_s_size-w-px--12 _s_size-h-px--5 _s_color-bg-primary-5 _s_b-radius-md _s_mb-2" />
         </div>
         <div class="_s_pb-4 _s_flex">
-          <For each={createArrFromNum(props.count)}>
+          <For each={createArrFromNum(3)}>
             {() => (
               <div
                 class="_s_flex-shrink-0 _s_mr-2 _s_color-bg-primary-5 _s_b-radius-md"

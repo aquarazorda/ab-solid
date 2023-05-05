@@ -1,11 +1,13 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { For, Show, createEffect, createMemo, createSignal, on } from "solid-js";
+import { For, Show, Suspense, createEffect, createMemo, createSignal, on } from "solid-js";
 import { useParams, useRouteData, useSearchParams } from "solid-start";
 import { SlotsRouteData, SlotsRouteSearchParams } from "~/routes/mobile/(main)/Slots";
 import { SearchGameData } from "~/types/slots";
 import MobileGameWidgetItem from "./GameWidgetItem";
 import { createStore } from "solid-js/store";
 import { getFilteredGames } from "~/queries/webapi/getFilteredSlotGames";
+import MobileGameItemLoader from "./GameItemLoader";
+import { GameNotFound } from "./NotFound";
 
 type Props = {
   initialData?: SearchGameData;
@@ -60,34 +62,38 @@ const MobileSlotsGamePage = (props: Props) => {
           {currentProvider()?.name[locale()] || currentCategory()?.name[locale()]}
         </h2>
       </Show>
-      <div class="_s_flex _s_flex-wrap _s_flex-j-between">
-        <For each={props.initialData?.items}>
-          {(gameItem, idx) => (
-            <MobileGameWidgetItem
-              game={gameItem}
-              providerName={currentProvider()?.name[locale()]}
-              shouldObserve={props.initialData!.items.length - 1 === idx()}
-              onObserve={onObserve(idx() + 1)}
-              big
-            />
-          )}
-        </For>
-        <For each={lazyData}>
-          {(gameData, lazyIdx) => (
-            <For each={gameData.data?.items}>
-              {(gameItem, idx) => (
-                <MobileGameWidgetItem
-                  game={gameItem}
-                  providerName={currentProvider()?.name[locale()]}
-                  shouldObserve={gameData.data!.items.length - 1 === idx()}
-                  onObserve={onObserve(lazyIdx() * 8 + idx() + 8)}
-                  big
-                />
+      <Show when={props.initialData?.items.length} fallback={<GameNotFound />}>
+        <div class="_s_flex _s_flex-wrap _s_flex-j-between">
+          <For each={props.initialData?.items}>
+            {(gameItem, idx) => (
+              <MobileGameWidgetItem
+                game={gameItem}
+                providerName={currentProvider()?.name[locale()]}
+                shouldObserve={props.initialData!.items.length - 1 === idx()}
+                onObserve={onObserve(idx() + 1)}
+                big
+              />
+            )}
+          </For>
+          <Suspense fallback={<MobileGameItemLoader count={8} />}>
+            <For each={lazyData}>
+              {(gameData, lazyIdx) => (
+                <For each={gameData.data?.items}>
+                  {(gameItem, idx) => (
+                    <MobileGameWidgetItem
+                      game={gameItem}
+                      providerName={currentProvider()?.name[locale()]}
+                      shouldObserve={gameData.data!.items.length - 1 === idx()}
+                      onObserve={onObserve(lazyIdx() * 8 + idx() + 8)}
+                      big
+                    />
+                  )}
+                </For>
               )}
             </For>
-          )}
-        </For>
-      </div>
+          </Suspense>
+        </div>
+      </Show>
     </div>
   );
 };

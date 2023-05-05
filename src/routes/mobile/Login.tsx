@@ -7,6 +7,7 @@ import { createCoreApiMutation } from "~/queries/coreapi/utils";
 import { blockSubNav } from "~/states/header";
 import { FormValues, createForm } from "~/utils/forms";
 import { setUser } from "~/states/user";
+import { loginAction, setLoginAction } from "~/states/login";
 
 const minValue =
   (val: number) =>
@@ -62,6 +63,12 @@ export default function LoginMobile() {
     }
 
     loginMutate(values).then(() => {
+      if (loginAction()) {
+        loginAction()!();
+        setLoginAction(undefined);
+        return;
+      }
+
       navigate("/mobile");
     });
   };

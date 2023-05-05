@@ -1,4 +1,5 @@
 import { useNavigate } from "solid-start";
+import { checkWithAuth } from "~/states/login";
 import { isAuthenticated } from "~/states/user";
 import { Game, GamesList } from "~/types/game";
 
@@ -40,11 +41,6 @@ export const generateWidgetData = (gamesList: GamesList) => {
 export const useOpenGame = () => {
   const navigate = useNavigate();
 
-  return (gameId: number | string) => {
-    if (!isAuthenticated()) {
-      return;
-    }
-
-    navigate("/mobile/ingame/" + gameId);
-  };
+  return (gameId: number | string) =>
+    checkWithAuth(() => navigate("/mobile/ingame/" + gameId), navigate);
 };

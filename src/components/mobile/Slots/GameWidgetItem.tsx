@@ -2,6 +2,7 @@ import { useI18n } from "@solid-primitives/i18n";
 import { Show } from "solid-js";
 import { SlotsGame } from "~/types/slots";
 import { VisibilityProps, useVisibility } from "~/utils/directives/visibility";
+import { useOpenGame } from "~/utils/games";
 
 type Props = {
   game: SlotsGame;
@@ -10,8 +11,9 @@ type Props = {
 } & VisibilityProps;
 
 const MobileGameWidgetItem = (props: Props) => {
-  const [t] = useI18n();
   let ref: HTMLDivElement | undefined;
+  const [t] = useI18n();
+  const openGame = useOpenGame();
 
   if (props.shouldObserve) {
     useVisibility({
@@ -30,10 +32,10 @@ const MobileGameWidgetItem = (props: Props) => {
           : "_s_flex-shrink-0 _s_mr-2 _s_size-w-percent--11 _s_position-relative"
       }
     >
-      {/* (click)="openGame()" */}
       <div
         class="_s_size-w-percent--25 _s_position-relative"
         data-id={`${props.providerName}-lobby`}
+        onClick={() => openGame(props.game.gameId)}
       >
         <div class="_s_flex _s_mb-1 _s_position-absolute _s_position-minus-t-px--1 _s_position-l-px--2">
           <Show when={props.game.isNew && !props.game.downtime?.hasDowntime}>

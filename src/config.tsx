@@ -4,6 +4,7 @@ type Config = {
   staticPath: string;
   coreApiPath: string;
   webApiPath: string;
+  authProxyPath: string;
   domain: "com" | "am";
   isAm: boolean;
   isMobile: boolean;
@@ -13,6 +14,7 @@ const defaultValue: Config = {
   staticPath: "https://newstatic.adjarabet.com/static",
   coreApiPath: "https://coreapi.adjarabet.com",
   webApiPath: "https://api-gw.adjarabet.com",
+  authProxyPath: "https://authproxy.adjarabet.com",
   domain: "com",
   isAm: false,
   isMobile: true,

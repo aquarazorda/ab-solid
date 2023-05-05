@@ -4,10 +4,10 @@ import { Body, ErrorBoundary, Head, Html, Link, Meta, Scripts, Title } from "sol
 import { App } from "./App";
 import { ConfigProvider, useConfig } from "./config";
 import { I18nContext, createI18nContext } from "@solid-primitives/i18n";
-import { cookieStorage } from "@solid-primitives/storage";
 import { Langs } from "./utils/language";
 import "./root.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/solid-query";
+import { cookies } from "./states/cookie";
 
 export const [defaultLang, setDefaultLang] = createSignal<Langs>();
 
@@ -18,7 +18,7 @@ export default function Root() {
   const { staticPath } = useConfig();
 
   onMount(() => {
-    setDefaultLang((cookieStorage.getItem("lang") as Langs) || "ka");
+    setDefaultLang(cookies.get().lang || "ka");
   });
 
   return (

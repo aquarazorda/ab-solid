@@ -32,7 +32,7 @@ export const routeData = ({ params }: RouteDataArgs) => {
 };
 
 export default function InGameMobile() {
-  const [t] = useI18n();
+  const [t, { locale }] = useI18n();
   const { game, provider } = useRouteData<typeof routeData>();
 
   onMount(() => {
@@ -46,9 +46,9 @@ export default function InGameMobile() {
   });
 
   const [gameUrl] = createResource(
-    () => game() && provider(),
+    () => game() && provider() && locale(),
     async () => {
-      if (!game() && !provider()) return "";
+      if ((!game() && !provider()) || !locale()) return "";
 
       return await generateGameUrl(game()!, provider()!);
     }
@@ -58,7 +58,10 @@ export default function InGameMobile() {
     <>
       <div class="_s_color-bg-primary-4 _s_flex _s_p-2">
         <div class="_s_flex _s_flex-a-center _s_mr-auto">
-          <A href="/mobile" class="_s_icon _s_icon-md _s_adj-logo" />
+          <A
+            href={`/mobile/${game()?.type === "slots" ? "Slots" : "Casino"}`}
+            class="_s_icon _s_icon-md _s_adj-logo"
+          />
         </div>
         <div
           class="_s_b-radius-full _s_color-rgba-bg-primary-7-0--4 _s_flex _s_flex-a-center 

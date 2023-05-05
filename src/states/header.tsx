@@ -25,7 +25,9 @@ export const blockSubNav = () => {
 
 export const setShowBalance = (value: boolean) => {
   setMobileHeaderState("showBalance", value);
-  cookieStorage.setItem("showBalance", String(value));
+  cookieStorage.setItem("showBalance", String(value), {
+    path: "/",
+  });
 };
 
 export const toggleAccountLayer = () => {

@@ -43,7 +43,9 @@ export const changeLang = async (lang: Langs, { locale, add }: Props) => {
 
     if (fetchedLangs[lang] || dictRes()) {
       locale(lang);
-      cookieStorage.setItem("lang", lang);
+      cookieStorage.setItem("lang", lang, {
+        path: "/",
+      });
     }
   });
 

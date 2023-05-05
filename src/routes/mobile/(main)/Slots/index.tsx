@@ -1,20 +1,13 @@
 import { RouteDataArgs, useRouteData, useSearchParams } from "solid-start";
 import { SlotsRouteData, SlotsRouteSearchParams } from "../Slots";
-import {
-  Accessor,
-  For,
-  Show,
-  Suspense,
-  createEffect,
-  createMemo,
-  createSignal,
-  on,
-} from "solid-js";
+import { For, Show, Suspense, createEffect, createMemo, createSignal, on } from "solid-js";
 import MobileGameProviderHorizontal from "~/components/mobile/Slots/GameProviderHorizontal";
 import { createStore } from "solid-js/store";
 import MobileGameWidgetLoader from "~/components/mobile/Slots/GameWidgetLoader";
 import { getProviderGames } from "~/queries/webapi/getProviderGames";
 import MobileSlotsGamePage from "~/components/mobile/Slots/GamePage";
+import { SlotsMyCasino } from "~/components/mobile/Slots/MyCasino";
+import { TopGames } from "~/components/mobile/Slots/TopGames";
 
 export const routeData = ({ data }: RouteDataArgs<SlotsRouteData>) => {
   const [search] = useSearchParams<SlotsRouteSearchParams>();
@@ -64,6 +57,8 @@ export default function MobileSlotsMain() {
       </Show>
       <Show when={!search.category}>
         <div class="_s_color-bg-primary-0 _s_pt-1 _s_pb-1">
+          <SlotsMyCasino />
+          <TopGames />
           <For each={data.initialProviderData.data}>
             {(gameItem, idx) => (
               <MobileGameProviderHorizontal

@@ -5,6 +5,7 @@ import { createCoreApiQuery, createCreateCoreApiFetch } from "./coreapi/utils";
 import { user } from "~/states/user";
 import { useI18n } from "@solid-primitives/i18n";
 import { useConfig } from "~/config";
+import { checkResponse } from "./common";
 
 export const getAllGamesData = () => {
   const [allGamesData] = createStaticResource<{ list: GamesList }>("allGamesDataMobile");
@@ -36,15 +37,6 @@ export const generateGameUrl = async (game: Game, provider: GameProvider) => {
     return acc;
   }, {} as Record<string, string | number>);
 
-  // const params = new URLSearchParams();
-  // Object.entries(paramsObj).forEach(([key, value]) => {
-  //   if (key === "exitUrl") {
-  //     params.append(key, decodeURIComponent(value as string));
-  //   } else {
-  //     params.append(key, String(value));
-  //   }
-  // });
-
   const gameUrl = await fetch(`${provider.url}`, {
     method: "POST",
     credentials: "include",
@@ -54,8 +46,8 @@ export const generateGameUrl = async (game: Game, provider: GameProvider) => {
       "X-Requested-With": "true",
     },
   })
-    .then((res) => res.json())
-    .then((res) => res?.data?.url);
+    .then(checkResponse)
+    .then((res: any) => res?.data?.url);
 
   return gameUrl;
 };

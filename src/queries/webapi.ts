@@ -1,26 +1,35 @@
 import { createQuery } from "@tanstack/solid-query";
 import { useConfig } from "~/config";
 import { objToQueryString } from "~/utils/string";
+import { checkResponse } from "./common";
+import { isAuthenticated, user } from "~/states/user";
 
-export const createWebApiFetchFn = <T>(
-  path: string,
-  params?: () => object | undefined,
-  post?: boolean
-) => {
-  const { webApiPath } = useConfig();
+const createWebApiFetchFn =
+  (isAuthProxy: boolean) =>
+  <T>(path: string, params?: () => object | undefined, post?: boolean) => {
+    const { webApiPath, authProxyPath } = useConfig();
 
-  return fetch(
-    `${webApiPath}/${path}${!post && params && params() ? objToQueryString(params()!) : ""}`,
-    {
-      method: post ? "POST" : "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-      body: post ? JSON.stringify(params?.()) : undefined,
-    }
-  ).then((res) => res.json()) as Promise<T>;
-};
+    return fetch(
+      `${isAuthProxy ? authProxyPath : webApiPath}/${path}${
+        !post && params && params() ? objToQueryString(params()!) : ""
+      }`,
+      {
+        method: post ? "POST" : "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+          ...(isAuthProxy
+            ? {
+                "X-Requested-With": "XMLHttpRequest",
+                "x-userid": String(user.UserID),
+              }
+            : {}),
+        },
+        body: post ? JSON.stringify(params?.()) : undefined,
+        credentials: isAuthProxy ? "include" : undefined,
+      }
+    ).then(checkResponse<T>);
+  };
 
 type Props<T> = {
   path: string;
@@ -32,19 +41,31 @@ type Props<T> = {
   };
 };
 
-export const createWebApiQuery = <T>(props: Props<T>) =>
-  createQuery<T>(
-    () => ["webApi" + props.path, props.key?.() || props.params?.()],
-    () =>
-      createWebApiFetchFn<T>(props.path, props.params, props.options?.post).then((data) =>
-        props.options?.filterFn ? props.options.filterFn(data) : data
-      ),
-    {
-      refetchOnMount: false,
-      refetchOnWindowFocus: false,
-      refetchOnReconnect: false,
-      get enabled() {
-        return props.options?.post ? !!props.params?.() : true;
-      },
-    }
-  );
+const webApiQuery =
+  (isAuthProxy: boolean) =>
+  <T>(props: Props<T>) =>
+    createQuery<T>(
+      () => [
+        "webApi" + props.path,
+        props.key?.() || props.params?.(),
+        isAuthProxy ? isAuthenticated() : "noAuth",
+      ],
+      () =>
+        createWebApiFetchFn(isAuthProxy)<T>(props.path, props.params, props.options?.post).then(
+          (data) => (props.options?.filterFn ? props.options.filterFn(data) : data)
+        ),
+      {
+        refetchOnMount: false,
+        refetchOnWindowFocus: false,
+        refetchOnReconnect: false,
+        retry: false,
+        get enabled() {
+          return isAuthProxy
+            ? isAuthenticated()
+            : true && (props.options?.post ? !!props.params?.() : true);
+        },
+      }
+    );
+
+export const createWebApiQuery = webApiQuery(false);
+export const createAuthProxyQuery = webApiQuery(true);
