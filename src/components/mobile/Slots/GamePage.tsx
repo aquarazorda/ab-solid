@@ -62,7 +62,7 @@ const MobileSlotsGamePage = (props: Props) => {
           {currentProvider()?.name[locale()] || currentCategory()?.name[locale()]}
         </h2>
       </Show>
-      <Show when={props.initialData?.items.length} fallback={<GameNotFound />}>
+      <Suspense fallback={<GameNotFound />}>
         <div class="_s_flex _s_flex-wrap _s_flex-j-between">
           <For each={props.initialData?.items}>
             {(gameItem, idx) => (
@@ -93,7 +93,7 @@ const MobileSlotsGamePage = (props: Props) => {
             </For>
           </Suspense>
         </div>
-      </Show>
+      </Suspense>
     </div>
   );
 };

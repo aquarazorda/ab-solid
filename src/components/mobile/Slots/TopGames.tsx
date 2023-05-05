@@ -1,4 +1,4 @@
-import { Suspense } from "solid-js";
+import { Show } from "solid-js";
 import MobileGameWidgetLoader from "./GameWidgetLoader";
 import MobileGameProviderHorizontal from "./GameProviderHorizontal";
 import { createWebApiQuery } from "~/queries/webapi";
@@ -20,7 +20,7 @@ export const TopGames = () => {
   });
 
   return (
-    <Suspense fallback={<MobileGameWidgetLoader count={1} />}>
+    <Show when={top.data?.items} fallback={<MobileGameWidgetLoader count={1} />}>
       <MobileGameProviderHorizontal
         title="_lang_slots_topgames"
         gameData={{
@@ -28,6 +28,6 @@ export const TopGames = () => {
           games: top.data!.items,
         }}
       />
-    </Suspense>
+    </Show>
   );
 };

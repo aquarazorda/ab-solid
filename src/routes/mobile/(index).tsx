@@ -7,6 +7,7 @@ import { WidgetSlider } from "~/components/mobile/Sliders/WidgetSlider";
 import { generateWidgetData } from "~/utils/games";
 import { getAllSliders } from "~/queries/sliders";
 import { getAllGamesData } from "~/queries/games";
+import { isAuthenticated } from "~/states/user";
 
 export type HomeMobileData = typeof routeData;
 
@@ -29,15 +30,17 @@ export default function Index() {
         data-id="login-button-wrapper"
         class="_s_display-b _s_lg-display-n _s_pl-5 _s_pr-5 _s_size-w-percent--25"
       >
-        <A
-          data-id="login-button-link"
-          class="_s_btn _s_btn-md _s_size-w-percent--25 _s_btn-positive ng-star-inserted"
-          href="/mobile/SignUp/ThreeSteps/First"
-        >
-          <span data-id="login-button-label" class="_s_label _s_label-md">
-            {t("_lang_login_button_register")}
-          </span>
-        </A>
+        <Show when={!isAuthenticated()}>
+          <A
+            data-id="login-button-link"
+            class="_s_btn _s_btn-md _s_size-w-percent--25 _s_btn-positive ng-star-inserted"
+            href="/mobile/SignUp/ThreeSteps/First"
+          >
+            <span data-id="login-button-label" class="_s_label _s_label-md">
+              {t("_lang_login_button_register")}
+            </span>
+          </A>
+        </Show>
       </div>
       <div class="_s_mt-5">
         <Show when={games()}>

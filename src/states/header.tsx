@@ -1,6 +1,6 @@
-import { cookieStorage } from "@solid-primitives/storage";
 import { onCleanup, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
+import { cookies } from "./cookie";
 
 export const [mobileHeaderState, setMobileHeaderState] = createStore({
   navOpen: true,
@@ -25,9 +25,7 @@ export const blockSubNav = () => {
 
 export const setShowBalance = (value: boolean) => {
   setMobileHeaderState("showBalance", value);
-  cookieStorage.setItem("showBalance", String(value), {
-    path: "/",
-  });
+  cookies.set("showBalance", String(value));
 };
 
 export const toggleAccountLayer = () => {

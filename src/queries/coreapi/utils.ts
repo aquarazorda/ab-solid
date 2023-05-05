@@ -10,8 +10,6 @@ import {
 } from ".";
 import { isMatching } from "ts-pattern";
 import { CreateMutationOptions, createMutation, createQuery } from "@tanstack/solid-query";
-import { setUserData } from "~/states/user";
-import { logOut } from "~/states/user";
 import { checkResponse } from "../common";
 
 const createCoreApiFetchFn = <T extends CoreApiAction>(actionData: CoreApiActionData<T>) => {

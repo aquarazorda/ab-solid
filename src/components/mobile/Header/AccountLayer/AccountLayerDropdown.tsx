@@ -1,5 +1,5 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { Show } from "solid-js";
+import { Show, Suspense } from "solid-js";
 import { getUserBalance } from "~/queries/user";
 import {
   mobileHeaderState,
@@ -35,38 +35,36 @@ export const AccountLayerDropdownHead = () => {
   );
 };
 
-export const AccountLayerDropdown = () => {
-  return (
-    <>
+export const AccountLayerDropdown = () => (
+  <div>
+    <div
+      class="_s_position-absolute _s_position-r-percent--0 _s_position-t-px--15 _s_z-5 
+    _s_display-b _s_color-rgba-bg-primary-0-0--7 _s_size-w-percent--25 _x_md-size-w-px--100"
+      style={{ height: "calc(100vh - 60px)" }}
+      onClick={() => setMobileHeaderState("accountLayerOpen", false)}
+    />
+    <div
+      id="accountDropDown"
+      class="_s_b-radius-sm _s_position-absolute _s_position-r-percent--0 
+  _s_z-5 _s_size-w-px--80 _s_position-t-px--15 _s_display-b _s_apollo-data-theme-header--layer"
+    >
       <div
-        class="_s_position-absolute _s_position-r-percent--0 _s_position-t-px--15 _s_z-5 
-          _s_display-b _s_color-rgba-bg-primary-0-0--7 _s_size-w-percent--25 _x_md-size-w-px--100"
-        style={{ height: "calc(100vh - 60px)" }}
-        onClick={() => setMobileHeaderState("accountLayerOpen", false)}
-      />
-      <div
-        id="accountDropDown"
-        class="_s_b-radius-sm _s_position-absolute _s_position-r-percent--0 
-        _s_z-5 _s_size-w-px--80 _s_position-t-px--15 _s_display-b _s_apollo-data-theme-header--layer"
+        class="_s_flex _s_flex-d-column _s_pb-10 _s_position-relative _s_size-h-max-percent--25 
+    _s_color-bg-primary-5"
       >
-        <div
-          class="_s_flex _s_flex-d-column _s_pb-10 _s_position-relative _s_size-h-max-percent--25 
-          _s_color-bg-primary-5"
-        >
-          <BalanceBox />
-          <AccountLayerMenu />
-        </div>
+        <BalanceBox />
+        <AccountLayerMenu />
       </div>
-    </>
-  );
-};
+    </div>
+  </div>
+);
 
 const BalanceBox = () => {
   const [t] = useI18n();
   const balance = getUserBalance();
 
   return (
-    <>
+    <div>
       <div class="_s_p-5 _s_apollo-data-theme-balance--layer">
         <div class="_s_flex _s_flex-a-center">
           <div class="_s_col-6 _s_flex _s_flex-d-column">
@@ -93,18 +91,20 @@ const BalanceBox = () => {
             </button>
           </div>
         </div>
-        <div class="_s_flex _s_mt-2">
-          <div class="_s_col-4">
-            <div class="_s_label _s_label-xs _s_color-primary-8">{t("__lang__main")}</div>
-            <Show when={balance?.data?.BalanceAmount}>
-              {(b) => (
-                <div data-id="current-balance" class="_s_label _s_label-sm _s_color-primary-1">
-                  {formatBalance(b())} {getCurrencySymbol()}
-                </div>
-              )}
-            </Show>
+        <Suspense>
+          <div class="_s_flex _s_mt-2">
+            <div class="_s_col-4">
+              <div class="_s_label _s_label-xs _s_color-primary-8">{t("__lang__main")}</div>
+              <Show when={balance?.data?.BalanceAmount}>
+                {(b) => (
+                  <div data-id="current-balance" class="_s_label _s_label-sm _s_color-primary-1">
+                    {formatBalance(b())} {getCurrencySymbol()}
+                  </div>
+                )}
+              </Show>
+            </div>
           </div>
-        </div>
+        </Suspense>
       </div>
       <div
         class="_s_color-bg-primary-6 _s_p-5 _s_pt-2 _s_pb-2 _s_flex 
@@ -121,6 +121,6 @@ const BalanceBox = () => {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 };

@@ -4,13 +4,13 @@ import { user } from "~/states/user";
 import { formatBalance, getCurrencySymbol } from "~/utils/currency";
 import { AccountLayerDropdown, AccountLayerDropdownHead } from "./AccountLayerDropdown";
 import { mobileHeaderState, setShowBalance } from "~/states/header";
-import { cookieStorage } from "@solid-primitives/storage";
+import { cookies } from "~/states/cookie";
 
 export const AccountLayer = () => {
   const balance = getUserBalance();
 
   onMount(() => {
-    const isHidden = cookieStorage.getItem("showBalance") === "false";
+    const isHidden = cookies.get().showBalance === "false";
     setShowBalance(!isHidden);
   });
 

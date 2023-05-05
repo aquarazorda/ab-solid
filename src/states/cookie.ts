@@ -1,10 +1,11 @@
 import { cookieStorage, createStorage } from "@solid-primitives/storage";
 import { Langs } from "~/utils/language";
 
-type CookieStore = {
-  lang?: Langs;
-  userId?: string;
-};
+type CookieStore = Partial<{
+  lang: Langs;
+  userId: string;
+  showBalance: string;
+}>;
 
 const [cs, setCookies, { remove: removeCookie }] = createStorage({
   api: cookieStorage,
