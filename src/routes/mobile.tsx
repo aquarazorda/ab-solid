@@ -3,7 +3,6 @@ import { Footer } from "~/components/mobile/Footer";
 import { Header } from "~/components/mobile/Header";
 import { createStaticResource } from "~/queries/static";
 import "solid-slider/slider.css";
-import { Suspense } from "solid-js";
 
 export type MobileRootData = typeof routeData;
 

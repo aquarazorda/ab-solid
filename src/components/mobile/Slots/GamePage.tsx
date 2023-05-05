@@ -34,15 +34,16 @@ const MobileSlotsGamePage = (props: Props) => {
   );
 
   createEffect(
-    on(loadNumber, (number) =>
-      setLazyData(
-        lazyData.length,
-        getFilteredGames({
-          from: number,
-          type: "slot",
-        })
-      )
-    )
+    on(loadNumber, (number) => {
+      !!number &&
+        setLazyData(
+          lazyData.length,
+          getFilteredGames({
+            from: number,
+            type: "slot",
+          })
+        );
+    })
   );
 
   const onObserve = (idx: number) => () => {
@@ -51,6 +52,13 @@ const MobileSlotsGamePage = (props: Props) => {
       idx < props.initialData.totalCount &&
       setLoadNumber(idx);
   };
+
+  createEffect(
+    on([() => params, () => search], () => {
+      setLoadNumber(0);
+      setLazyData([]);
+    })
+  );
 
   return (
     <div class="_s_p-5 _s_pt-none">
@@ -62,37 +70,47 @@ const MobileSlotsGamePage = (props: Props) => {
           {currentProvider()?.name[locale()] || currentCategory()?.name[locale()]}
         </h2>
       </Show>
-      <Suspense fallback={<GameNotFound />}>
-        <div class="_s_flex _s_flex-wrap _s_flex-j-between">
-          <For each={props.initialData?.items}>
-            {(gameItem, idx) => (
-              <MobileGameWidgetItem
-                game={gameItem}
-                providerName={currentProvider()?.name[locale()]}
-                shouldObserve={props.initialData!.items.length - 1 === idx()}
-                onObserve={onObserve(idx() + 1)}
-                big
-              />
-            )}
-          </For>
-          <Suspense fallback={<MobileGameItemLoader count={8} />}>
-            <For each={lazyData}>
-              {(gameData, lazyIdx) => (
-                <For each={gameData.data?.items}>
-                  {(gameItem, idx) => (
-                    <MobileGameWidgetItem
-                      game={gameItem}
-                      providerName={currentProvider()?.name[locale()]}
-                      shouldObserve={gameData.data!.items.length - 1 === idx()}
-                      onObserve={onObserve(lazyIdx() * 8 + idx() + 8)}
-                      big
-                    />
-                  )}
-                </For>
-              )}
-            </For>
-          </Suspense>
-        </div>
+      <Suspense
+        fallback={
+          <div class="_s_flex _s_flex-wrap _s_flex-j-between">
+            <MobileGameItemLoader count={8} />
+          </div>
+        }
+      >
+        <Show when={props.initialData?.items.length} fallback={<GameNotFound />}>
+          <div class="_s_flex _s_flex-wrap _s_flex-j-between">
+            <Suspense fallback={<MobileGameItemLoader count={8} />}>
+              <For each={props.initialData?.items}>
+                {(gameItem, idx) => (
+                  <MobileGameWidgetItem
+                    game={gameItem}
+                    providerName={currentProvider()?.name[locale()]}
+                    shouldObserve={props.initialData!.items.length - 1 === idx()}
+                    onObserve={onObserve(idx() + 1)}
+                    big
+                  />
+                )}
+              </For>
+            </Suspense>
+            <Suspense fallback={<MobileGameItemLoader count={8} />}>
+              <For each={lazyData}>
+                {(gameData, lazyIdx) => (
+                  <For each={gameData.data?.items}>
+                    {(gameItem, idx) => (
+                      <MobileGameWidgetItem
+                        game={gameItem}
+                        providerName={currentProvider()?.name[locale()]}
+                        shouldObserve={gameData.data!.items.length - 1 === idx()}
+                        onObserve={onObserve(lazyIdx() * 8 + idx() + 8)}
+                        big
+                      />
+                    )}
+                  </For>
+                )}
+              </For>
+            </Suspense>
+          </div>
+        </Show>
       </Suspense>
     </div>
   );

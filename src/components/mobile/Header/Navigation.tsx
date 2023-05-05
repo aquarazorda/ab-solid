@@ -21,7 +21,7 @@ export const Navigation = () => {
               class="_s_flex _s_flex-a-center _s_flex-d-column _s_ml-1 _s_mr-1"
               activeClass="_s_a-color"
               aria-label={t(item.title?.langId)}
-              end={true}
+              end={item.route === "/"}
             >
               <div class="_s_flex _s_flex-d-column _s_flex-a-center _s_position-relative">
                 <span

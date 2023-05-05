@@ -50,7 +50,7 @@ const ProviderNavigation = (props: Props) => {
             <div class="_s_opacity-0--5 _s_aitem-opacity-1">
               <A
                 class="_s_flex _s_flex-d-column _s_flex-a-center _s_size-w-px--18"
-                href={`./${item.id}`}
+                href={`/mobile/Slots/${item.id}`}
                 data-id={`${item?.name[locale()]}-lobby-icon`}
               >
                 <span

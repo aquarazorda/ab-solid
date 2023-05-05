@@ -1,5 +1,5 @@
 import { useI18n } from "@solid-primitives/i18n";
-import { Accessor, For, Index, Show, createEffect, createSignal, onCleanup } from "solid-js";
+import { Accessor, For, Index, Show, createEffect, createSignal, on, onCleanup } from "solid-js";
 import { createSlider } from "solid-slider";
 import { A, useRouteData } from "solid-start";
 import { Loader } from "~/components/Loader";
@@ -39,13 +39,14 @@ export const MainSlider = () => {
     onCleanup(() => clearInterval(interval));
   });
 
-  createEffect(() => {
-    setLoaded({ [slides?.()?.length - 1]: true });
-  });
+  setLoaded({ [slides?.()?.length - 1]: true, [0]: true });
 
-  createEffect(() => {
-    setLoaded((l) => ({ ...l, [current()]: true, [current() + 1]: true }));
-  });
+  createEffect(
+    on(current, () => {
+      console.log(current() + 1);
+      setLoaded((l) => ({ ...l, [current() + 1]: true }));
+    })
+  );
 
   return (
     <div data-id="home-main-slider" class="_s_lg-pl-2-5 _s_lg-pr-2-5">
@@ -83,7 +84,6 @@ export const MainSlider = () => {
                           </Show>
                           <Show when={loaded()[idx()] && locale()}>
                             <img
-                              loading={idx() > 0 ? "lazy" : "eager"}
                               class="swiper-lazy _s_b-radius-md"
                               src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
                               data-id={slide.name}

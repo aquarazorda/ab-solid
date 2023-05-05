@@ -45,11 +45,10 @@ const webApiQuery =
   (isAuthProxy: boolean) =>
   <T>(props: Props<T>) =>
     createQuery<T>(
-      () => [
-        "webApi" + props.path,
-        props.key?.() || props.params?.(),
-        isAuthProxy ? isAuthenticated() : "noAuth",
-      ],
+      () =>
+        props.key
+          ? ["webApi-", props.key()]
+          : ["webApi-" + props.path, props.params?.(), isAuthProxy ? isAuthenticated() : "noAuth"],
       () =>
         createWebApiFetchFn(isAuthProxy)<T>(props.path, props.params, props.options?.post).then(
           (data) => (props.options?.filterFn ? props.options.filterFn(data) : data)

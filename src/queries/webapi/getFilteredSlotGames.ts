@@ -3,7 +3,7 @@ import { createWebApiQuery } from "../webapi";
 import { useConfig } from "~/config";
 import { useParams, useSearchParams } from "solid-start";
 import { SlotsRouteSearchParams } from "~/routes/mobile/(main)/Slots";
-import { createMemo } from "solid-js";
+import { createMemo, on } from "solid-js";
 
 type Props = {
   from: number;
@@ -15,22 +15,8 @@ export const getFilteredGames = (props: Props) => {
   const [search] = useSearchParams<SlotsRouteSearchParams>();
   const params = useParams<{ provider: string }>();
 
-  const queryKey = createMemo(() => {
-    const arr: any[] = [props.from];
-
-    if (search.text) {
-      arr.push(search.text);
-      return arr;
-    }
-
-    search.category && arr.push(search.category);
-    params.provider && arr.push(params.provider);
-    return arr;
-  });
-
   return createWebApiQuery<SearchGameData>({
     path: "games",
-    key: queryKey,
     params: () =>
       search.text || search.category || params.provider
         ? {
