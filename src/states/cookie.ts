@@ -1,9 +1,9 @@
 import { cookieStorage, createStorage } from "@solid-primitives/storage";
 import { createRoot } from "solid-js";
-import { Langs } from "~/utils/language";
+import { Lang } from "~/utils/language";
 
 type CookieStore = Partial<{
-  lang: Langs;
+  lang: Lang;
   userId: string;
   showBalance: string;
 }>;
