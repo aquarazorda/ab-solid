@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { Show, Suspense } from "solid-js";
 import { Outlet, Title, useParams, useRouteData, useSearchParams } from "solid-start";
 import { MainSlider } from "~/components/mobile/Sliders/HomeSlider";
@@ -10,7 +10,7 @@ import ProviderNavigation from "~/components/mobile/Slots/ProviderNavigation";
 import { getAllSliders } from "~/queries/sliders";
 import { createWebApiQuery } from "~/queries/webapi";
 import { getFilteredGames } from "~/queries/webapi/getFilteredSlotGames";
-import { isAuthenticated } from "~/states/user";
+import { useUser } from "~/states/user";
 import { BannerData } from "~/types/banner";
 import { SlotsFilter, SlotsProvider } from "~/types/slots";
 
@@ -30,7 +30,9 @@ export const slotsRouteDefaultParams = {
 };
 
 export const routeData = () => {
+  const [, { isAuthenticated }] = useUser();
   const [slides] = getAllSliders(slotsSlidesFilterFn);
+
   const providers = createWebApiQuery<SlotsProvider[]>({
     path: "games/providers",
     params: () => slotsRouteDefaultParams,
@@ -58,7 +60,7 @@ export const routeData = () => {
 
 export default function SlotsMobile() {
   const { providers, categories, searchResults } = useRouteData<SlotsRouteData>();
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const params = useParams<{ provider: string }>();
   const [search] = useSearchParams<SlotsRouteSearchParams>();
 
@@ -66,19 +68,21 @@ export default function SlotsMobile() {
     <>
       <Title>Adjarabet.com - {t("__lang__slots")}</Title>
       <MainSlider />
-      <ProviderNavigation providers={providers.data || []} />
-      <SlotsCategoryNavigation categories={categories.data || []} />
-      <Show when={!params.provider || params.provider === "EGT"}>
-        <JackpotsComponent type="EGT_MOBILE_NEW_SLOTS" />
-      </Show>
-      <Show when={search.text}>
-        <MobileSlotsGamePage initialData={searchResults.data} />
-      </Show>
-      <Show when={!search.text}>
-        <Suspense fallback={<MobileGameWidgetLoader count={3} />}>
-          <Outlet />
-        </Suspense>
-      </Show>
+      <Suspense>
+        <ProviderNavigation providers={providers.data || []} />
+        <SlotsCategoryNavigation categories={categories.data || []} />
+        <Show when={!params.provider || params.provider === "EGT"}>
+          <JackpotsComponent type="EGT_MOBILE_NEW_SLOTS" />
+        </Show>
+        <Show when={search.text}>
+          <MobileSlotsGamePage initialData={searchResults.data} />
+        </Show>
+        <Show when={!search.text}>
+          <Suspense fallback={<MobileGameWidgetLoader count={3} />}>
+            <Outlet />
+          </Suspense>
+        </Show>
+      </Suspense>
     </>
   );
 }

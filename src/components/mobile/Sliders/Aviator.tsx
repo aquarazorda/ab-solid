@@ -1,9 +1,9 @@
 import { createStaticUrl } from "~/utils/string";
 import { WidgetSliderHeader } from "./WidgetSlider";
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 
 export const AviatorWidget = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   return (
     <div class="_s_color-rgba-bg-primary-0-0--5 _s_position-relative _s_z-1 _s_pb-7">
       <WidgetSliderHeader title="_lang_aviator_header" url="/Aviator" />

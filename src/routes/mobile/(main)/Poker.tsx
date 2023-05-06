@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { A } from "solid-start";
 import PlayButtonBig from "~/components/mobile/Buttons/PlayButtonBig";
 import { MainSlider } from "~/components/mobile/Sliders/HomeSlider";
@@ -16,7 +16,7 @@ export const routeData = () => {
 };
 
 export default function MobilePokerPage() {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <>

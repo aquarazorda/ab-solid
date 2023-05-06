@@ -1,7 +1,7 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 
 export const PromoEmptyContainer = (props: { filter: string }) => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div

@@ -1,7 +1,7 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 
 export const FooterDescription = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div class="_s_flex _s_pb-5 _s_pt-5">

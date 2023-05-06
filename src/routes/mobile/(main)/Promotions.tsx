@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { For, createMemo, createSignal } from "solid-js";
 import { useRouteData, useSearchParams } from "solid-start";
 import { DescriptionPage } from "~/components/mobile/DescriptionPage";
@@ -22,7 +22,7 @@ export const routeData = () => {
 };
 
 export default function PromotionsMobile() {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   const filtered = useRouteData<typeof routeData>();
   const [clicked, setClicked] = createSignal<number>();

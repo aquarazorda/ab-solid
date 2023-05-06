@@ -1,13 +1,13 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { createResource, For } from "solid-js";
 import { A } from "solid-start";
+import { useLanguage } from "~/utils/language";
 
 const getNav = async () =>
   (await fetch("https://newstatic.adjarabet.com/static/menuListTurboKa.json?v=1677574185")).json();
 
 export const Navigation = () => {
   const [items] = createResource(getNav);
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div

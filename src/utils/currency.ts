@@ -1,5 +1,5 @@
 import { useConfig } from "~/config";
-import { user } from "~/states/user";
+import { useUser } from "~/states/user";
 
 function formatNumber(num: number, options: Intl.NumberFormatOptions) {
   const formatter = new Intl.NumberFormat("en-US", options);
@@ -27,6 +27,8 @@ export const formatBalance = (balance: number, poker?: boolean) => {
 };
 
 export const getCurrencySymbol = (currencyId?: keyof typeof currencySymbols) => {
+  const [user] = useUser();
+
   if (!currencyId) {
     const id = user.PreferredCurrencyID as keyof typeof currencySymbols;
     return currencySymbols[id];

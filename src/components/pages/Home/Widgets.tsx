@@ -1,16 +1,14 @@
 import { createResource, For, onMount } from "solid-js";
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 
 const fetchBanners = async () =>
   await (
-    await fetch(
-      "https://newstatic.adjarabet.com/static/widgetsCarouselData.json?v=1677603423"
-    )
+    await fetch("https://newstatic.adjarabet.com/static/widgetsCarouselData.json?v=1677603423")
   ).json();
 
 export const Widgets = () => {
   const [banners] = createResource(fetchBanners);
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div class="_s_display-b _s_overflow-hidden _s_lg-pl-2-5 _s_position-relative _s_lg-pr-2-5 _s_size-h-px--87 _s_z-2">

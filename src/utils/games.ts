@@ -1,6 +1,5 @@
 import { useNavigate } from "solid-start";
 import { checkWithAuth } from "~/states/login";
-import { isAuthenticated } from "~/states/user";
 import { Game, GamesList } from "~/types/game";
 
 export const generateWidgetData = (gamesList: GamesList) => {

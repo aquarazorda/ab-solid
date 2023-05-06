@@ -1,13 +1,14 @@
 import { Field, Form } from "@modular-forms/solid";
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { createMemo, createSignal, Show } from "solid-js";
 import { useNavigate } from "solid-start";
 import { P, isMatching } from "ts-pattern";
 import { createCoreApiMutation } from "~/queries/coreapi/utils";
-import { blockSubNav } from "~/states/header";
 import { FormValues, createForm } from "~/utils/forms";
-import { setUser } from "~/states/user";
 import { loginAction, setLoginAction } from "~/states/login";
+import { useUser } from "~/states/user";
+import { useHeader } from "~/states/header";
+import { createUserData } from "~/queries/user";
 
 const minValue =
   (val: number) =>
@@ -24,16 +25,19 @@ const loginPattern = {
 };
 
 export default function LoginMobile() {
-  blockSubNav();
-  const [t] = useI18n();
+  const [t] = useLanguage();
+  const [, { setUserData }] = useUser();
+  const [, { blockSubNav }] = useHeader();
   const [passwordVisible, setPasswordVisible] = createSignal(false);
-  const [errorMessage, setErrorMessage] = createSignal("");
+  const [, setErrorMessage] = createSignal("");
   const navigate = useNavigate();
+
+  blockSubNav();
 
   const loginMutate = createCoreApiMutation("logIn", {
     onSuccess: (data) => {
       if (data?.StatusCode === 10 && data?.UserID) {
-        setUser({ UserID: data.UserID });
+        createUserData(data.UserID, setUserData);
       }
     },
   });

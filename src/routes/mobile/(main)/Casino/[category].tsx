@@ -2,12 +2,12 @@ import { useNavigate, useParams, useRouteData } from "solid-start";
 import { CasinoMobileData } from "../Casino";
 import { For, createMemo } from "solid-js";
 import { createStaticUrl } from "~/utils/string";
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { useOpenGame } from "~/utils/games";
 
 export default function CasinoCategoryView() {
   const params = useParams();
-  const [t, { locale }] = useI18n();
+  const [t, { locale }] = useLanguage();
   const { casinoGames } = useRouteData<CasinoMobileData>();
   const openGame = useOpenGame();
 

@@ -1,4 +1,4 @@
-import { FormState } from "@modular-forms/solid";
+import { FieldValues, FormStore, FormValues, Maybe, ResponseData } from "@modular-forms/solid";
 import { JSX } from "solid-js";
 
 export type SelectProps = {
@@ -26,9 +26,9 @@ export type SelectProps = {
 
 export type CheckboxProps = {
   ref?: (element: HTMLInputElement) => void;
-  form: FormState<any>;
+  form: FormStore<any, any>;
   name: string;
-  value?: string | boolean;
+  value?: Maybe<string | boolean>;
   checked?: boolean;
   onInput?: JSX.EventHandler<HTMLInputElement, InputEvent>;
   onChange?: JSX.EventHandler<HTMLInputElement, Event>;

@@ -1,13 +1,12 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { A, useRouteData } from "@solidjs/router";
-import { Show, createEffect, createMemo, createResource, onCleanup, onMount } from "solid-js";
-import { Portal } from "solid-js/web";
-import { RouteDataArgs, useParams } from "solid-start";
+import { Show, createMemo, createResource, onCleanup, onMount } from "solid-js";
+import { RouteDataArgs } from "solid-start";
 import { P, match } from "ts-pattern";
 import { setFooterState } from "~/components/mobile/Footer";
 import { generateGameUrl, getAllGamesData } from "~/queries/games";
 import { createStaticResource } from "~/queries/static";
-import { setMobileHeaderState } from "~/states/header";
+import { useHeader } from "~/states/header";
 import { GameProvider } from "~/types/game";
 
 type GameProviders = {
@@ -32,15 +31,16 @@ export const routeData = ({ params }: RouteDataArgs) => {
 };
 
 export default function InGameMobile() {
-  const [t, { locale }] = useI18n();
+  const [t, { locale }] = useLanguage();
   const { game, provider } = useRouteData<typeof routeData>();
+  const [, { setHidden }] = useHeader();
 
   onMount(() => {
-    setMobileHeaderState("hidden", true);
+    setHidden(true);
     setFooterState("hidden", true);
 
     onCleanup(() => {
-      setMobileHeaderState("hidden", false);
+      setHidden(false);
       setFooterState("hidden", false);
     });
   });

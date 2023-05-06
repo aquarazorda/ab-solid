@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { JSX, Show, createSignal } from "solid-js";
 import { Portal } from "solid-js/web";
 import clickOutside from "~/utils/directives/clickOutside";
@@ -19,7 +19,7 @@ const closePopup = () => {
 export const showPopup = (item: PopupItem) => setPopupQueue((q) => [...q, item]);
 
 export const Popup = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <Show when={popupQueue()[0]}>

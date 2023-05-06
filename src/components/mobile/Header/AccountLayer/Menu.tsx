@@ -1,7 +1,9 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { For, Show, Suspense } from "solid-js";
 import { A } from "solid-start";
 import { createStaticResource } from "~/queries/static";
+import { useHeader } from "~/states/header";
+import { useUser } from "~/states/user";
+import { useLanguage } from "~/utils/language";
 
 type MenuData = {
   list: {
@@ -22,8 +24,10 @@ type MenuData = {
 };
 
 export const AccountLayerMenu = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const [menuData] = createStaticResource<MenuData>("headerMobileSubNavListOPTGEL"); // TODO
+  const [, { logOut }] = useUser();
+  const [, { toggleAccountLayer }] = useHeader();
 
   return (
     <Suspense>
@@ -60,6 +64,20 @@ export const AccountLayerMenu = () => {
             </>
           )}
         </For>
+      </div>
+      <div class="_s_position-absolute _s_position-b-percent--0 _s_position-l-percent--0 _s_col-12 _s_bt-solid _s_bt-primary-7 _s_bw-1">
+        <div
+          class="_s_color-bg-primary-6 _s_flex _s_flex-a-center _s_pl-5 _s_pr-5 _s_pt-3 _s_pb-3 _s_cursor-pointer"
+          onClick={() => {
+            logOut(true);
+            toggleAccountLayer(false);
+          }}
+        >
+          <span class="_s_adj-logout _s_color-primary-8 _s_icon _s_icon-sm _s_ml-none _s_mr-3" />
+          <span class="_s_label _s_label-sm _s_color-primary-8 _s_cursor-pointer">
+            {t("_lang_login_button_log_out")}
+          </span>
+        </div>
       </div>
     </Suspense>
   );

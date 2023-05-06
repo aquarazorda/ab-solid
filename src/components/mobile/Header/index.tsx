@@ -1,23 +1,23 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { A } from "solid-start";
 import { Navigation } from "./Navigation";
 import { Show, createEffect } from "solid-js";
-import { mobileHeaderState, setMobileHeaderState } from "~/states/header";
 import { RightSideHeader } from "./RightSide";
+import { useHeader } from "~/states/header";
+import { useLanguage } from "~/utils/language";
 
 export const Header = () => {
-  const [t] = useI18n();
-  const toggleNav = () =>
-    !mobileHeaderState.navBlocked && setMobileHeaderState("navOpen", (p) => !p);
+  const [t] = useLanguage();
+  const [header, { toggleNav }] = useHeader();
+  const toggle = () => !header.navBlocked && toggleNav();
 
   createEffect(() => {
-    if (mobileHeaderState.navBlocked) {
-      setMobileHeaderState("navOpen", false);
+    if (header.navBlocked) {
+      toggleNav(false);
     }
   });
 
   return (
-    <Show when={!mobileHeaderState.hidden}>
+    <Show when={!header.hidden}>
       <div class="_s_flex _s_size-w-percent--25 _s_flex-d-column _s_position-relative">
         <div
           class="_s_position-t-px--0 _s_position-l-px--0 _s_z-6 _s_size-w-percent--25 _s_size-w-min-percent--25 
@@ -48,13 +48,13 @@ export const Header = () => {
                   data-id="mobile-ab-logo"
                   class="_s_size-w-px--8 _s_size-h-px--8 _s_size-w-min-px--8 _s_size-h-min-px--8 
                   _s_position-relative _s_cursor-pointer _s_bg-img-logoSm _s_bg-position-center _s_bg-no-repeat _s_bg-size-full"
-                  onClick={toggleNav}
+                  onClick={toggle}
                 />
               </div>
               <RightSideHeader />
             </div>
           </div>
-          <Show when={mobileHeaderState.navOpen}>
+          <Show when={header.navOpen}>
             <Navigation />
           </Show>
         </div>

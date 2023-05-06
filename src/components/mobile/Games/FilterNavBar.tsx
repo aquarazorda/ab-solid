@@ -1,6 +1,6 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { For } from "solid-js";
 import { A } from "solid-start";
+import { useLanguage } from "~/utils/language";
 
 export type FilterNavItem = {
   type: string;
@@ -12,7 +12,7 @@ export type FilterNavItem = {
 };
 
 export const FilterNavBar = (props: { navItems?: { list: FilterNavItem[] } }) => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div

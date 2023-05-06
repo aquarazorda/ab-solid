@@ -1,8 +1,8 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { A } from "solid-start";
+import { useLanguage } from "~/utils/language";
 
 export const FooterPhones = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <>

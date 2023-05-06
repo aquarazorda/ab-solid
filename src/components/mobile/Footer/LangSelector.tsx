@@ -1,19 +1,13 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { For, Show, createSignal } from "solid-js";
 import { useConfig } from "~/config";
 import clickOutside from "~/utils/directives/clickOutside";
-import { Langs, changeLang } from "~/utils/language";
+import { Lang, useLanguage } from "~/utils/language";
 
 export const LangSelector = () => {
   const [dropdownIsOpen, setDropdownIsOpen] = createSignal(false);
   const { domain } = useConfig();
-  const [, { locale, add }] = useI18n();
+  const [, { locale, setLanguage }] = useLanguage();
   false && clickOutside;
-
-  const onLangChange = (lang: Langs) => {
-    changeLang(lang, { locale, add });
-    setDropdownIsOpen(false);
-  };
 
   return (
     <div
@@ -50,7 +44,7 @@ export const LangSelector = () => {
           {(item) => (
             <Show when={item.value !== locale()}>
               <div
-                onClick={() => onLangChange(item.value)}
+                onClick={() => setLanguage(item.value)}
                 class="_s_aitem-display-b _s_display-n _cs_child"
               >
                 <div class="_none-1 _s_p-3 _s_flex _s_flex-a-center _s_bd-primary-7 _s_bw-1 _s_bd-solid">
@@ -66,7 +60,7 @@ export const LangSelector = () => {
 };
 
 type LangItem = {
-  value: Langs;
+  value: Lang;
   label: string;
   isActive: boolean;
 };

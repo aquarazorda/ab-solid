@@ -1,11 +1,11 @@
 import { GameProvider, GamesList, Game } from "~/types/game";
 import { createStaticResource } from "./static";
 import { match } from "ts-pattern";
-import { createCoreApiQuery, createCreateCoreApiFetch } from "./coreapi/utils";
-import { user } from "~/states/user";
-import { useI18n } from "@solid-primitives/i18n";
+import { createCreateCoreApiFetch } from "./coreapi/utils";
+import { useLanguage } from "~/utils/language";
 import { useConfig } from "~/config";
 import { checkResponse } from "./common";
+import { useUser } from "~/states/user";
 
 export const getAllGamesData = () => {
   const [allGamesData] = createStaticResource<{ list: GamesList }>("allGamesDataMobile");
@@ -13,8 +13,9 @@ export const getAllGamesData = () => {
 };
 
 export const generateGameUrl = async (game: Game, provider: GameProvider) => {
-  const [, { locale }] = useI18n();
+  const [, { locale }] = useLanguage();
   const { isMobile } = useConfig();
+  const [user, { logOut }] = useUser();
 
   const tokenRes = await createCreateCoreApiFetch("getServiceAuthToken", {
     providerID: provider.pid,
@@ -46,7 +47,7 @@ export const generateGameUrl = async (game: Game, provider: GameProvider) => {
       "X-Requested-With": "true",
     },
   })
-    .then(checkResponse)
+    .then(checkResponse(logOut))
     .then((res: any) => res?.data?.url);
 
   return gameUrl;

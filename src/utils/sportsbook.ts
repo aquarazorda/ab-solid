@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { createScriptLoader } from "@solid-primitives/script-loader";
 import { createSignal, onMount } from "solid-js";
 import { useConfig } from "~/config";
@@ -6,7 +6,7 @@ import { environment } from "~/types/singular";
 
 export const getSportsbookConfig = () => {
   const { domain, isMobile } = useConfig();
-  const [, { locale }] = useI18n();
+  const [, { locale }] = useLanguage();
   const { mobileUrl, desktopUrl } = environment[domain];
   const configUrl = isMobile ? mobileUrl : desktopUrl;
   const defaultUrl = "/home/wrapper/dashboard?activeSportId=1";

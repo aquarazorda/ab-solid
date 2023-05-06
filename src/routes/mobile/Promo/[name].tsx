@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { useParams } from "solid-start";
 import { useConfig } from "~/config";
 import withHeaderHeight from "~/utils/directives/withHeaderHeight";
@@ -8,7 +8,7 @@ false && withHeaderHeight;
 export default function PromoMobile() {
   const params = useParams();
   const { isMobile } = useConfig();
-  const [, { locale }] = useI18n();
+  const [, { locale }] = useLanguage();
 
   return (
     <iframe

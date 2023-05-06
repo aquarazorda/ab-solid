@@ -1,8 +1,8 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { For, Show } from "solid-js";
 import { useSearchParams } from "solid-start";
 import { SlotsFilter } from "~/types/slots";
 import MobileSearchBox from "./SearchBox";
+import { useLanguage } from "~/utils/language";
 
 type Props = {
   categories: SlotsFilter[];
@@ -10,7 +10,7 @@ type Props = {
 
 const SlotsCategoryNavigation = (props: Props) => {
   const [search, setSearchParams] = useSearchParams<{ category: string }>();
-  const [, { locale }] = useI18n();
+  const [, { locale }] = useLanguage();
 
   const onClick = (id: number) => {
     setSearchParams({ category: search.category === String(id) ? "" : String(id) });

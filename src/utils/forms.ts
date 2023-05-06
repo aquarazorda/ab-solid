@@ -14,6 +14,7 @@ import {
 } from "@modular-forms/solid";
 import { createMemo } from "solid-js";
 import { P, isMatching } from "ts-pattern";
+import { Prettify } from "~/types/utils";
 
 export type FormValuesPattern<T extends object> = {
   [key in keyof T]: Array<{
@@ -22,10 +23,15 @@ export type FormValuesPattern<T extends object> = {
   }>;
 };
 
-export type FormValues<T extends FormValuesPattern<any>> = Record<
-  keyof T,
-  P.infer<T[keyof T][number]["pattern"]>
->;
+type UnionFromPatternArray<T extends Array<{ pattern: P.Pattern<unknown> }>> = T extends Array<{
+  pattern: infer R;
+}>
+  ? P.infer<R>
+  : never;
+
+export type FormValues<T extends FormValuesPattern<any>> = {
+  [key in keyof T]: UnionFromPatternArray<T[key]>;
+};
 
 type FormOptions = Partial<{
   validateOn: ValidationMode;
@@ -55,7 +61,7 @@ export const createForm = <T extends FormValuesPattern<any>>(
     validate: validateForm(pattern),
   };
 
-  const form = cf<FormValues<T>>(options);
+  const form = cf<Prettify<FormValues<T>>>(options);
   const values = createMemo(() => getValues(form));
 
   return {

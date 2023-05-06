@@ -1,25 +1,20 @@
 // @refresh reload
-import { Suspense, createSignal, onMount } from "solid-js";
+import { Suspense } from "solid-js";
 import { Body, ErrorBoundary, Head, Html, Link, Meta, Scripts, Title } from "solid-start";
 import { App } from "./App";
 import { ConfigProvider, useConfig } from "./config";
-import { I18nContext, createI18nContext } from "@solid-primitives/i18n";
-import { Langs } from "./utils/language";
 import "./root.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/solid-query";
-import { cookies } from "./states/cookie";
-
-export const [defaultLang, setDefaultLang] = createSignal<Langs>();
-
-const queryClient = new QueryClient();
+import { createUserProvider } from "./states/user";
+import { createHeaderProvider } from "./states/header";
+import { createLanguageProvider } from "./utils/language";
 
 export default function Root() {
-  const i18nContext = createI18nContext();
+  const LanguageProvider = createLanguageProvider();
+  const UserProvider = createUserProvider();
+  const HeaderProvider = createHeaderProvider();
   const { staticPath } = useConfig();
-
-  onMount(() => {
-    setDefaultLang(cookies.get().lang || "ka");
-  });
+  const queryClient = new QueryClient();
 
   return (
     <Html lang="en">
@@ -42,11 +37,15 @@ export default function Root() {
         <Suspense>
           <ErrorBoundary>
             <ConfigProvider>
-              <I18nContext.Provider value={i18nContext}>
+              <LanguageProvider>
                 <QueryClientProvider client={queryClient}>
-                  <App />
+                  <UserProvider>
+                    <HeaderProvider>
+                      <App />
+                    </HeaderProvider>
+                  </UserProvider>
                 </QueryClientProvider>
-              </I18nContext.Provider>
+              </LanguageProvider>
             </ConfigProvider>
           </ErrorBoundary>
         </Suspense>

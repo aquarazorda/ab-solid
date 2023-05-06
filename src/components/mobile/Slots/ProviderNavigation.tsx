@@ -1,7 +1,7 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { For, Show } from "solid-js";
 import { A, useParams } from "solid-start";
-import { isAuthenticated } from "~/states/user";
+import { useUser } from "~/states/user";
 import { SlotsProvider } from "~/types/slots";
 
 type Props = {
@@ -10,7 +10,8 @@ type Props = {
 
 const ProviderNavigation = (props: Props) => {
   const params = useParams<{ provider: string }>();
-  const [t, { locale }] = useI18n();
+  const [t, { locale }] = useLanguage();
+  const [, { isAuthenticated }] = useUser();
 
   return (
     <div class="_s_flex _s_overflow-x-scroll _s_pl-2 _s_pr-5 _s_scroll-0 _s_pt-2">

@@ -1,12 +1,15 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { For } from "solid-js";
+import { useLanguage } from "~/utils/language";
 import { createStaticUrl } from "~/utils/string";
 
 export const FooterLinks = () => {
-  const [, { locale }] = useI18n();
+  const [, { locale }] = useLanguage();
 
   return (
-    <div class="_s_flex _s_color-bg-primary-6 _s_size-w-percent--25 _s_overflow-x-scroll _s_scroll-0 _s_bw-1 _s_bt-solid _s_bt-primary-7 _s_flex-a-center _s_p-5  ">
+    <div
+      class="_s_flex _s_color-bg-primary-6 _s_size-w-percent--25 _s_overflow-x-scroll _s_scroll-0 _s_bw-1 
+      _s_bt-solid _s_bt-primary-7 _s_flex-a-center _s_p-5  "
+    >
       <For each={footerLinks}>
         {(item) => (
           <a

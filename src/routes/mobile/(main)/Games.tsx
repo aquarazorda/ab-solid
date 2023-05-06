@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { A } from "@solidjs/router";
 import { For } from "solid-js";
 import { useConfig } from "~/config";
@@ -19,7 +19,7 @@ export const routeData = () => {
 
 export default function MobileGamesPage() {
   const { isAm } = useConfig();
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const openGame = useOpenGame();
   const games = isAm ? gameListTypesAm : gameListTypes;
 

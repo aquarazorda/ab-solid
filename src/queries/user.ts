@@ -1,59 +1,52 @@
-import { setUserData, user } from "~/states/user";
-import { createCoreApiQuery } from "./coreapi/utils";
-import { createMemo } from "solid-js";
+import { useUser } from "~/states/user";
+import { createCoreApiFetchFn, createCoreApiQuery } from "./coreapi/utils";
+import { coreApiActionMap } from "./coreapi";
+import { User } from "~/types/user";
 
-// export const createLoginMutation = () => {
-//   const mutation = createCoreApiMutation('logIn', {
-//     onSuccess
-//   })
-// };
+export const isSessionActive = async (userID?: number) => {
+  if (!userID) return false;
 
-export const isSessionActive = () => {
-  const query = createCoreApiQuery(
-    "sessionActive",
-    () => ({
-      userID: user.UserID,
-    }),
-    {
-      staleTime: 1000 * 60 * 5,
-      onSuccess: (data) => {
-        if (data?.StatusCode === 10) {
-          return true;
-        }
+  const actionData = coreApiActionMap(() => undefined)["sessionActive"];
+  const data = await createCoreApiFetchFn<"sessionActive">(actionData)({
+    userID,
+  });
 
-        setUserData({});
-        return false;
-      },
-    }
-  );
+  if (data?.StatusCode === 10) {
+    // return await createUserData(userID, setUserData);
+    return true;
+  }
 
-  const isActive = createMemo(() => query.data && query.data.StatusCode === 10);
-
-  return isActive;
+  return false;
 };
 
-export const createUserData = () =>
-  createCoreApiQuery(
-    "getUserInfo",
-    () => ({
-      userID: user.UserID,
-    }),
-    {
-      staleTime: 1000 * 60 * 5,
-      onSuccess: (data) => {
-        if (data?.StatusCode === 10) {
-          setUserData(data);
-          return true;
-        }
+export const createUserData = async (userID?: number, setUser?: (data?: User) => void) => {
+  if (!userID || !setUser) return false;
 
-        setUserData({});
-        return false;
-      },
-    }
-  );
+  const actionData = coreApiActionMap(() => undefined)["getUserInfo"];
 
-export const getUserBalance = () =>
-  createCoreApiQuery("getBalance", () => ({
+  const data = await createCoreApiFetchFn(actionData)({
+    userID,
+  });
+
+  if (data?.StatusCode === 10) {
+    setUser(data);
+    return true;
+  }
+
+  return false;
+};
+
+export const getUserBalance = () => {
+  const [userAcc] = useUser();
+  const user = userAcc();
+
+  if (!user)
+    return {
+      BalanceAmount: -1,
+    };
+
+  return createCoreApiQuery("getBalance", () => ({
     currencyID: user.PreferredCurrencyID,
     userID: user.UserID,
   }));
+};

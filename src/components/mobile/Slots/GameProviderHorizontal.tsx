@@ -1,9 +1,10 @@
 import { For, Show, createMemo } from "solid-js";
-import { useI18n } from "@solid-primitives/i18n";
+
 import { ProviderGameData, SlotsProvider } from "~/types/slots";
 import MobileGameWidgetItem from "./GameWidgetItem";
 import { A, useNavigate } from "solid-start";
 import { VisibilityProps, useVisibility } from "~/utils/directives/visibility";
+import { useLanguage } from "~/utils/language";
 
 type Props = {
   title?: string;
@@ -13,7 +14,7 @@ type Props = {
 
 const MobileGameProviderHorizontal = (props: Props) => {
   let ref: HTMLDivElement | undefined;
-  const [t, { locale }] = useI18n();
+  const [t, { locale }] = useLanguage();
   const navigate = useNavigate();
 
   const currentProvider = props.providers?.find(

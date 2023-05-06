@@ -1,14 +1,20 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { JSX, Show } from "solid-js";
+import { useLanguage } from "~/utils/language";
 
 type ContactItemProps = {
   children: JSX.Element;
   icon: string;
-  label: Element;
+  label: string;
 };
 const ContactItem = (props: ContactItemProps) => (
-  <div class="_s_col-lg-3 _s_flex _s_lg-size-w-max-percent--6 _s_mb-5 _s_md-size-w-max-percent--12 _s_size-w-max-percent--25 _s_size-w-percent--25">
-    <div class="_s_col-lg-3 _s_flex _s_lg-size-w-max-percent--6 _s_mb-5 _s_md-size-w-max-percent--12 _s_size-w-max-percent--25 _s_size-w-percent--25">
+  <div
+    class="_s_col-lg-3 _s_flex _s_lg-size-w-max-percent--6 _s_mb-5 _s_md-size-w-max-percent--12 
+    _s_size-w-max-percent--25 _s_size-w-percent--25"
+  >
+    <div
+      class="_s_col-lg-3 _s_flex _s_lg-size-w-max-percent--6 _s_mb-5 _s_md-size-w-max-percent--12 
+      _s_size-w-max-percent--25 _s_size-w-percent--25"
+    >
       <span
         class={`_s_adj-${props.icon} _s_b-radius-full _s_color-bg-primary-7 _s_icon _s_label-sm _s_ml-none _s_mr-2 _s_p-3`}
       />
@@ -21,7 +27,7 @@ const ContactItem = (props: ContactItemProps) => (
 );
 
 export const CashdeskContact = (props: { withTitle?: boolean }) => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   return (
     <>
       <Show when={props.withTitle}>

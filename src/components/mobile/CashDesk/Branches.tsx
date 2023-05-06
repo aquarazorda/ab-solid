@@ -1,11 +1,11 @@
-import { useI18n } from "@solid-primitives/i18n";
-import { For, createEffect, createMemo } from "solid-js";
+import { For, createMemo } from "solid-js";
 import { useRouteData, useSearchParams } from "solid-start";
 import { CashdeskMobileRouteData } from "~/routes/mobile/(footer)/cashDesk";
 import { BranchAddress } from "./data";
+import { useLanguage } from "~/utils/language";
 
 const Branch = (props: BranchAddress) => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div

@@ -1,23 +1,20 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { Show, Suspense } from "solid-js";
 import { getUserBalance } from "~/queries/user";
-import {
-  mobileHeaderState,
-  setMobileHeaderState,
-  setShowBalance,
-  toggleAccountLayer,
-} from "~/states/header";
 import { formatBalance, getCurrencySymbol } from "~/utils/currency";
 import { Radio } from "../../Form/Checkbox";
 import { AccountLayerMenu } from "./Menu";
-import { user } from "~/states/user";
 import { openDepositPopup } from "~/components/Popups/DepositPopup";
+import { useUser } from "~/states/user";
+import { useHeader } from "~/states/header";
+import { useLanguage } from "~/utils/language";
 
 export const AccountLayerDropdownHead = () => {
+  const [, { toggleAccountLayer }] = useHeader();
+
   return (
     <div
       class="_s_position-relative _s_apollo-data-theme-header--user"
-      onClick={toggleAccountLayer}
+      onClick={() => toggleAccountLayer()}
     >
       <span
         id="acc-layer-dropdown"
@@ -35,33 +32,38 @@ export const AccountLayerDropdownHead = () => {
   );
 };
 
-export const AccountLayerDropdown = () => (
-  <div>
-    <div
-      class="_s_position-absolute _s_position-r-percent--0 _s_position-t-px--15 _s_z-5 
-    _s_display-b _s_color-rgba-bg-primary-0-0--7 _s_size-w-percent--25 _x_md-size-w-px--100"
-      style={{ height: "calc(100vh - 60px)" }}
-      onClick={() => setMobileHeaderState("accountLayerOpen", false)}
-    />
-    <div
-      id="accountDropDown"
-      class="_s_b-radius-sm _s_position-absolute _s_position-r-percent--0 
-  _s_z-5 _s_size-w-px--80 _s_position-t-px--15 _s_display-b _s_apollo-data-theme-header--layer"
-    >
+export const AccountLayerDropdown = () => {
+  const [, { toggleAccountLayer }] = useHeader();
+  return (
+    <div>
       <div
-        class="_s_flex _s_flex-d-column _s_pb-10 _s_position-relative _s_size-h-max-percent--25 
-    _s_color-bg-primary-5"
+        class="_s_position-absolute _s_position-r-percent--0 _s_position-t-px--15 _s_z-5 
+  _s_display-b _s_color-rgba-bg-primary-0-0--7 _s_size-w-percent--25 _x_md-size-w-px--100"
+        style={{ height: "calc(100vh - 60px)" }}
+        onClick={() => toggleAccountLayer(false)}
+      />
+      <div
+        id="accountDropDown"
+        class="_s_b-radius-sm _s_position-absolute _s_position-r-percent--0 
+_s_z-5 _s_size-w-px--80 _s_position-t-px--15 _s_display-b _s_apollo-data-theme-header--layer"
       >
-        <BalanceBox />
-        <AccountLayerMenu />
+        <div
+          class="_s_flex _s_flex-d-column _s_pb-10 _s_position-relative _s_size-h-max-percent--25 
+  _s_color-bg-primary-5"
+        >
+          <BalanceBox />
+          <AccountLayerMenu />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 const BalanceBox = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const balance = getUserBalance();
+  const [user] = useUser();
+  const [header, { setShowBalance }] = useHeader();
 
   return (
     <div>
@@ -115,10 +117,7 @@ const BalanceBox = () => {
           {t("_lang_show_balance")}
         </span>
         <div class="_s_a-color _s_a-p">
-          <Radio
-            onClick={() => setShowBalance(!mobileHeaderState.showBalance)}
-            value={mobileHeaderState.showBalance}
-          />
+          <Radio onClick={() => setShowBalance(!header.showBalance)} value={header.showBalance} />
         </div>
       </div>
     </div>

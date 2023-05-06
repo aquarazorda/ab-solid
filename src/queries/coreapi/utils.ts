@@ -11,14 +11,18 @@ import {
 import { isMatching } from "ts-pattern";
 import { CreateMutationOptions, createMutation, createQuery } from "@tanstack/solid-query";
 import { checkResponse } from "../common";
+import { useUser } from "~/states/user";
 
-const createCoreApiFetchFn = <T extends CoreApiAction>(actionData: CoreApiActionData<T>) => {
+export const createCoreApiFetchFn = <T extends CoreApiAction>(
+  actionData: CoreApiActionData<T>,
+  logOut?: () => void
+) => {
   const { coreApiPath } = useConfig();
 
   return async (data: CoreApiDataType<T>) => {
     if (!isMatching(actionData.schema, data)) {
       console.error("CoreApiFetchFn: Schema mismatch", actionData.default.req, data);
-      return undefined;
+      return {};
     }
 
     const formData = new URLSearchParams();
@@ -37,7 +41,7 @@ const createCoreApiFetchFn = <T extends CoreApiAction>(actionData: CoreApiAction
         "Content-Type": "application/x-www-form-urlencoded",
         "X-Requested-With": "XMLHttpRequest",
       },
-    }).then(checkResponse<CoreApiResponseType<T>>);
+    }).then(checkResponse(logOut)<CoreApiResponseType<T>>);
   };
 };
 
@@ -46,7 +50,8 @@ export const createCoreApiQuery = <T extends CoreApiQuery>(
   data: () => CoreApiDataType<T>,
   options?: CoreApiQueryOptions<T>
 ) => {
-  const actionData: CoreApiActionData<T> = coreApiActionMap[action];
+  const [user] = useUser();
+  const actionData: CoreApiActionData<T> = coreApiActionMap(user)[action];
   const queryFn = createCoreApiFetchFn(actionData);
 
   return createQuery<
@@ -60,6 +65,7 @@ export const createCoreApiQuery = <T extends CoreApiQuery>(
     // eslint-disable-next-line
     // @ts-ignore
     refetchOnWindowFocus: false,
+    retry: false,
     staleTime: 1000 * 60 * 5,
     ...(actionData?.queryOptions ? actionData.queryOptions : {}),
     ...options,
@@ -80,7 +86,8 @@ export const createCoreApiMutation = <T extends CoreApiAction>(
       >
     | undefined
 ) => {
-  const actionData = coreApiActionMap[action];
+  const [user] = useUser();
+  const actionData = coreApiActionMap(user)[action];
   const mutationFn = createCoreApiFetchFn(actionData);
 
   const { mutateAsync } = createMutation(mutationFn, options);
@@ -92,6 +99,7 @@ export const createCreateCoreApiFetch = <T extends CoreApiAction>(
   action: T,
   data: CoreApiDataType<T>
 ) => {
-  const actionData = coreApiActionMap[action];
+  const [user] = useUser();
+  const actionData = coreApiActionMap(user)[action];
   return createCoreApiFetchFn(actionData)(data);
 };

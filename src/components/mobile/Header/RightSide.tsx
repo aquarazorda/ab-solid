@@ -1,12 +1,12 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { Match, Switch } from "solid-js";
-import { A, useLocation } from "solid-start";
-import { isAuthenticated } from "~/states/user";
+import { A, useLocation, useMatch } from "solid-start";
 import { useNavigateBack } from "~/utils/window";
 import { AccountLayer } from "./AccountLayer";
+import { useUser } from "~/states/user";
+import { useLanguage } from "~/utils/language";
 
 const LoginButton = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div class="_s_position-relative _s_z-1 _s_pl-7 _s_pl-5 _s_pr-5 _s_flex _s_col _s_col-4 _s_flex-j-end">
@@ -33,10 +33,12 @@ const CloseButton = () => {
 
 export const RightSideHeader = () => {
   const location = useLocation();
+  const [, { isAuthenticated }] = useUser();
+  const match = useMatch(() => "/mobile/Login");
 
   return (
     <Switch fallback={<LoginButton />}>
-      <Match when={location.pathname === "/mobile/Login"}>
+      <Match when={match()}>
         <CloseButton />
       </Match>
       <Match when={isAuthenticated()}>

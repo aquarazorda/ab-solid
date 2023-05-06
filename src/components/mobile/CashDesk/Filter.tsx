@@ -1,44 +1,49 @@
-import { Field, Form, createForm, getValues } from "@modular-forms/solid";
-import { useI18n } from "@solid-primitives/i18n";
+import { Field, Form } from "@modular-forms/solid";
 import { cityList } from "./data";
 import { Dropdown } from "../Form/Dropdown";
 import { BigCheckbox } from "../Form/Checkbox";
 import { createEffect, createMemo } from "solid-js";
 import { useSearchParams } from "solid-start";
+import { useLanguage } from "~/utils/language";
+import { createForm } from "~/utils/forms";
+import { P } from "ts-pattern";
 
 type FilterForm = {
   city: string;
   alwaysOpen: boolean;
 };
 
+const formPattern = {
+  city: [{ pattern: P.string }],
+  alwaysOpen: [{ pattern: P.boolean }],
+};
+
+// TODO
 export const CashdeskFilter = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const [, setSearchParams] = useSearchParams();
-  const filterForm = createForm<FilterForm>({
-    initialValues: {
-      city: "1",
-      alwaysOpen: false,
-    },
+  const filterForm = createForm(formPattern, {
+    city: "1",
+    alwaysOpen: false,
   });
-  const formValues = createMemo(() => getValues(filterForm));
 
   createEffect(() => {
-    setSearchParams(formValues());
+    setSearchParams(filterForm.values());
   });
 
   return (
     <>
       <span class="_s_label _s_label-md _s_label-t-u _s_mb-5">{t("_lang_branches")}</span>
       <Form
-        of={filterForm}
+        of={filterForm.form}
         class="_s_b-radius-md _s_color-bg-primary-6 _s_flex _s_flex-a-center _s_flex-wrap _s_mb-none 
       _s_md-mb-5 _s_pb-5 _s_pl-5 _s_pr-5 _s_pt-5"
       >
-        <Field of={filterForm} name="city">
-          {(field) => (
+        <Field of={filterForm.form} name="city">
+          {(field, props) => (
             <div class="_s_size-w-percent--25 _s_md-size-w-auto _s_position-relative">
               <Dropdown
-                {...field.props}
+                {...props}
                 value={field.value}
                 options={cityList}
                 class="_s_display-b _s_position-relative _s_size-w-percent--25"
@@ -46,10 +51,10 @@ export const CashdeskFilter = () => {
             </div>
           )}
         </Field>
-        <Field of={filterForm} name="alwaysOpen">
+        <Field of={filterForm.form} name="alwaysOpen">
           {(field) => (
             <div class="_s_flex _s_flex-a-center _s_mr-3 _s_md-mt-none _s_mt-5">
-              <BigCheckbox {...field} checked={field.value} form={filterForm} />
+              <BigCheckbox {...field} checked={field.value} form={filterForm.form} />
             </div>
           )}
         </Field>

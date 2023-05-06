@@ -13,11 +13,7 @@ export default defineConfig({
     mkcert(),
     solid({
       ssr: true,
-      adapter: vercel({
-        prerender: {
-          expiration: 60,
-        },
-      }),
+      adapter: vercel(),
     }),
   ],
 });

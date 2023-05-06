@@ -1,8 +1,8 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { Show } from "solid-js";
 import { SlotsGame } from "~/types/slots";
 import { VisibilityProps, useVisibility } from "~/utils/directives/visibility";
 import { useOpenGame } from "~/utils/games";
+import { useLanguage } from "~/utils/language";
 
 type Props = {
   game: SlotsGame;
@@ -12,7 +12,7 @@ type Props = {
 
 const MobileGameWidgetItem = (props: Props) => {
   let ref: HTMLDivElement | undefined;
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const openGame = useOpenGame();
 
   if (props.shouldObserve) {

@@ -1,16 +1,16 @@
 import { CreateQueryOptions } from "@tanstack/solid-query";
+import { Accessor } from "solid-js";
 import { P } from "ts-pattern";
-import { user } from "~/states/user";
-import { userSchema } from "~/types/user";
+import { User, userSchema } from "~/types/user";
 
-export type CoreApiAction = keyof typeof coreApiActionMap;
-export type CoreApiActionData<T extends CoreApiAction> = (typeof coreApiActionMap)[T] &
+export type CoreApiAction = keyof ReturnType<typeof coreApiActionMap>;
+export type CoreApiActionData<T extends CoreApiAction> = ReturnType<typeof coreApiActionMap>[T] &
   ActionMapItem;
 export type CoreApiDataType<T extends CoreApiAction> = P.infer<
-  (typeof coreApiActionMap)[T]["schema"]
+  ReturnType<typeof coreApiActionMap>[T]["schema"]
 >;
 export type CoreApiResponseType<T extends CoreApiAction> = P.infer<
-  (typeof coreApiActionMap)[T]["responseSchema"]
+  ReturnType<typeof coreApiActionMap>[T]["responseSchema"]
 >;
 
 export type HasQueryEnabled<T> = {
@@ -22,7 +22,7 @@ export type HasQueryEnabled<T> = {
     : never;
 }[keyof T];
 
-export type CoreApiQuery = HasQueryEnabled<typeof coreApiActionMap>;
+export type CoreApiQuery = HasQueryEnabled<ReturnType<typeof coreApiActionMap>>;
 export type CoreApiQueryData = CoreApiActionData<CoreApiQuery>;
 export type CoreApiQueryOptions<T extends CoreApiQuery> = Omit<
   CreateQueryOptions<
@@ -54,103 +54,100 @@ type CoreApiActionMap = {
   [key: string]: ActionMapItem;
 };
 
-export const coreApiActionMap = {
-  logIn: {
-    method: "POST",
-    path: "WebsiteService?",
-    schema: {
-      userIdentifier: P.string,
-      password: P.string,
+export const coreApiActionMap = (user: Accessor<User | undefined>) =>
+  ({
+    logIn: {
+      method: "POST",
+      path: "WebsiteService?",
+      schema: {
+        userIdentifier: P.string,
+        password: P.string,
+      },
+      responseSchema: {
+        StatusCode: P.number,
+        UserID: P.number,
+      },
+      default: {
+        req: "login",
+        otpDeliveryChannel: 2,
+      },
     },
-    responseSchema: {
-      StatusCode: P.number,
-      UserID: P.number,
+    logInOtp: {
+      method: "POST",
+      path: "WebsiteService?",
+      schema: {
+        userIdentifier: P.string,
+        otp: P.string,
+      },
+      responseSchema: {
+        StatusCode: P.number,
+      },
+      default: {
+        req: "loginOtp",
+        loginType: "2",
+      },
     },
-    default: {
-      req: "login",
-      otpDeliveryChannel: 2,
+    sessionActive: {
+      method: "POST",
+      path: "WebsiteService?",
+      schema: {
+        userID: P.number,
+      },
+      responseSchema: {
+        StatusCode: P.number,
+      },
+      default: {
+        req: "isSessionActive",
+      },
     },
-  },
-  logInOtp: {
-    method: "POST",
-    path: "WebsiteService?",
-    schema: {
-      userIdentifier: P.string,
-      otp: P.string,
+    getUserInfo: {
+      method: "POST",
+      path: "WebsiteService?",
+      schema: {
+        userID: P.number,
+      },
+      responseSchema: {
+        StatusCode: P.number,
+        ...userSchema,
+      },
+      default: {
+        req: "getUserInfo",
+      },
     },
-    responseSchema: {
-      StatusCode: P.number,
+    getBalance: {
+      method: "POST",
+      path: "WebsiteService?",
+      schema: {
+        userID: P.number,
+        currencyID: P.number,
+      },
+      responseSchema: {
+        StatusCode: P.number,
+        BalanceAmount: P.number,
+        BonusAmount: P.optional(P.number),
+        CurrencyID: P.number,
+        LockedAmount: P.optional(P.number),
+      },
+      default: {
+        isSingle: 0,
+        req: "getBalance",
+      },
+      queryKey: () => ["getBalance", user()?.UserID, user()?.PreferredCurrencyID],
+      enabled: () => !!user()?.UserID && !!user()?.PreferredCurrencyID,
     },
-    default: {
-      req: "loginOtp",
-      loginType: "2",
+    getServiceAuthToken: {
+      method: "POST",
+      path: "WebsiteService?",
+      schema: {
+        userID: P.number,
+        providerID: P.string,
+      },
+      responseSchema: {
+        StatusCode: P.number,
+        Token: P.string,
+      },
+      default: {
+        req: "getServiceAuthToken",
+      },
     },
-  },
-  sessionActive: {
-    method: "POST",
-    path: "WebsiteService?",
-    schema: {
-      userID: P.number,
-    },
-    responseSchema: {
-      StatusCode: P.number,
-    },
-    default: {
-      req: "isSessionActive",
-    },
-    queryKey: () => ["sessionActive", user.UserID],
-    enabled: () => !!user.UserID,
-  },
-  getUserInfo: {
-    method: "POST",
-    path: "WebsiteService?",
-    schema: {
-      userID: P.number,
-    },
-    responseSchema: {
-      StatusCode: P.number,
-      ...userSchema,
-    },
-    default: {
-      req: "getUserInfo",
-    },
-    queryKey: () => ["getUserInfo", user.UserID],
-    enabled: () => !!user.UserID,
-  },
-  getBalance: {
-    method: "POST",
-    path: "WebsiteService?",
-    schema: {
-      userID: P.number,
-      currencyID: P.number,
-    },
-    responseSchema: {
-      StatusCode: P.number,
-      BalanceAmount: P.number,
-      BonusAmount: P.optional(P.number),
-      CurrencyID: P.number,
-      LockedAmount: P.optional(P.number),
-    },
-    default: {
-      isSingle: 0,
-      req: "getBalance",
-    },
-    queryKey: () => ["getBalance", user.UserID, user.PreferredCurrencyID],
-    enabled: () => !!user.UserID && !!user.PreferredCurrencyID,
-  },
-  getServiceAuthToken: {
-    method: "POST",
-    path: "WebsiteService?",
-    schema: {
-      userID: P.number,
-      providerID: P.string,
-    },
-    responseSchema: {
-      StatusCode: P.number,
-      Token: P.string,
-    },
-    default: {
-      req: "getServiceAuthToken",
-    },
-  },
-} as const satisfies CoreApiActionMap;
+  } as const satisfies CoreApiActionMap);

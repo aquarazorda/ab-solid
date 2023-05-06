@@ -2,10 +2,12 @@ import { Show, Suspense } from "solid-js";
 import { createAuthProxyQuery } from "~/queries/webapi";
 import { SlotsGame } from "~/types/slots";
 import MobileGameProviderHorizontal from "./GameProviderHorizontal";
-import { isAuthenticated } from "~/states/user";
 import MobileGameWidgetLoader from "./GameWidgetLoader";
+import { useUser } from "~/states/user";
 
 export const SlotsMyCasino = () => {
+  const [, { isAuthenticated }] = useUser();
+
   const lastPlayed = createAuthProxyQuery<SlotsGame[]>({
     path: "apigwcomlazy/games/last-played",
     params: () => ({

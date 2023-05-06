@@ -1,4 +1,3 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { For, Show, Suspense, createEffect, createMemo, createSignal, on } from "solid-js";
 import { useParams, useRouteData, useSearchParams } from "solid-start";
 import { SlotsRouteData, SlotsRouteSearchParams } from "~/routes/mobile/(main)/Slots";
@@ -8,13 +7,14 @@ import { createStore } from "solid-js/store";
 import { getFilteredGames } from "~/queries/webapi/getFilteredSlotGames";
 import MobileGameItemLoader from "./GameItemLoader";
 import { GameNotFound } from "./NotFound";
+import { useLanguage } from "~/utils/language";
 
 type Props = {
   initialData?: SearchGameData;
 };
 
 const MobileSlotsGamePage = (props: Props) => {
-  const [, { locale }] = useI18n();
+  const [, { locale }] = useLanguage();
   const routeData = useRouteData<SlotsRouteData>();
   const params = useParams<{ provider?: string }>();
   const [loadNumber, setLoadNumber] = createSignal(0);

@@ -1,10 +1,10 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { Show, createSignal, onMount } from "solid-js";
 import { useSearchParams } from "solid-start";
 import { debounce } from "@solid-primitives/scheduled";
 
 const MobileSearchBox = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const [search, setSearch] = useSearchParams<{ text: string }>();
   const [isOpen, setIsOpen] = createSignal(false);
 

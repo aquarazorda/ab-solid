@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { For, Show } from "solid-js";
 import { useRouteData, useSearchParams } from "solid-start";
 import { createStaticResource } from "~/queries/static";
@@ -30,7 +30,7 @@ export const routeData = () => {
 };
 
 const Rule = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const { rules, rule } = useRouteData<typeof routeData>();
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -62,7 +62,7 @@ const Rule = () => {
 };
 
 export default function RulesMobile() {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   const [searchParams, setSearchParams] = useSearchParams();
   const { rules } = useRouteData<typeof routeData>();
 

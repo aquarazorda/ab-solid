@@ -1,7 +1,7 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 
 export const GameNotFound = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div class="_s_flex _s_flex-d-column _s_flex-a-center _s_pt-10 _s_pb-10 _s_mt-6">

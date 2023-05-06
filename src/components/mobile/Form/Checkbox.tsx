@@ -1,11 +1,11 @@
 import { splitProps } from "solid-js";
 import { CheckboxProps } from "./types";
-import { useI18n } from "@solid-primitives/i18n";
 import { setValue } from "@modular-forms/solid";
+import { useLanguage } from "~/utils/language";
 
 export const BigCheckbox = (props: CheckboxProps) => {
   const [, inputProps] = splitProps(props, ["form", "value", "label", "error"]);
-  const [t] = useI18n();
+  const [t] = useLanguage();
 
   return (
     <div class="_s_flex _s_gap-">

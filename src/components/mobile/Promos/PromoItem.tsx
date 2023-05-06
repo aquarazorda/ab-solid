@@ -1,8 +1,8 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { Show, createMemo } from "solid-js";
 import { A } from "solid-start";
 import { match } from "ts-pattern";
 import { Promotion } from "~/types/promos";
+import { useLanguage } from "~/utils/language";
 import { createStaticUrl } from "~/utils/string";
 type PromoItemProps = {
   promo: Promotion;
@@ -11,7 +11,7 @@ type PromoItemProps = {
 };
 
 export const PromoItem = (props: PromoItemProps) => {
-  const [t, { locale }] = useI18n();
+  const [t, { locale }] = useLanguage();
 
   const text = createMemo(() =>
     match(locale())

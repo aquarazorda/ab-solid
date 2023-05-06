@@ -1,5 +1,4 @@
 import { Show } from "solid-js";
-import { useI18n } from "@solid-primitives/i18n";
 import { FooterDescription } from "./Description";
 import { LangSelector } from "./LangSelector";
 import { FooterLinks } from "./Links";
@@ -8,13 +7,14 @@ import { FooterPhones } from "./Phones";
 import { FooterSocial } from "./Social";
 import { scrollToTop } from "~/utils/window";
 import { createStore } from "solid-js/store";
+import { useLanguage } from "~/utils/language";
 
 export const [footerState, setFooterState] = createStore({
   hidden: false,
 });
 
 export const Footer = () => {
-  const [t] = useI18n();
+  const [t] = useLanguage();
   return (
     <Show when={!footerState.hidden}>
       <div class="_s_color-bg-primary-5">

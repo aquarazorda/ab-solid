@@ -1,4 +1,3 @@
-import { useI18n } from "@solid-primitives/i18n";
 import { Show, createMemo } from "solid-js";
 import { A, useRouteData } from "solid-start";
 import { AviatorWidget } from "~/components/mobile/Sliders/Aviator";
@@ -7,7 +6,8 @@ import { WidgetSlider } from "~/components/mobile/Sliders/WidgetSlider";
 import { generateWidgetData } from "~/utils/games";
 import { getAllSliders } from "~/queries/sliders";
 import { getAllGamesData } from "~/queries/games";
-import { isAuthenticated } from "~/states/user";
+import { useUser } from "~/states/user";
+import { useLanguage } from "~/utils/language";
 
 export type HomeMobileData = typeof routeData;
 
@@ -19,7 +19,8 @@ export const routeData = () => {
 };
 
 export default function Index() {
-  const [t] = useI18n();
+  const [t] = useLanguage();
+  const [, { isAuthenticated }] = useUser();
   const { allGamesData } = useRouteData<HomeMobileData>();
   const games = createMemo(() => generateWidgetData(allGamesData()?.list || []));
 

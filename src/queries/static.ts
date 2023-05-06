@@ -1,4 +1,4 @@
-import { useI18n } from "@solid-primitives/i18n";
+import { useLanguage } from "~/utils/language";
 import { P, match } from "ts-pattern";
 import { useConfig } from "~/config";
 import { capitalizeFirstLetter } from "~/utils/string";
@@ -12,7 +12,7 @@ type Proxy = Partial<{
 const generatePath = (fileName?: string, proxy?: Proxy) => {
   if (!fileName) return undefined;
   const { staticPath } = useConfig();
-  const [, { locale }] = useI18n();
+  const [, { locale }] = useLanguage();
 
   const fName: string = match(proxy)
     .with({ lang: true }, () => {

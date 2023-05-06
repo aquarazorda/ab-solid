@@ -2,12 +2,13 @@ import { createQuery } from "@tanstack/solid-query";
 import { useConfig } from "~/config";
 import { objToQueryString } from "~/utils/string";
 import { checkResponse } from "./common";
-import { isAuthenticated, user } from "~/states/user";
+import { useUser } from "~/states/user";
 
 const createWebApiFetchFn =
   (isAuthProxy: boolean) =>
   <T>(path: string, params?: () => object | undefined, post?: boolean) => {
     const { webApiPath, authProxyPath } = useConfig();
+    const [user, { logOut }] = useUser();
 
     return fetch(
       `${isAuthProxy ? authProxyPath : webApiPath}/${path}${
@@ -28,7 +29,7 @@ const createWebApiFetchFn =
         body: post ? JSON.stringify(params?.()) : undefined,
         credentials: isAuthProxy ? "include" : undefined,
       }
-    ).then(checkResponse<T>);
+    ).then(checkResponse(logOut)<T>);
   };
 
 type Props<T> = {
@@ -43,8 +44,10 @@ type Props<T> = {
 
 const webApiQuery =
   (isAuthProxy: boolean) =>
-  <T>(props: Props<T>) =>
-    createQuery<T>(
+  <T>(props: Props<T>) => {
+    const [, { isAuthenticated }] = useUser();
+
+    return createQuery<T>(
       () =>
         props.key
           ? ["webApi-", props.key()]
@@ -65,6 +68,7 @@ const webApiQuery =
         },
       }
     );
+  };
 
 export const createWebApiQuery = webApiQuery(false);
 export const createAuthProxyQuery = webApiQuery(true);
