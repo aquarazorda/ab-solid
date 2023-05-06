@@ -13,7 +13,7 @@ export default defineConfig({
     mkcert(),
     solid({
       ssr: true,
-      adapter: vercel(),
+      // adapter: vercel(),
     }),
   ],
 });

@@ -3,7 +3,7 @@ import { A, useRouteData } from "solid-start";
 import { MobileRootData } from "~/routes/mobile";
 import { useLanguage } from "~/utils/language";
 
-export const Navigation = () => {
+const Navigation = () => {
   const [t] = useLanguage();
   const { navList } = useRouteData<MobileRootData>();
 
@@ -41,3 +41,5 @@ export const Navigation = () => {
     </div>
   );
 };
+
+export default Navigation;

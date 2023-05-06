@@ -1,7 +1,6 @@
-import { Match, Switch } from "solid-js";
-import { A, useLocation, useMatch } from "solid-start";
+import { Match, Switch, lazy } from "solid-js";
+import { A, useMatch } from "solid-start";
 import { useNavigateBack } from "~/utils/window";
-import { AccountLayer } from "./AccountLayer";
 import { useUser } from "~/states/user";
 import { useLanguage } from "~/utils/language";
 
@@ -31,8 +30,9 @@ const CloseButton = () => {
   );
 };
 
+const AccountLayer = lazy(() => import("./AccountLayer"));
+
 export const RightSideHeader = () => {
-  const location = useLocation();
   const [, { isAuthenticated }] = useUser();
   const match = useMatch(() => "/mobile/Login");
 

@@ -47,3 +47,5 @@ export const AccountLayer = () => {
     </div>
   );
 };
+
+export default AccountLayer;
