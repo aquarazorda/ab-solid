@@ -1,4 +1,4 @@
-import { Show, createMemo } from "solid-js";
+import { Show, Suspense, createMemo } from "solid-js";
 import { A, useRouteData } from "solid-start";
 import { AviatorWidget } from "~/components/mobile/Sliders/Aviator";
 import { MainSlider, homePageSliderFilterFn } from "~/components/mobile/Sliders/HomeSlider";
@@ -44,12 +44,14 @@ export default function Index() {
         </Show>
       </div>
       <div class="_s_mt-5">
-        <Show when={games()}>
-          <WidgetSlider title="__lang__slots" url="Slots" games={games().slots} />
-          <WidgetSlider title="__lang__casino" url="Casino" games={games().casino} />
-          <WidgetSlider title="_lang_id_poker_and_games" url="Games" games={games().poker} />
-          <AviatorWidget />
-        </Show>
+        <Suspense>
+          <Show when={games()}>
+            <WidgetSlider title="__lang__slots" url="Slots" games={games().slots} />
+            <WidgetSlider title="__lang__casino" url="Casino" games={games().casino} />
+            <WidgetSlider title="_lang_id_poker_and_games" url="Games" games={games().poker} />
+            <AviatorWidget />
+          </Show>
+        </Suspense>
       </div>
     </div>
   );

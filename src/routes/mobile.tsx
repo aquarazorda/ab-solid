@@ -3,6 +3,7 @@ import { Footer } from "~/components/mobile/Footer";
 import { Header } from "~/components/mobile/Header";
 import { createStaticResource } from "~/queries/static";
 import "solid-slider/slider.css";
+import { Suspense } from "solid-js";
 
 export type MobileRootData = typeof routeData;
 
@@ -31,7 +32,9 @@ export default function Index() {
     <div class="_s_color-bg-primary-4 _s_size-h-min-px--10">
       <Header />
       <div class="_s_flex _s_flex-d-column _s_color-bg-primary-0">
-        <Outlet />
+        <Suspense>
+          <Outlet />
+        </Suspense>
       </div>
       <Footer />
     </div>
