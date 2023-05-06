@@ -59,13 +59,12 @@ export const MainSlider = () => {
 
   return (
     <div data-id="home-main-slider" class="_s_lg-pl-2-5 _s_lg-pr-2-5">
-      <Suspense>
-        <div class="_s_flex _s_size-h-min-px--50 _s_size-h-px--50 _s_mb-2 _s_mt-2 _s_position-relative">
+      <div class="_s_flex _s_size-h-min-px--50 _s_size-h-px--50 _s_mb-2 _s_mt-2 _s_position-relative">
+        <Suspense>
           <div use:slider class="_s_size-w-percent--25">
             <For each={slides?.()}>
               {(slide, idx) => {
                 const [imgLoaded, setImgLoaded] = createSignal(false);
-
                 return (
                   <div
                     class="_s_display-f _s_size-h-percent-25 _s_size-w-percent--25"
@@ -92,7 +91,7 @@ export const MainSlider = () => {
                                 <Loader />
                               </div>
                             </Show>
-                            <Show when={loaded()[idx()] && locale()}>
+                            <Show when={loaded()[idx()]}>
                               <img
                                 class="swiper-lazy _s_b-radius-md"
                                 src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
@@ -111,7 +110,9 @@ export const MainSlider = () => {
               }}
             </For>
           </div>
-          <div data-id="swiper-paginator-container" class="owl-dots">
+        </Suspense>
+        <div data-id="swiper-paginator-container" class="owl-dots">
+          <Suspense>
             <Index each={slides?.()}>
               {(_, idx) => (
                 <span
@@ -123,9 +124,9 @@ export const MainSlider = () => {
                 />
               )}
             </Index>
-          </div>
+          </Suspense>
         </div>
-      </Suspense>
+      </div>
     </div>
   );
 };

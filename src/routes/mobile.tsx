@@ -36,7 +36,9 @@ export default function Index() {
           <Outlet />
         </Suspense>
       </div>
-      <Footer />
+      <Suspense>
+        <Footer />
+      </Suspense>
     </div>
   );
 }

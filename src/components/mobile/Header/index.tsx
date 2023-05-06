@@ -3,8 +3,7 @@ import { Show, createEffect, lazy } from "solid-js";
 import { RightSideHeader } from "./RightSide";
 import { useHeader } from "~/states/header";
 import { useLanguage } from "~/utils/language";
-
-const Navigation = lazy(() => import("./Navigation"));
+import Navigation from "./Navigation";
 
 export const Header = () => {
   const [t] = useLanguage();
