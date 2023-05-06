@@ -2,6 +2,7 @@ import {
   Accessor,
   createContext,
   createMemo,
+  createResource,
   createSignal,
   on,
   onMount,
@@ -10,6 +11,8 @@ import {
 import { createStore } from "solid-js/store";
 import { useServerContext } from "solid-start";
 import { getCookies } from "./common";
+import { useConfig } from "~/config";
+import { isServer } from "solid-js/web";
 
 export type Lang = "en" | "ka" | "ru" | "hy";
 
@@ -27,11 +30,26 @@ export const createLanguageProvider = () => (props: { children: Element }) => {
   const defaultLang = (getCookies(event).lang as Lang) || "ka";
 
   const [locale, setLocale] = createSignal<Lang>(defaultLang);
+  const [initialKeys, setInitialKeys] = createStore(new Set<string>());
 
-  const [dict, setDict] = createStore<Dict>({} as Dict);
+  const [initialDict] = createResource(
+    async () => {
+      const res = await fetchLangs(defaultLang);
+      const dict: Record<string, string> = {};
 
-  onMount(async () => {
-    await setLanguage(defaultLang);
+      initialKeys.forEach((key) => (dict[key] = res[key]));
+
+      return dict;
+    },
+    { deferStream: true }
+  );
+
+  const [dict, setDict] = createStore<Dict>({
+    [defaultLang]: initialDict(),
+  } as Dict);
+
+  onMount(() => {
+    setLanguage(defaultLang, true);
   });
 
   const proxy = createMemo<Record<string, string>>(
@@ -44,20 +62,27 @@ export const createLanguageProvider = () => (props: { children: Element }) => {
     )
   );
 
-  const setLanguage = async (lang: Lang) => {
-    if (dict[lang]) {
+  const setLanguage = async (lang: Lang, initial?: boolean) => {
+    if (!initial && dict[lang]) {
       setLocale(lang);
       return true;
     }
 
     const res = await fetchLangs(lang);
-    setDict(lang, res);
+    if (initial) {
+      setTimeout(() => setDict(lang, res), 200);
+    } else {
+      setDict(lang, res);
+    }
     setLocale(lang);
 
     return true;
   };
 
-  const l = (key: string) => proxy()?.[key] || key;
+  const l = (key: string) => {
+    isServer && setInitialKeys((s) => s.add(key));
+    return proxy()?.[key] || key;
+  };
 
   const value: LanguageContextType = [l, { locale, setLanguage }];
 
@@ -66,12 +91,14 @@ export const createLanguageProvider = () => (props: { children: Element }) => {
 
 export const useLanguage = () => useContext(LanguageContext);
 
-export const fetchLangs = async (lang: string) => {
-  if (lang) {
-    return await fetch(`https://newstatic.adjarabet.com/static/lang${lang}New.json`).then(
-      (res) => res.json() as unknown as Record<string, string>
-    );
+const fetchLangs = async (lang: string) => {
+  const { staticPath } = useConfig();
+
+  if (isServer) {
+    return await import(`~/data/langs/lang${lang}New.json`).then((res) => res.default);
   }
 
-  return {};
+  return await fetch(`${staticPath}/lang${lang}New.json`).then(
+    (res) => res.json() as unknown as Record<string, string>
+  );
 };

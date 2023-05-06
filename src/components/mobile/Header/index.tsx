@@ -1,5 +1,5 @@
 import { A } from "solid-start";
-import { Show, createEffect, lazy } from "solid-js";
+import { Show, createEffect } from "solid-js";
 import { RightSideHeader } from "./RightSide";
 import { useHeader } from "~/states/header";
 import { useLanguage } from "~/utils/language";

@@ -1,14 +1,18 @@
 import { GameProvider, GamesList, Game } from "~/types/game";
-import { createStaticResource } from "./static";
 import { match } from "ts-pattern";
 import { createCreateCoreApiFetch } from "./coreapi/utils";
 import { useLanguage } from "~/utils/language";
 import { useConfig } from "~/config";
 import { checkResponse } from "./common";
 import { useUser } from "~/states/user";
+import { createResource } from "solid-js";
 
 export const getAllGamesData = () => {
-  const [allGamesData] = createStaticResource<{ list: GamesList }>("allGamesDataMobile");
+  const [allGamesData] = createResource<{ list: GamesList }>(() =>
+    import("~/data/json/allGamesDataMobile.json").then(
+      (res) => res.default as unknown as { list: GamesList }
+    )
+  );
   return allGamesData;
 };
 
@@ -19,7 +23,7 @@ export const generateGameUrl = async (game: Game, provider: GameProvider) => {
 
   const tokenRes = await createCreateCoreApiFetch("getServiceAuthToken", {
     providerID: provider.pid,
-    userID: user.UserID,
+    userID: user()?.UserID,
   });
 
   if (!tokenRes?.Token) {

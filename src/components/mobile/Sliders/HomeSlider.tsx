@@ -65,10 +65,11 @@ export const MainSlider = () => {
             <For each={slides?.()}>
               {(slide, idx) => {
                 const [imgLoaded, setImgLoaded] = createSignal(false);
+
                 return (
                   <div
                     class="_s_display-f _s_size-h-percent-25 _s_size-w-percent--25"
-                    data-id={t(slide.title.langId)}
+                    data-id={t(slide.title?.langId)}
                   >
                     <div
                       class="_s_size-h-px--50 _s_display-i-f _s_position-relative _s_size-w-percent--25 
@@ -110,9 +111,7 @@ export const MainSlider = () => {
               }}
             </For>
           </div>
-        </Suspense>
-        <div data-id="swiper-paginator-container" class="owl-dots">
-          <Suspense>
+          <div data-id="swiper-paginator-container" class="owl-dots">
             <Index each={slides?.()}>
               {(_, idx) => (
                 <span
@@ -124,8 +123,8 @@ export const MainSlider = () => {
                 />
               )}
             </Index>
-          </Suspense>
-        </div>
+          </div>
+        </Suspense>
       </div>
     </div>
   );

@@ -17,8 +17,6 @@ export const AccountLayer = () => {
     setShowBalance(!isHidden);
   });
 
-  createEffect(() => console.log(user()));
-
   return (
     <div class="_s_aitem-opacity-0 _s_transition-0--3">
       <a class="_s_position-relative">

@@ -1,15 +1,11 @@
 import { BannerData } from "~/types/banner";
-import { createStaticResource } from "./static";
-import { createMemo } from "solid-js";
-import { useConfig } from "~/config";
+import { createMemo, createResource } from "solid-js";
 
 type SliderFilterFn = (banners: BannerData[]) => BannerData[];
 
 export const getAllSliders = (filterFn: SliderFilterFn) => {
-  const { isMobile } = useConfig();
-
-  const [slidersData] = createStaticResource<BannerData[]>(
-    isMobile ? "allSlidersDataMobile" : "allSlidersData"
+  const [slidersData] = createResource<BannerData[]>(() =>
+    import("~/data/json/allSlidersDataMobile.json").then((res) => res.default)
   );
   const slides = createMemo(() => (slidersData() ? filterFn(slidersData() || []) : []));
 

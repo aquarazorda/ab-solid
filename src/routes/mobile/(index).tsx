@@ -14,15 +14,15 @@ export type HomeMobileData = typeof routeData;
 export const routeData = () => {
   const [slides] = getAllSliders(homePageSliderFilterFn);
   const allGamesData = getAllGamesData();
+  const games = createMemo(() => generateWidgetData(allGamesData()?.list || []));
 
-  return { slides, allGamesData };
+  return { slides, games };
 };
 
 export default function Index() {
   const [t] = useLanguage();
   const [, { isAuthenticated }] = useUser();
-  const { allGamesData } = useRouteData<HomeMobileData>();
-  const games = createMemo(() => generateWidgetData(allGamesData()?.list || []));
+  const { games } = useRouteData<HomeMobileData>();
 
   return (
     <div class="_s_size-w-percent--25 _s_container _s_color-bg-primary-0 _s_lg-color-bg-transparent">

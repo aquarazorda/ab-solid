@@ -1,38 +1,19 @@
-import { For, Show, Suspense } from "solid-js";
+import { For, Show } from "solid-js";
 import { A } from "solid-start";
-import { createStaticResource } from "~/queries/static";
+import { menuDataOPTGel } from "~/data/json/menuDataOPTGel";
 import { useHeader } from "~/states/header";
 import { useUser } from "~/states/user";
 import { useLanguage } from "~/utils/language";
 
-type MenuData = {
-  list: {
-    icon: string;
-    title: {
-      lang: boolean;
-      langId: string;
-    };
-    event?: {
-      eventMap: string;
-      eventStringPointer: string[];
-    };
-    extras?: {
-      showBalanceNotification: boolean;
-    };
-    route?: string;
-  }[];
-};
-
 export const AccountLayerMenu = () => {
   const [t] = useLanguage();
-  const [menuData] = createStaticResource<MenuData>("headerMobileSubNavListOPTGEL"); // TODO
   const [, { logOut }] = useUser();
   const [, { toggleAccountLayer }] = useHeader();
 
   return (
-    <Suspense>
+    <>
       <div class="_s_overflow-y-auto _s_scroll-sm _s_pt-2 _s_pb-2 _s_pl-5 _s_pr-5 _s_calc-height">
-        <For each={menuData()?.list}>
+        <For each={menuDataOPTGel}>
           {(item) => (
             <>
               <Show when={item?.route}>
@@ -79,6 +60,6 @@ export const AccountLayerMenu = () => {
           </span>
         </div>
       </div>
-    </Suspense>
+    </>
   );
 };
