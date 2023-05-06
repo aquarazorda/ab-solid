@@ -30,9 +30,7 @@ export const createUserProvider = () => (props: { children: JSX.Element }) => {
   const event = useServerContext();
 
   const UserID = Number(getCookies(event).userId);
-  const [session] = createResource(() => isSessionActive(UserID), {
-    deferStream: true,
-  });
+  const [session] = createResource(() => isSessionActive(UserID));
 
   const isAuthenticated = createMemo(() => session() && state());
 

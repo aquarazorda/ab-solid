@@ -32,9 +32,7 @@ export const createLanguageProvider = () => (props: { children: Element }) => {
 
   const [locale, setLocale] = createSignal<Lang>(defaultLang);
 
-  const [translations] = createResource(() => fetchLangs(locale()), {
-    deferStream: true,
-  });
+  const [translations] = createResource(() => fetchLangs(locale()));
 
   const [dict, setDict] = createStore<Dict>({
     [defaultLang]: translations(),
