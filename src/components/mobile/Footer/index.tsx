@@ -1,4 +1,4 @@
-import { Show } from "solid-js";
+import { Show, createEffect } from "solid-js";
 import { FooterDescription } from "./Description";
 import { LangSelector } from "./LangSelector";
 import { FooterLinks } from "./Links";
@@ -15,6 +15,7 @@ export const [footerState, setFooterState] = createStore({
 
 export const Footer = () => {
   const [t] = useLanguage();
+
   return (
     <Show when={!footerState.hidden}>
       <div class="_s_color-bg-primary-5">

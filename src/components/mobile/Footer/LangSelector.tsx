@@ -44,7 +44,10 @@ export const LangSelector = () => {
           {(item) => (
             <Show when={item.value !== locale()}>
               <div
-                onClick={() => setLanguage(item.value)}
+                onClick={() => {
+                  setLanguage(item.value);
+                  setDropdownIsOpen(false);
+                }}
                 class="_s_aitem-display-b _s_display-n _cs_child"
               >
                 <div class="_none-1 _s_p-3 _s_flex _s_flex-a-center _s_bd-primary-7 _s_bw-1 _s_bd-solid">

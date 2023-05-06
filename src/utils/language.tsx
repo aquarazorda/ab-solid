@@ -1,18 +1,14 @@
 import {
   Accessor,
   createContext,
-  createEffect,
   createMemo,
-  createResource,
   createSignal,
   on,
   onMount,
   useContext,
 } from "solid-js";
 import { createStore } from "solid-js/store";
-import { isServer } from "solid-js/web";
-import { parseCookie, useServerContext } from "solid-start";
-import { useCookies } from "~/states/cookie";
+import { useServerContext } from "solid-start";
 import { getCookies } from "./common";
 
 export type Lang = "en" | "ka" | "ru" | "hy";
@@ -32,29 +28,33 @@ export const createLanguageProvider = () => (props: { children: Element }) => {
 
   const [locale, setLocale] = createSignal<Lang>(defaultLang);
 
-  const [translations] = createResource(() => fetchLangs(locale()));
+  const [dict, setDict] = createStore<Dict>({} as Dict);
 
-  const [dict, setDict] = createStore<Dict>({
-    [defaultLang]: translations(),
-  } as Dict);
+  onMount(async () => {
+    await setLanguage(defaultLang);
+  });
 
   const proxy = createMemo<Record<string, string>>(
-    () =>
-      new Proxy(dict[locale()] || {}, {
-        get: (target, property: string) => target?.[property] || property,
-      })
+    on(
+      () => [dict[locale()]],
+      () =>
+        new Proxy(dict[locale()] || {}, {
+          get: (target, property: string) => target?.[property] || property,
+        })
+    )
   );
 
-  const setLanguage = (lang: Lang) => {
+  const setLanguage = async (lang: Lang) => {
     if (dict[lang]) {
       setLocale(lang);
-      return;
+      return true;
     }
 
-    fetchLangs(lang).then(async (res) => {
-      setDict(lang, res);
-      setLocale(lang);
-    });
+    const res = await fetchLangs(lang);
+    setDict(lang, res);
+    setLocale(lang);
+
+    return true;
   };
 
   const l = (key: string) => proxy()?.[key] || key;
