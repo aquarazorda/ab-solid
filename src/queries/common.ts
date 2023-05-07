@@ -1,6 +1,6 @@
 export const checkResponse =
-  (logOut?: (byUser?: boolean | undefined) => void) =>
-  async <T>(res: Response) => {
+  <T>(logOut?: (byUser?: boolean | undefined) => void) =>
+  async (res: Response) => {
     if (!res.ok) {
       throw new Error(res.statusText);
     }

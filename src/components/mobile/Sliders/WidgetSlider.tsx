@@ -75,7 +75,7 @@ export const WidgetSlider = (props: Props) => {
                           <Loader />
                         </div>
                       </Show>
-                      <Show when={loaded[idx()] && locale()}>
+                      <Show when={loaded[idx()]}>
                         <img
                           loading={idx() > 1 ? "lazy" : "eager"}
                           class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"

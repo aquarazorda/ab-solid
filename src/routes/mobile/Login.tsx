@@ -37,7 +37,7 @@ export default function LoginMobile() {
   const loginMutate = createCoreApiMutation("logIn", {
     onSuccess: (data) => {
       if (data?.StatusCode === 10 && data?.UserID) {
-        createUserData(data.UserID, setUserData);
+        createUserData(data.UserID).then(setUserData);
       }
     },
   });

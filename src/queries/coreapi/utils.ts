@@ -21,8 +21,7 @@ export const createCoreApiFetchFn = <T extends CoreApiAction>(
 
   return async (data: CoreApiDataType<T>) => {
     if (!isMatching(actionData.schema, data)) {
-      console.error("CoreApiFetchFn: Schema mismatch", actionData.default.req, data);
-      return {};
+      throw new Error("CoreApiFetchFn: Schema mismatch");
     }
 
     const formData = new URLSearchParams();
@@ -41,7 +40,7 @@ export const createCoreApiFetchFn = <T extends CoreApiAction>(
         "Content-Type": "application/x-www-form-urlencoded",
         "X-Requested-With": "XMLHttpRequest",
       },
-    }).then(checkResponse(logOut)<CoreApiResponseType<T>>);
+    }).then(checkResponse<CoreApiResponseType<T>>(logOut));
   };
 };
 

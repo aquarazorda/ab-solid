@@ -2,14 +2,12 @@ import {
   Accessor,
   JSX,
   createContext,
-  createEffect,
   createMemo,
   createResource,
   createSignal,
-  onMount,
   useContext,
 } from "solid-js";
-import { createUserData, isSessionActive } from "~/queries/user";
+import { isSessionActive$ } from "~/queries/user";
 import { User } from "~/types/user";
 import { useCookies } from "./cookie";
 import { useServerContext } from "solid-start";
@@ -26,13 +24,13 @@ export type UserProviderType = [Accessor<User | undefined>, PropType];
 const UserContext = createContext([{}, {}] as UserProviderType);
 
 export const createUserProvider = () => (props: { children: JSX.Element }) => {
-  const [state, setState] = createSignal<User>();
   const event = useServerContext();
-
   const UserID = Number(getCookies(event).userId);
-  const [session] = createResource(() => isSessionActive(UserID));
+  const [session] = createResource(() => isSessionActive$(UserID));
 
-  const isAuthenticated = createMemo(() => session() && state());
+  const [state, setState] = createSignal<User | undefined>(session());
+
+  const isAuthenticated = createMemo(() => !!state());
 
   const setUserData = (data?: User) => {
     const cookies = useCookies();

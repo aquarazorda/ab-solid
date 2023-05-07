@@ -6,8 +6,8 @@ import { User, userSchema } from "~/types/user";
 export type CoreApiAction = keyof ReturnType<typeof coreApiActionMap>;
 export type CoreApiActionData<T extends CoreApiAction> = ReturnType<typeof coreApiActionMap>[T] &
   ActionMapItem;
-export type CoreApiDataType<T extends CoreApiAction> = P.infer<
-  ReturnType<typeof coreApiActionMap>[T]["schema"]
+export type CoreApiDataType<T extends CoreApiAction> = Partial<
+  P.infer<ReturnType<typeof coreApiActionMap>[T]["schema"]>
 >;
 export type CoreApiResponseType<T extends CoreApiAction> = P.infer<
   ReturnType<typeof coreApiActionMap>[T]["responseSchema"]

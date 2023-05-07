@@ -5,10 +5,9 @@ import {
   createResource,
   createSignal,
   on,
-  onMount,
   useContext,
 } from "solid-js";
-import { createStore } from "solid-js/store";
+import { createStore, reconcile } from "solid-js/store";
 import { useServerContext } from "solid-start";
 import { getCookies } from "./common";
 import { useConfig } from "~/config";
@@ -32,25 +31,16 @@ export const createLanguageProvider = () => (props: { children: Element }) => {
   const [locale, setLocale] = createSignal<Lang>(defaultLang);
   const [initialKeys, setInitialKeys] = createStore(new Set<string>());
 
-  const [initialDict] = createResource(
-    async () => {
-      const res = await fetchLangs(defaultLang);
-      const dict: Record<string, string> = {};
-
-      initialKeys.forEach((key) => (dict[key] = res[key]));
-
-      return dict;
+  const [initialDict] = createResource(() => initialKeys, initializeLangs(defaultLang), {
+    deferStream: true,
+    onHydrated: () => {
+      setLanguage(defaultLang, true);
     },
-    { deferStream: true }
-  );
+  });
 
   const [dict, setDict] = createStore<Dict>({
     [defaultLang]: initialDict(),
   } as Dict);
-
-  onMount(() => {
-    setLanguage(defaultLang, true);
-  });
 
   const proxy = createMemo<Record<string, string>>(
     on(
@@ -69,11 +59,7 @@ export const createLanguageProvider = () => (props: { children: Element }) => {
     }
 
     const res = await fetchLangs(lang);
-    if (initial) {
-      setTimeout(() => setDict(lang, res), 200);
-    } else {
-      setDict(lang, res);
-    }
+    setDict(lang, reconcile(res));
     setLocale(lang);
 
     return true;
@@ -91,6 +77,15 @@ export const createLanguageProvider = () => (props: { children: Element }) => {
 
 export const useLanguage = () => useContext(LanguageContext);
 
+const initializeLangs = (lang: Lang) => async (keys: Set<string>) => {
+  const res = await fetchLangs(lang);
+  const dict: Record<string, string> = {};
+
+  keys.forEach((key) => (dict[key] = res[key]));
+
+  return dict;
+};
+
 const fetchLangs = async (lang: string) => {
   const { staticPath } = useConfig();
 
@@ -99,6 +94,6 @@ const fetchLangs = async (lang: string) => {
   }
 
   return await fetch(`${staticPath}/lang${lang}New.json`).then(
-    (res) => res.json() as unknown as Record<string, string>
+    (res) => res.json() as Promise<Record<string, string>>
   );
 };

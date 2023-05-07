@@ -1,4 +1,4 @@
-import { Match, Switch, lazy } from "solid-js";
+import { Match, Suspense, Switch, lazy } from "solid-js";
 import { A, useMatch } from "solid-start";
 import { useNavigateBack } from "~/utils/window";
 import { useUser } from "~/states/user";
@@ -42,7 +42,9 @@ export const RightSideHeader = () => {
         <CloseButton />
       </Match>
       <Match when={isAuthenticated()}>
-        <AccountLayer />
+        <Suspense>
+          <AccountLayer />
+        </Suspense>
       </Match>
     </Switch>
   );
