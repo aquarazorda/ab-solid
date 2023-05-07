@@ -1,32 +1,9 @@
 import { Outlet } from "solid-start";
 import { Footer } from "~/components/mobile/Footer";
 import { Header } from "~/components/mobile/Header";
-import { createStaticResource } from "~/queries/static";
 import { Suspense } from "solid-js";
 
 import "solid-slider/slider.css";
-
-export type MobileRootData = typeof routeData;
-
-type RouteItem = {
-  title: {
-    lang: boolean;
-    langId: string;
-  };
-  icon: string;
-  route: string;
-  pathMatch?: "full";
-  size?: "lg";
-  height?: "auto";
-};
-
-export const routeData = () => {
-  const [navList] = createStaticResource<{ list: RouteItem[] }>("headerMobileNavListTest", {
-    lang: true,
-  });
-
-  return { navList };
-};
 
 export default function Index() {
   return (
