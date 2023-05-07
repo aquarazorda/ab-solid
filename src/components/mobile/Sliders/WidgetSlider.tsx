@@ -82,7 +82,7 @@ export const WidgetSlider = (props: Props) => {
                 <div class="_s_size-w-percent--25 _s_flex _s_overflow-hidden _s_pl-1 _s_pr-1 _s_lg-pl-none _s_lg-pr-none">
                   <Show when={loaded[idx()]}>
                     <img
-                      loading={idx() > 1 ? "lazy" : "eager"}
+                      loading="lazy"
                       class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"
                       src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
                       alt={t(game.title.langId)}
