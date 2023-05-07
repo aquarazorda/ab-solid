@@ -1,4 +1,14 @@
-import { Accessor, For, Index, Show, createEffect, createSignal, on, onCleanup } from "solid-js";
+import {
+  Accessor,
+  For,
+  Index,
+  Show,
+  createEffect,
+  createSignal,
+  on,
+  onCleanup,
+  onMount,
+} from "solid-js";
 import { createSlider } from "solid-slider";
 import { A, useRouteData } from "solid-start";
 import { Loader } from "~/components/Loader";
@@ -20,7 +30,7 @@ export const homePageSliderFilterFn = (slides: BannerData[]) =>
 export const MainSlider = () => {
   const { slides } = useRouteData<{ slides: Accessor<BannerData[]> }>();
   const [t, { locale }] = useLanguage();
-  const [loaded, setLoaded] = createSignal<Record<number, boolean>>({});
+  const [loaded, setLoaded] = createSignal<Record<number, boolean>>({ [0]: true });
 
   const [slider, { current, next, moveTo }] = createSlider({
     loop: true,
@@ -34,12 +44,12 @@ export const MainSlider = () => {
   createEffect(() => {
     const interval = setInterval(() => {
       next();
-    }, 3000);
+    }, 5000);
 
     onCleanup(() => clearInterval(interval));
   });
 
-  setLoaded({ [slides?.()?.length - 1]: true, [0]: true });
+  onMount(() => setLoaded({ [0]: true, [slides?.()?.length - 1]: true }));
 
   createEffect(
     on(current, () => {
@@ -73,7 +83,7 @@ export const MainSlider = () => {
                           href={slide.route || "/"}
                           aria-label={slide.name}
                         >
-                          <Show when={!imgLoaded()}>
+                          <Show when={loaded()[idx()] && !imgLoaded()}>
                             <div
                               class="_s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25
                           _s_flex-a-center _s_position-absolute _s_flex"
