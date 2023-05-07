@@ -57,41 +57,44 @@ export const WidgetSlider = (props: Props) => {
   return (
     <div class="_s_color-rgba-bg-primary-0-0--5 _s_mt-none _s_overflow-hidden _s_position-relative _s_size-h-percent--25 _s_mb-5">
       <WidgetSliderHeader title={props.title} url={props.url} />
-      <div class="_s_b-radius-sm _s_flex _s_position-relative _s_size-h-percent--25 _s_z-1 _s_lg-overflow-hidden _s_size-h-min-px--30">
-        <div use:slider>
-          <Suspense>
-            <For each={props.games}>
-              {(game, idx) => {
-                const [imgLoaded, setImgLoaded] = createSignal(false);
+      <div
+        use:slider
+        class="_s_b-radius-sm _s_flex _s_position-relative _s_size-h-percent--25 _s_z-1 _s_lg-overflow-hidden"
+        style={{ "min-height": "135.24px" }}
+      >
+        <For each={props.games}>
+          {(game, idx) => {
+            const [imgLoaded, setImgLoaded] = createSignal(false);
 
-                return (
+            return (
+              <div
+                class="_s_cursor-pointer _s_display-f _s_overflow-hidden"
+                onClick={() => openGame(game.id)}
+              >
+                <Show when={loaded[idx()] && !imgLoaded()}>
                   <div
-                    class="_s_cursor-pointer _s_display-f _s_overflow-hidden"
-                    onClick={() => openGame(game.id)}
+                    class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none _s_flex-a-center 
+                      _s_position-absolute"
                   >
-                    <div class="_s_size-w-percent--25 _s_flex _s_overflow-hidden _s_pl-1 _s_pr-1 _s_lg-pl-none _s_lg-pr-none">
-                      <Show when={!imgLoaded()}>
-                        <div class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none _s_flex-a-center _s_position-absolute">
-                          <Loader />
-                        </div>
-                      </Show>
-                      <Show when={loaded[idx()]}>
-                        <img
-                          loading={idx() > 1 ? "lazy" : "eager"}
-                          class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"
-                          src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
-                          alt={t(game.title.langId)}
-                          data-id="empty"
-                          onLoad={() => setImgLoaded(true)}
-                        />
-                      </Show>
-                    </div>
+                    <Loader />
                   </div>
-                );
-              }}
-            </For>
-          </Suspense>
-        </div>
+                </Show>
+                <div class="_s_size-w-percent--25 _s_flex _s_overflow-hidden _s_pl-1 _s_pr-1 _s_lg-pl-none _s_lg-pr-none">
+                  <Show when={loaded[idx()]}>
+                    <img
+                      loading={idx() > 1 ? "lazy" : "eager"}
+                      class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"
+                      src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
+                      alt={t(game.title.langId)}
+                      data-id="empty"
+                      onLoad={() => setImgLoaded(true)}
+                    />
+                  </Show>
+                </div>
+              </div>
+            );
+          }}
+        </For>
       </div>
     </div>
   );

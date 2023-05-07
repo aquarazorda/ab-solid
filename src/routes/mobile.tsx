@@ -10,9 +10,7 @@ export default function Index() {
     <div class="_s_color-bg-primary-4 _s_size-h-min-px--10">
       <Header />
       <div class="_s_flex _s_flex-d-column _s_color-bg-primary-0">
-        <Suspense>
-          <Outlet />
-        </Suspense>
+        <Outlet />
       </div>
       <Suspense>
         <Footer />
