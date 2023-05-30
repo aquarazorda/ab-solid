@@ -13,6 +13,7 @@ export const AviatorWidget = () => {
             class="_s_size-w-percent--25"
             src={createStaticUrl("/atomic/images/bg/aviator-bg.png")}
             alt={t("_lang_aviator_header")}
+            loading="lazy"
           />
         </div>
       </div>

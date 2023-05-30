@@ -25,7 +25,12 @@ export const FooterLinks = () => {
             target="_blank"
             class={item.itemClass}
           >
-            <img src={createStaticUrl(item.img.img)} class={item.img.className} alt={item.label} />
+            <img
+              src={createStaticUrl(item.img.img)}
+              class={item.img.className}
+              alt={item.label}
+              loading="lazy"
+            />
           </a>
         )}
       </For>
