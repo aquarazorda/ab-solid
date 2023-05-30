@@ -1,1 +1,1873 @@
-[{"id":109418,"name":"rakeback","img":"\/mbanners\/109418_en.jpg","game":{"id":5,"pid":91,"gameid":"8053","gameId":"8053","width":1070,"height":720,"gameType":"Skill","gameName":"დომინო","inGame":0,"openMode":"NewTab","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_109418"},"description":{"langId":"_mbanner_desc109418"},"byTags":{"games":{"order":10}}},{"id":108430,"name":"Apple Pay","img":"\/mbanners\/108430_en.jpg","title":{"langId":"_mbanner_title_108430"},"description":{"langId":"_mbanner_desc108430"},"byTags":{"sport":{"order":0}}},{"id":109090,"name":"Test_Banner_HDPC","img":"\/mbanners\/109090_en.jpg","segments":[52609],"title":{"langId":"_mbanner_title_109090"},"description":{"langId":"_mbanner_desc109090"},"byTags":{"empty":{"order":161},"slots":{"order":53},"games":{"order":31},"poker":{"order":35},"sport":{"order":35},"casino":{"order":11},"promo":{"order":35},"about":{"order":35},"registration_teaser":{"order":35},"aviator":{"order":35},"turbogames":{"order":35}}},{"id":107316,"name":"42591","img":"\/mbanners\/107316_en.jpg","segments":[42591],"route":"\/Promo\/special-spin-cashback","title":{"langId":"_mbanner_title_107316"},"description":{"langId":"_mbanner_desc107316"},"byTags":{"empty":{"order":97},"games":{"order":20}}},{"id":107298,"name":"42590","img":"\/mbanners\/107298_en.jpg","segments":[42590],"route":"\/Promo\/special-spin-cashback","title":{"langId":"_mbanner_title_107298"},"description":{"langId":"_mbanner_desc107298"},"byTags":{"empty":{"order":96},"games":{"order":18}}},{"id":108705,"name":"47506_47511_24713","img":"\/mbanners\/108705_en.jpg","segments":[24713,47506,47511],"route":"\/Promo\/p2p-spin-private-wager","title":{"langId":"_mbanner_title_108705"},"description":{"langId":"_mbanner_desc108705"},"byTags":{"empty":{"order":69},"games":{"order":14}}},{"id":107188,"name":"keno-play","img":"\/mbanners\/107188_en.jpg","game":{"id":553690,"pid":79,"gameid":"16708","gameId":"16708","width":0,"height":0,"gameType":"Slots","gameName":"KENO","inGame":0,"openMode":"NewTab","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_107188"},"description":{"langId":"_mbanner_desc107188"},"byTags":{"keno_play":{"order":0}}},{"id":109748,"name":"jackpot-slot","img":"\/mbanners\/109748_en.jpg","route":"\/Promo\/jackpot-slot","title":{"langId":"_mbanner_title_109748"},"description":{"langId":"_mbanner_desc109748"},"byTags":{"slots":{"order":4}}},{"id":108433,"name":"sport_vip_10_17.08","img":"\/mbanners\/108433_en.jpg","offer":{"has":1,"route":"\/Sportsbook"},"route":"\/Sportsbook","title":{"langId":"_mbanner_title_108433"},"description":{"langId":"_mbanner_desc108433"},"byTags":{"sport":{"order":0}}},{"id":109815,"name":"EGTDigital","img":"\/mbanners\/109815_en.jpg","route":"\/Slots\/EGTDigital\/All","title":{"langId":"_mbanner_title_109815"},"description":{"langId":"_mbanner_desc109815"},"byTags":{"slots":{"order":6}}},{"id":105983,"name":"p2p setanta offer","img":"\/mbanners\/105983_en.jpg","segments":[36220],"route":"\/Promo\/special-offer-promo-code-p2p-setanta","title":{"langId":"_mbanner_title_105983"},"description":{"langId":"_mbanner_desc105983"},"byTags":{"games":{"order":22}}},{"id":109842,"name":"spinner-man","img":"\/mbanners\/109842_en.jpg","route":"\/Promo\/spinner-man","title":{"langId":"_mbanner_title_109842"},"description":{"langId":"_mbanner_desc109842"},"byTags":{"visitor":{"order":71}}},{"id":107759,"name":"poker-pending-bonus-1","img":"\/mbanners\/107759_en.jpg","segments":[46660,46661,46662,46663,46664,46665],"route":"\/Promo\/poker-pending-bonus-2022","title":{"langId":"_mbanner_title_107759"},"description":{"langId":"_mbanner_desc107759"},"byTags":{"empty":{"order":59},"poker":{"order":5}}},{"id":109279,"name":"53490","img":"\/mbanners\/109279_en.jpg","segments":[53490],"route":"\/Slots\/","title":{"langId":"_mbanner_title_109279"},"description":{"langId":"_mbanner_desc109279"},"byTags":{"empty":{"order":26}}},{"id":109409,"name":"pragmatic casino","img":"\/mbanners\/109409_en.jpg","game":{"id":826,"pid":17,"gameid":"9454","gameId":"9454","width":0,"height":0,"gameType":"Casino","gameName":"Baccarat Control Squeeze","inGame":1,"openMode":"InGame","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_109409"},"description":{"langId":"_mbanner_desc109409"},"byTags":{"casino":{"order":8}}},{"id":108466,"name":"wager-2 49128","img":"\/mbanners\/108466_en.jpg","offer":{"has":1,"route":"\/Slots\/All\/All"},"segments":[49128],"route":"\/Slots\/All\/All","title":{"langId":"_mbanner_title_108466"},"description":{"langId":"_mbanner_desc108466"},"byTags":{"empty":{"order":51}}},{"id":108465,"name":"wager-1 49127","img":"\/mbanners\/108465_en.jpg","offer":{"has":1,"route":"\/Slots\/All\/All"},"segments":[49127],"route":"\/Slots\/All\/All","title":{"langId":"_mbanner_title_108465"},"description":{"langId":"_mbanner_desc108465"},"byTags":{"empty":{"order":53}}},{"id":103111,"name":"Live_Casino_Cashback_50% ","img":"\/mbanners\/103111_en.jpg","offer":{"has":1,"route":"\/Casino\/All\/All"},"segments":[12126],"route":"\/Casino\/All\/All","title":{"langId":"_mbanner_title_103111"},"description":{"langId":"_mbanner_desc103111"},"byTags":{"casino":{"order":9}}},{"id":107325,"name":" P2P_SPIN_OFFER_10%-500GEL","img":"\/mbanners\/107325_en.jpg","offer":{"has":1,"route":"\/Games"},"segments":[31186],"route":"\/Games","title":{"langId":"_mbanner_title_107325"},"description":{"langId":"_mbanner_desc107325"},"byTags":{"empty":{"order":112},"games":{"order":15}}},{"id":108562,"name":"42544 15%","img":"\/mbanners\/108562_en.jpg","segments":[42544],"route":"\/Casino\/","title":{"langId":"_mbanner_title_108562"},"description":{"langId":"_mbanner_desc108562"},"byTags":{"empty":{"order":76}}},{"id":109746,"name":"jackpot-slot","img":"\/mbanners\/109746_en.jpg","route":"\/Promo\/jackpot-slot","title":{"langId":"_mbanner_title_109746"},"description":{"langId":"_mbanner_desc109746"},"byTags":{"aviator":{"order":2}}},{"id":109836,"name":"Playtech","img":"\/mbanners\/109836_en.jpg","route":"\/Casino\/Playtech","title":{"langId":"_mbanner_title_109836"},"description":{"langId":"_mbanner_desc109836"},"byTags":{"empty":{"order":12},"casino":{"order":1}}},{"id":108410,"name":"poker-rakeback 90","img":"\/mbanners\/108410_en.jpg","segments":[5147],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108410"},"description":{"langId":"_mbanner_desc108410"},"byTags":{"poker":{"order":33},"empty":{"order":93}}},{"id":106180,"name":"sport  p2p tickets","img":"\/mbanners\/106180_en.jpg","segments":[22508],"route":"\/Promo\/sport-p2p-spin","title":{"langId":"_mbanner_title_106180"},"description":{"langId":"_mbanner_desc106180"},"byTags":{"games":{"order":25}}},{"id":108095,"name":"vip-weekly-deposit-offer 43151","img":"\/mbanners\/108095_en.jpg","segments":[43151],"route":"\/Promo\/vip-weekly-deposit-offer","title":{"langId":"_mbanner_title_108095"},"description":{"langId":"_mbanner_desc108095"},"byTags":{"empty":{"order":104}}},{"id":108426,"name":"poker-rakeback 10","img":"\/mbanners\/108426_en.jpg","segments":[5131],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108426"},"description":{"langId":"_mbanner_desc108426"},"byTags":{"poker":{"order":25},"empty":{"order":85}}},{"id":105293,"name":"Poker_Spin_slider_20%","img":"\/mbanners\/105293_en.jpg","offer":{"has":1,"route":"\/Poker"},"segments":[18187],"route":"\/Poker","title":{"langId":"_mbanner_title_105293"},"description":{"langId":"_mbanner_desc105293"},"byTags":{"empty":{"order":121},"poker":{"order":16}}},{"id":107803,"name":"reverification","img":"\/mbanners\/107803_en.jpg","segments":[42693],"route":"\/Promo\/reverification","title":{"langId":"_mbanner_title_107803"},"description":{"langId":"_mbanner_desc107803"},"byTags":{"empty":{"order":46},"slots":{"order":34}}},{"id":109813,"name":"CloverChance","img":"\/mbanners\/109813_en.jpg","route":"\/Slots\/All\/CloverChance","title":{"langId":"_mbanner_title_109813"},"description":{"langId":"_mbanner_desc109813"},"byTags":{"slots":{"order":7}}},{"id":108589,"name":"Poker_Spin_100%","img":"\/mbanners\/108589_en.jpg","offer":{"has":1,"route":"\/Games"},"segments":[17588],"route":"\/Games","title":{"langId":"_mbanner_title_108589"},"description":{"langId":"_mbanner_desc108589"},"byTags":{"sport":{"order":0}}},{"id":108424,"name":"poker-rakeback 20","img":"\/mbanners\/108424_en.jpg","segments":[5133],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108424"},"description":{"langId":"_mbanner_desc108424"},"byTags":{"poker":{"order":26},"empty":{"order":86}}},{"id":104314,"name":"SPIN_OMAHA_20%_RET_15-03","img":"\/mbanners\/104314_en.jpg","offer":{"has":1,"route":"\/Poker"},"segments":[22148],"route":"\/Poker","title":{"langId":"_mbanner_title_104314"},"description":{"langId":"_mbanner_desc104314"},"byTags":{"poker":{"order":24}}},{"id":109684,"name":"53779","img":"\/mbanners\/109684_en.jpg","segments":[53779],"route":"\/Promo\/vip-cash-back-30","title":{"langId":"_mbanner_title_109684"},"description":{"langId":"_mbanner_desc109684"},"byTags":{"empty":{"order":36}}},{"id":108436,"name":"SPORT_100%_VIP_19.02","img":"\/mbanners\/108436_en.jpg","offer":{"has":1,"route":"\/Sportsbook"},"route":"\/Sportsbook","title":{"langId":"_mbanner_title_108436"},"description":{"langId":"_mbanner_desc108436"},"byTags":{"sport":{"order":0}}},{"id":108432,"name":"Live_Casino_Cashback_20%","img":"\/mbanners\/108432_en.jpg","offer":{"has":1,"route":""},"route":"\/Casino\/All\/All","title":{"langId":"_mbanner_title_108432"},"description":{"langId":"_mbanner_desc108432"},"byTags":{"sport":{"order":0}}},{"id":108343,"name":"ტესტ","img":"\/mbanners\/108343_en.jpg","segments":[20350,47059],"route":"\/Promo\/olympus-wheel-teslaY","title":{"langId":"_mbanner_title_108343"},"description":{"langId":"_mbanner_desc108343"},"byTags":{"empty":{"order":159}}},{"id":108588,"name":"vip_popup_com","img":"\/mbanners\/108588_en.jpg","segments":[10515,12966],"route":"\/","title":{"langId":"_mbanner_title_108588"},"description":{"langId":"_mbanner_desc108588"},"byTags":{"sport":{"order":0}}},{"id":108468,"name":"deposit-bonus-100 49143","img":"\/mbanners\/108468_en.jpg","offer":{"has":1,"route":""},"segments":[49143],"title":{"langId":"_mbanner_title_108468"},"description":{"langId":"_mbanner_desc108468"},"byTags":{"empty":{"order":56}}},{"id":108859,"name":"51883","img":"\/mbanners\/108859_en.jpg","segments":[51883],"title":{"langId":"_mbanner_title_108859"},"description":{"langId":"_mbanner_desc108859"},"byTags":{"empty":{"order":155}}},{"id":109749,"name":"jackpot-slot","img":"\/mbanners\/109749_en.jpg","route":"\/Promo\/jackpot-slot","title":{"langId":"_mbanner_title_109749"},"description":{"langId":"_mbanner_desc109749"},"byTags":{"games":{"order":3}}},{"id":108568,"name":"VIP_PROMO_101520","img":"\/mbanners\/108568_en.jpg","offer":{"has":1,"route":"\/Slots\/All\/All"},"segments":[13966],"route":"\/Slots\/All\/All","title":{"langId":"_mbanner_title_108568"},"description":{"langId":"_mbanner_desc108568"},"byTags":{"sport":{"order":0}}},{"id":107768,"name":"poker-pending-bonus-5","img":"\/mbanners\/107768_en.jpg","segments":[46672,46673,46674,46675,46676,46677],"route":"\/Promo\/poker-pending-bonus-2022","title":{"langId":"_mbanner_title_107768"},"description":{"langId":"_mbanner_desc107768"},"byTags":{"empty":{"order":63},"poker":{"order":7}}},{"id":109399,"name":"aviator roulette ","img":"\/mbanners\/109399_en.jpg","route":"\/Casino\/AviatorCasino","title":{"langId":"_mbanner_title_109399"},"description":{"langId":"_mbanner_desc109399"},"byTags":{"casino":{"order":5}}},{"id":108701,"name":"47504_47509_24710","img":"\/mbanners\/108701_en.jpg","segments":[24710,47504,47509],"route":"\/Promo\/p2p-spin-private-wager","title":{"langId":"_mbanner_title_108701"},"description":{"langId":"_mbanner_desc108701"},"byTags":{"empty":{"order":70},"games":{"order":11}}},{"id":108674,"name":"42538 WC","img":"\/mbanners\/108674_en.jpg","segments":[42538],"route":"\/Promo\/deposit-bonus-500","title":{"langId":"_mbanner_title_108674"},"description":{"langId":"_mbanner_desc108674"},"byTags":{"empty":{"order":44},"slots":{"order":20}}},{"id":109745,"name":"jackpot-slot","img":"\/mbanners\/109745_en.jpg","route":"\/Promo\/jackpot-slot","title":{"langId":"_mbanner_title_109745"},"description":{"langId":"_mbanner_desc109745"},"byTags":{"empty":{"order":9}}},{"id":109395,"name":"domino mobile","img":"\/mbanners\/109395_en.jpg","game":{"id":5,"pid":91,"gameid":"8053","gameId":"8053","width":1070,"height":720,"gameType":"Skill","gameName":"დომინო","inGame":0,"openMode":"NewTab","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_109395"},"description":{"langId":"_mbanner_desc109395"},"byTags":{"games":{"order":9}}},{"id":108431,"name":"deposit-promo-premium100","img":"\/mbanners\/108431_en.jpg","route":"\/Promo\/deposit-promo-premium100","title":{"langId":"_mbanner_title_108431"},"description":{"langId":"_mbanner_desc108431"},"byTags":{"sport":{"order":0}}},{"id":109396,"name":"aviator new mobile","img":"\/mbanners\/109396_en.jpg","route":"\/Promo\/aviator-game-new","title":{"langId":"_mbanner_title_109396"},"description":{"langId":"_mbanner_desc109396"},"byTags":{"aviator":{"order":9}}},{"id":108370,"name":"aviator blackjack","img":"\/mbanners\/108370_en.jpg","game":{"id":103082,"pid":17,"gameid":"17755","gameId":"17755","width":0,"height":0,"gameType":"Casino","gameName":"Live Auto-Roulette","inGame":1,"openMode":"InGame","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_108370"},"description":{"langId":"_mbanner_desc108370"},"byTags":{"casino":{"order":3}}},{"id":108599,"name":"41308","img":"\/mbanners\/108599_en.jpg","segments":[41308],"route":"\/Promo\/poker-spin-private-wager","title":{"langId":"_mbanner_title_108599"},"description":{"langId":"_mbanner_desc108599"},"byTags":{"empty":{"order":82},"poker":{"order":13}}},{"id":106892,"name":"Live immersive roulette","img":"\/mbanners\/106892_en.jpg","game":{"id":102668,"pid":17,"gameid":"1893","gameId":"1893","width":0,"height":0,"gameType":"Casino","gameName":"Live Immersive Roulette","inGame":1,"openMode":"InGame","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_106892"},"description":{"langId":"_mbanner_desc106892"},"byTags":{"casino":{"order":4}}},{"id":106177,"name":"Air_Race_egt-optin","img":"\/mbanners\/106177_en.jpg","segments":[13766],"route":"\/Promo\/air-race-2","title":{"langId":"_mbanner_title_106177"},"description":{"langId":"_mbanner_desc106177"},"byTags":{"aviator":{"order":10}}},{"id":108414,"name":"poker-rakeback 60","img":"\/mbanners\/108414_en.jpg","segments":[5141],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108414"},"description":{"langId":"_mbanner_desc108414"},"byTags":{"poker":{"order":30},"empty":{"order":90}}},{"id":106013,"name":"vip-cash-back-promo 31206","img":"\/mbanners\/106013_en.jpg","segments":[31206],"route":"\/Promo\/vip-cash-back-promo","title":{"langId":"_mbanner_title_106013"},"description":{"langId":"_mbanner_desc106013"},"byTags":{"empty":{"order":100}}},{"id":108697,"name":"47502_47507_24708","img":"\/mbanners\/108697_en.jpg","segments":[24708,47502,47507],"route":"\/Promo\/p2p-spin-private-wager","title":{"langId":"_mbanner_title_108697"},"description":{"langId":"_mbanner_desc108697"},"byTags":{"empty":{"order":66},"games":{"order":7}}},{"id":108418,"name":"poker-rakeback 40","img":"\/mbanners\/108418_en.jpg","segments":[5137],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108418"},"description":{"langId":"_mbanner_desc108418"},"byTags":{"poker":{"order":28},"empty":{"order":88}}},{"id":108166,"name":"poker tournament ","img":"\/mbanners\/108166_en.jpg","offer":{"has":1,"route":""},"segments":[48707],"game":{"id":548781,"pid":91,"gameid":"8675","gameId":"8675","width":1160,"height":600,"gameType":"Slots","gameName":"Jemaliko","inGame":0,"openMode":"NewTab","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_108166"},"description":{"langId":"_mbanner_desc108166"},"byTags":{"empty":{"order":72}}},{"id":109359,"name":"prognoser general","img":"\/mbanners\/109359_en.jpg","route":"\/Promo\/prognoser","title":{"langId":"_mbanner_title_109359"},"description":{"langId":"_mbanner_desc109359"},"byTags":{"empty":{"order":58}}},{"id":109425,"name":"new poker launch","img":"\/mbanners\/109425_en.jpg","route":"\/Promo\/poker","title":{"langId":"_mbanner_title_109425"},"description":{"langId":"_mbanner_desc109425"},"byTags":{"poker":{"order":19}}},{"id":105480,"name":"30006 launge slider","img":"\/mbanners\/105480_en.jpg","segments":[30006],"title":{"langId":"_mbanner_title_105480"},"description":{"langId":"_mbanner_desc105480"},"byTags":{"empty":{"order":74}}},{"id":105476,"name":"Poker_Spin_slider_10%","img":"\/mbanners\/105476_en.jpg","offer":{"has":1,"route":"\/Poker"},"segments":[18186],"route":"\/Poker","title":{"langId":"_mbanner_title_105476"},"description":{"langId":"_mbanner_desc105476"},"byTags":{"empty":{"order":120},"poker":{"order":18}}},{"id":109133,"name":"42535 WC","img":"\/mbanners\/109133_en.jpg","segments":[42535],"route":"\/Promo\/deposit-bonus-200","title":{"langId":"_mbanner_title_109133"},"description":{"langId":"_mbanner_desc109133"},"byTags":{"empty":{"order":157},"slots":{"order":54}}},{"id":104421,"name":"smsoff","img":"\/mbanners\/104421_en.jpg","segments":[15566,16370],"route":"\/Promo\/smson","title":{"langId":"_mbanner_title_104421"},"description":{"langId":"_mbanner_desc104421"},"byTags":{"empty":{"order":123}}},{"id":109448,"name":"Keno-main","img":"\/mbanners\/109448_en.jpg","route":"\/Promo\/keno-classic","title":{"langId":"_mbanner_title_109448"},"description":{"langId":"_mbanner_desc109448"},"byTags":{"keno_main":{"order":2}}},{"id":109165,"name":"53005","img":"\/mbanners\/109165_en.jpg","segments":[53005],"route":"\/Slots\/","title":{"langId":"_mbanner_title_109165"},"description":{"langId":"_mbanner_desc109165"},"byTags":{"empty":{"order":41}}},{"id":109843,"name":"Backgammon 1k","img":"\/mbanners\/109843_en.jpg","game":{"id":8,"pid":91,"gameid":"8054","gameId":"8054","width":993,"height":669,"gameType":"Skill","gameName":"ნარდი","inGame":0,"openMode":"NewTab","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_109843"},"description":{"langId":"_mbanner_desc109843"},"byTags":{"games":{"order":5}}},{"id":108363,"name":"Speed Roulette","img":"\/mbanners\/108363_en.jpg","game":{"id":102644,"pid":17,"gameid":"9494","gameId":"9494","width":990,"height":660,"gameType":"Casino","gameName":"Aviator Roulette","inGame":1,"openMode":"InGame","jackpot":"Exclusive","loyality":"Hot"},"title":{"langId":"_mbanner_title_108363"},"description":{"langId":"_mbanner_desc108363"},"byTags":{"casino":{"order":2}}},{"id":107805,"name":"reverification","img":"\/mbanners\/107805_en.jpg","segments":[42695],"route":"\/Promo\/reverification","title":{"langId":"_mbanner_title_107805"},"description":{"langId":"_mbanner_desc107805"},"byTags":{"empty":{"order":48},"slots":{"order":25}}},{"id":109280,"name":"53491","img":"\/mbanners\/109280_en.jpg","segments":[53491],"route":"\/Slots\/","title":{"langId":"_mbanner_title_109280"},"description":{"langId":"_mbanner_desc109280"},"byTags":{"empty":{"order":27},"slots":{"order":17}}},{"id":109660,"name":"bog-card-2","img":"\/mbanners\/109660_en.jpg","segments":[55099],"route":"\/Promo\/bog-card-2","title":{"langId":"_mbanner_title_109660"},"description":{"langId":"_mbanner_desc109660"},"byTags":{"empty":{"order":5}}},{"id":108564,"name":"42546 25%","img":"\/mbanners\/108564_en.jpg","segments":[42546],"route":"\/Casino\/","title":{"langId":"_mbanner_title_108564"},"description":{"langId":"_mbanner_desc108564"},"byTags":{"empty":{"order":78}}},{"id":108601,"name":"41309","img":"\/mbanners\/108601_en.jpg","segments":[41309],"route":"\/Promo\/poker-spin-private-wager","title":{"langId":"_mbanner_title_108601"},"description":{"langId":"_mbanner_desc108601"},"byTags":{"empty":{"order":83},"poker":{"order":14}}},{"id":107814,"name":"egt-express-cashback","img":"\/mbanners\/107814_en.jpg","segments":[47443],"route":"\/Promo\/egt-express-cashback","title":{"langId":"_mbanner_title_107814"},"description":{"langId":"_mbanner_desc107814"},"byTags":{"empty":{"order":73},"slots":{"order":27}}},{"id":109659,"name":"bog-card","img":"\/mbanners\/109659_en.jpg","segments":[54401],"route":"\/Promo\/bog-card","title":{"langId":"_mbanner_title_109659"},"description":{"langId":"_mbanner_desc109659"},"byTags":{"empty":{"order":4}}},{"id":108703,"name":"47505_47510_24712","img":"\/mbanners\/108703_en.jpg","segments":[24712,47505,47510],"route":"\/Promo\/p2p-spin-private-wager","title":{"langId":"_mbanner_title_108703"},"description":{"langId":"_mbanner_desc108703"},"byTags":{"empty":{"order":68},"games":{"order":12}}},{"id":109411,"name":"blackjack party","img":"\/mbanners\/109411_en.jpg","game":{"id":102652,"pid":17,"gameid":"9500","gameId":"9500","width":1280,"height":720,"gameType":"Casino","gameName":"Lightning Roulette","inGame":1,"openMode":"InGame","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_109411"},"description":{"langId":"_mbanner_desc109411"},"byTags":{"casino":{"order":7}}},{"id":108669,"name":"42537 WC","img":"\/mbanners\/108669_en.jpg","segments":[42537],"route":"\/Promo\/deposit-bonus-300","title":{"langId":"_mbanner_title_108669"},"description":{"langId":"_mbanner_desc108669"},"byTags":{"slots":{"order":19}}},{"id":109479,"name":"53993","img":"\/mbanners\/109479_en.jpg","segments":[53993],"route":"\/Slots\/","title":{"langId":"_mbanner_title_109479"},"description":{"langId":"_mbanner_desc109479"},"byTags":{"empty":{"order":24},"slots":{"order":13}}},{"id":109570,"name":"41310","img":"\/mbanners\/109570_en.jpg","segments":[41310],"route":"\/Promo\/poker-spin-private-wager","title":{"langId":"_mbanner_title_109570"},"description":{"langId":"_mbanner_desc109570"},"byTags":{"empty":{"order":84},"poker":{"order":15}}},{"id":109210,"name":"53325","img":"\/mbanners\/109210_en.jpg","segments":[53325],"route":"\/Slots\/","title":{"langId":"_mbanner_title_109210"},"description":{"langId":"_mbanner_desc109210"},"byTags":{"empty":{"order":39}}},{"id":109295,"name":"deposit-bonus-200 53524","img":"\/mbanners\/109295_en.jpg","segments":[53524],"route":"\/Promo\/deposit-bonus-200","title":{"langId":"_mbanner_title_109295"},"description":{"langId":"_mbanner_desc109295"},"byTags":{"empty":{"order":135},"slots":{"order":55}}},{"id":108412,"name":"poker-rakeback 80","img":"\/mbanners\/108412_en.jpg","segments":[5145],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108412"},"description":{"langId":"_mbanner_desc108412"},"byTags":{"poker":{"order":32},"empty":{"order":92}}},{"id":103701,"name":"doublewinning","img":"\/mbanners\/103701_en.jpg","segments":[16886],"route":"\/Promo\/doublewinning","title":{"langId":"_mbanner_title_103701"},"description":{"langId":"_mbanner_desc103701"},"byTags":{"empty":{"order":122}}},{"id":109777,"name":"BellLink","img":"\/mbanners\/109777_en.jpg","route":"\/Slots\/All\/BellLink","title":{"langId":"_mbanner_title_109777"},"description":{"langId":"_mbanner_desc109777"},"byTags":{"empty":{"order":16},"slots":{"order":8}}},{"id":109407,"name":"live baccarat","img":"\/mbanners\/109407_en.jpg","game":{"id":102694,"pid":17,"gameid":"1892","gameId":"1892","width":990,"height":660,"gameType":"Casino","gameName":"Freebet Blackjack","inGame":1,"openMode":"InGame","jackpot":"","loyality":""},"title":{"langId":"_mbanner_title_109407"},"description":{"langId":"_mbanner_desc109407"},"byTags":{"casino":{"order":6}}},{"id":108563,"name":"42547 30%","img":"\/mbanners\/108563_en.jpg","segments":[42547],"route":"\/Casino\/","title":{"langId":"_mbanner_title_108563"},"description":{"langId":"_mbanner_desc108563"},"byTags":{"empty":{"order":75}}},{"id":103399,"name":"adjarabet_vip_users_giftcard","img":"\/mbanners\/103399_en.jpg","segments":[15208],"route":"Promo\/premium-adjarabet","title":{"langId":"_mbanner_title_103399"},"description":{"langId":"_mbanner_desc103399"},"byTags":{"empty":{"order":102}}},{"id":105566,"name":"Turbo-games mobile","img":"\/mbanners\/105566_en.jpg","route":"\/Promo\/turbo-games","title":{"langId":"_mbanner_title_105566"},"description":{"langId":"_mbanner_desc105566"},"byTags":{"turbogames":{"order":2}}},{"id":105492,"name":"p2p-spin","img":"\/mbanners\/105492_en.jpg","route":"\/Promo\/p2p-spin","title":{"langId":"_mbanner_title_105492"},"description":{"langId":"_mbanner_desc105492"},"byTags":{"games":{"order":13}}},{"id":109685,"name":"53780","img":"\/mbanners\/109685_en.jpg","segments":[53780],"route":"\/Promo\/vip-cash-back-50","title":{"langId":"_mbanner_title_109685"},"description":{"langId":"_mbanner_desc109685"},"byTags":{"empty":{"order":37}}},{"id":107770,"name":"poker-pending-bonus-10","img":"\/mbanners\/107770_en.jpg","segments":[46678,46679,46680,46681,46682,46683],"route":"\/Promo\/poker-pending-bonus-2022","title":{"langId":"_mbanner_title_107770"},"description":{"langId":"_mbanner_desc107770"},"byTags":{"empty":{"order":65},"poker":{"order":8}}},{"id":108985,"name":"egt-express-cashback","img":"\/mbanners\/108985_en.jpg","segments":[50212],"route":"\/Promo\/egt-express-cashback","title":{"langId":"_mbanner_title_108985"},"description":{"langId":"_mbanner_desc108985"},"byTags":{"empty":{"order":50},"slots":{"order":26}}},{"id":107006,"name":"42543 10%","img":"\/mbanners\/107006_en.jpg","segments":[42543],"route":"\/Casino\/","title":{"langId":"_mbanner_title_107006"},"description":{"langId":"_mbanner_desc107006"},"byTags":{"empty":{"order":79}}},{"id":109667,"name":"26706","img":"\/mbanners\/109667_en.jpg","segments":[26706],"title":{"langId":"_mbanner_title_109667"},"description":{"langId":"_mbanner_desc109667"},"byTags":{"empty":{"order":7}}},{"id":108437,"name":"p2p_spin_20%","img":"\/mbanners\/108437_en.jpg","offer":{"has":1,"route":"\/Games"},"segments":[17589],"route":"\/Games","title":{"langId":"_mbanner_title_108437"},"description":{"langId":"_mbanner_desc108437"},"byTags":{"sport":{"order":0}}},{"id":107764,"name":"poker-pending-bonus-2","img":"\/mbanners\/107764_en.jpg","segments":[46666,46667,46668,46669,46670,46671],"route":"\/Promo\/poker-pending-bonus-2022","title":{"langId":"_mbanner_title_107764"},"description":{"langId":"_mbanner_desc107764"},"byTags":{"empty":{"order":62},"poker":{"order":6}}},{"id":109212,"name":"53323","img":"\/mbanners\/109212_en.jpg","segments":[53323],"route":"\/Slots\/","title":{"langId":"_mbanner_title_109212"},"description":{"langId":"_mbanner_desc109212"},"byTags":{"empty":{"order":35}}},{"id":107302,"name":"42592","img":"\/mbanners\/107302_en.jpg","segments":[42592],"route":"\/Promo\/special-spin-cashback","title":{"langId":"_mbanner_title_107302"},"description":{"langId":"_mbanner_desc107302"},"byTags":{"empty":{"order":98},"games":{"order":19}}},{"id":107304,"name":"42593","img":"\/mbanners\/107304_en.jpg","segments":[42593],"route":"\/Promo\/special-spin-cashback","title":{"langId":"_mbanner_title_107304"},"description":{"langId":"_mbanner_desc107304"},"byTags":{"empty":{"order":99},"games":{"order":21}}},{"id":109810,"name":"Hearts jackpot","img":"\/mbanners\/109810_en.jpg","route":"\/Slots\/EGT\/","title":{"langId":"_mbanner_title_109810"},"description":{"langId":"_mbanner_desc109810"},"byTags":{"slots":{"order":5}}},{"id":108665,"name":"30346 WC","img":"\/mbanners\/108665_en.jpg","segments":[30346],"route":"\/Promo\/deposit-bonus-slots200","title":{"langId":"_mbanner_title_108665"},"description":{"langId":"_mbanner_desc108665"},"byTags":{"slots":{"order":18}}},{"id":108416,"name":"poker-rakeback 50","img":"\/mbanners\/108416_en.jpg","segments":[5139],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108416"},"description":{"langId":"_mbanner_desc108416"},"byTags":{"poker":{"order":29},"empty":{"order":89}}},{"id":108565,"name":"42545 20%","img":"\/mbanners\/108565_en.jpg","segments":[42545],"route":"\/Casino\/","title":{"langId":"_mbanner_title_108565"},"description":{"langId":"_mbanner_desc108565"},"byTags":{"empty":{"order":77}}},{"id":105485,"name":"premium","img":"\/mbanners\/105485_en.jpg","segments":[10039],"route":"\/Promo\/premium","title":{"langId":"_mbanner_title_105485"},"description":{"langId":"_mbanner_desc105485"},"byTags":{"empty":{"order":103}}},{"id":108420,"name":"poker-rakeback 70","img":"\/mbanners\/108420_en.jpg","segments":[5143],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108420"},"description":{"langId":"_mbanner_desc108420"},"byTags":{"poker":{"order":31},"empty":{"order":91}}},{"id":109747,"name":"jackpot-slot","img":"\/mbanners\/109747_en.jpg","route":"\/Promo\/jackpot-slot","title":{"langId":"_mbanner_title_109747"},"description":{"langId":"_mbanner_desc109747"},"byTags":{"poker":{"order":3}}},{"id":108699,"name":"47503_47508_24709","img":"\/mbanners\/108699_en.jpg","segments":[24709,47503,47508],"route":"\/Promo\/p2p-spin-private-wager","title":{"langId":"_mbanner_title_108699"},"description":{"langId":"_mbanner_desc108699"},"byTags":{"empty":{"order":67},"games":{"order":8}}},{"id":108408,"name":"poker-rakeback 100","img":"\/mbanners\/108408_en.jpg","segments":[5149],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108408"},"description":{"langId":"_mbanner_desc108408"},"byTags":{"poker":{"order":34},"empty":{"order":94}}},{"id":108595,"name":"41306","img":"\/mbanners\/108595_en.jpg","segments":[41306],"route":"\/Promo\/poker-spin-private-wager","title":{"langId":"_mbanner_title_108595"},"description":{"langId":"_mbanner_desc108595"},"byTags":{"empty":{"order":80},"poker":{"order":11}}},{"id":108467,"name":"deposit-bonus-50 49142","img":"\/mbanners\/108467_en.jpg","offer":{"has":1,"route":""},"segments":[49142],"title":{"langId":"_mbanner_title_108467"},"description":{"langId":"_mbanner_desc108467"},"byTags":{"empty":{"order":57}}},{"id":107296,"name":"42589","img":"\/mbanners\/107296_en.jpg","segments":[42589],"route":"\/Promo\/special-spin-cashback","title":{"langId":"_mbanner_title_107296"},"description":{"langId":"_mbanner_desc107296"},"byTags":{"empty":{"order":95},"games":{"order":17}}},{"id":108422,"name":"poker-rakeback 30 ","img":"\/mbanners\/108422_en.jpg","segments":[5135],"route":"\/Promo\/poker-rakeback","title":{"langId":"_mbanner_title_108422"},"description":{"langId":"_mbanner_desc108422"},"byTags":{"poker":{"order":27},"empty":{"order":87}}},{"id":108597,"name":"41307","img":"\/mbanners\/108597_en.jpg","segments":[41307],"route":"\/Promo\/poker-spin-private-wager","title":{"langId":"_mbanner_title_108597"},"description":{"langId":"_mbanner_desc108597"},"byTags":{"empty":{"order":81},"poker":{"order":12}}},{"id":109398,"name":"vitamashot","img":"\/mbanners\/109398_en.jpg","route":"\/Promo\/vitamashot","title":{"langId":"_mbanner_title_109398"},"description":{"langId":"_mbanner_desc109398"},"byTags":{"games":{"order":16}}},{"id":109779,"name":"mysafe","img":"\/mbanners\/109779_en.jpg","route":"\/Promo\/mysafe","title":{"langId":"_mbanner_title_109779"},"description":{"langId":"_mbanner_desc109779"},"byTags":{"empty":{"order":20}}}]
+[
+  {
+    "id": 4022,
+    "name": "redirect",
+    "url": {
+      "langId": "_lang_target_url_mobile_4022"
+    },
+    "img": "/mbanners/4022_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 1
+      }
+    }
+  },
+  {
+    "id": 2005,
+    "name": "42591",
+    "segments": [
+      42591
+    ],
+    "route": "/Promo/special-spin-cashback",
+    "img": "/mbanners/2005_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 95
+      },
+      "games": {
+        "order": 21
+      }
+    }
+  },
+  {
+    "id": 2006,
+    "name": "42590",
+    "segments": [
+      42590
+    ],
+    "route": "/Promo/special-spin-cashback",
+    "img": "/mbanners/2006_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 94
+      },
+      "games": {
+        "order": 19
+      }
+    }
+  },
+  {
+    "id": 2007,
+    "name": "47506_47511_24713",
+    "segments": [
+      24713,
+      47506,
+      47511
+    ],
+    "route": "/Promo/p2p-spin-private-wager",
+    "img": "/mbanners/2007_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 67
+      },
+      "games": {
+        "order": 15
+      }
+    }
+  },
+  {
+    "id": 2009,
+    "name": "keno-play",
+    "game": {
+      "id": 553690,
+      "pid": 79,
+      "gameId": "16708",
+      "gameType": "slots",
+      "gameName": "KENO",
+      "inGame": true,
+      "openMode": "NewTab",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2009_en.jpg",
+    "byTags": {
+      "keno_play": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2001,
+    "name": "rakeback",
+    "game": {
+      "id": 1430,
+      "pid": 79,
+      "gameId": "4934",
+      "gameType": "slots",
+      "gameName": "Aviator",
+      "inGame": true,
+      "openMode": "NewTab",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2001_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 9
+      }
+    }
+  },
+  {
+    "id": 2002,
+    "name": "Apple Pay",
+    "img": "/mbanners/2002_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2004,
+    "name": "Test_Banner_HDPC",
+    "segments": [
+      52609
+    ],
+    "img": "/mbanners/2004_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 159
+      },
+      "slots": {
+        "order": 19
+      },
+      "games": {
+        "order": 32
+      },
+      "poker": {
+        "order": 36
+      },
+      "sportsbook": {
+        "order": 35
+      },
+      "casino": {
+        "order": 35
+      },
+      "promotions": {
+        "order": 35
+      },
+      "about": {
+        "order": 35
+      },
+      "registration_teaser": {
+        "order": 35
+      },
+      "aviator": {
+        "order": 35
+      },
+      "turbogames": {
+        "order": 35
+      }
+    }
+  },
+  {
+    "id": 2011,
+    "name": "sport_vip_10_17.08",
+    "route": "/Sportsbook",
+    "offer": {
+      "has": 1,
+      "route": "/Sportsbook"
+    },
+    "img": "/mbanners/2011_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2012,
+    "name": "p2p setanta offer",
+    "segments": [
+      36220
+    ],
+    "route": "/Promo/special-offer-promo-code-p2p-setanta",
+    "img": "/mbanners/2012_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 23
+      }
+    }
+  },
+  {
+    "id": 2013,
+    "name": "spinner-man",
+    "route": "/Promo/spinner-man",
+    "img": "/mbanners/2013_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 69
+      }
+    }
+  },
+  {
+    "id": 2014,
+    "name": "poker-pending-bonus-1",
+    "segments": [
+      46660,
+      46661,
+      46662,
+      46663,
+      46664,
+      46665
+    ],
+    "route": "/Promo/poker-pending-bonus-2022",
+    "img": "/mbanners/2014_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 57
+      },
+      "poker": {
+        "order": 6
+      }
+    }
+  },
+  {
+    "id": 2015,
+    "name": "53490",
+    "segments": [
+      53490
+    ],
+    "route": "/Slots/",
+    "img": "/mbanners/2015_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 24
+      }
+    }
+  },
+  {
+    "id": 2016,
+    "name": "pragmatic casino",
+    "game": {
+      "id": 826,
+      "pid": 17,
+      "gameId": "9454",
+      "gameType": "casino",
+      "gameName": "Baccarat Control Squeeze",
+      "inGame": true,
+      "openMode": "InGame",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2016_en.jpg",
+    "byTags": {
+      "casino": {
+        "order": 8
+      }
+    }
+  },
+  {
+    "id": 2017,
+    "name": "wager-2 49128",
+    "segments": [
+      49128
+    ],
+    "route": "/Slots/All/All",
+    "offer": {
+      "has": 1,
+      "route": "/Slots/All/All"
+    },
+    "img": "/mbanners/2017_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 49
+      }
+    }
+  },
+  {
+    "id": 2070,
+    "name": "Keno-main",
+    "route": "/Promo/keno-classic",
+    "img": "/mbanners/2070_en.jpg",
+    "byTags": {
+      "keno_main": {
+        "order": 2
+      }
+    }
+  },
+  {
+    "id": 2072,
+    "name": "53005",
+    "segments": [
+      53005
+    ],
+    "route": "/Slots/",
+    "img": "/mbanners/2072_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 39
+      }
+    }
+  },
+  {
+    "id": 2019,
+    "name": "wager-1 49127",
+    "segments": [
+      49127
+    ],
+    "route": "/Slots/All/All",
+    "offer": {
+      "has": 1,
+      "route": "/Slots/All/All"
+    },
+    "img": "/mbanners/2019_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 51
+      }
+    }
+  },
+  {
+    "id": 2081,
+    "name": "egt-express-cashback",
+    "segments": [
+      47443
+    ],
+    "route": "/Promo/egt-express-cashback",
+    "img": "/mbanners/2081_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 71
+      },
+      "slots": {
+        "order": 17
+      }
+    }
+  },
+  {
+    "id": 2087,
+    "name": "41310",
+    "segments": [
+      41310
+    ],
+    "route": "/Promo/poker-spin-private-wager",
+    "img": "/mbanners/2087_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 82
+      },
+      "poker": {
+        "order": 16
+      }
+    }
+  },
+  {
+    "id": 2088,
+    "name": "53325",
+    "segments": [
+      53325
+    ],
+    "route": "/Slots/",
+    "img": "/mbanners/2088_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 37
+      }
+    }
+  },
+  {
+    "id": 2089,
+    "name": "deposit-bonus-200 53524",
+    "segments": [
+      53524
+    ],
+    "route": "/Promo/deposit-bonus-200",
+    "img": "/mbanners/2089_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 133
+      },
+      "slots": {
+        "order": 21
+      }
+    }
+  },
+  {
+    "id": 2020,
+    "name": "Live_Casino_Cashback_50%",
+    "segments": [
+      12126
+    ],
+    "route": "/Casino/All/All",
+    "offer": {
+      "has": 1,
+      "route": "/Casino/All/All"
+    },
+    "img": "/mbanners/2020_en.jpg",
+    "byTags": {
+      "casino": {
+        "order": 10
+      }
+    }
+  },
+  {
+    "id": 2021,
+    "name": "P2P_SPIN_OFFER_10%-500GEL",
+    "segments": [
+      31186
+    ],
+    "route": "/Games",
+    "offer": {
+      "has": 1,
+      "route": "/Games"
+    },
+    "img": "/mbanners/2021_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 110
+      },
+      "games": {
+        "order": 16
+      }
+    }
+  },
+  {
+    "id": 2022,
+    "name": "42544 15%",
+    "segments": [
+      42544
+    ],
+    "route": "/Casino/",
+    "img": "/mbanners/2022_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 74
+      }
+    }
+  },
+  {
+    "id": 2023,
+    "name": "poker-rakeback 90",
+    "segments": [
+      5147
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2023_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 34
+      },
+      "empty": {
+        "order": 91
+      }
+    }
+  },
+  {
+    "id": 2024,
+    "name": "sport  p2p tickets",
+    "segments": [
+      22508
+    ],
+    "route": "/Promo/sport-p2p-spin",
+    "img": "/mbanners/2024_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 26
+      }
+    }
+  },
+  {
+    "id": 2025,
+    "name": "vip-weekly-deposit-offer 43151",
+    "segments": [
+      43151
+    ],
+    "route": "/Promo/vip-weekly-deposit-offer",
+    "img": "/mbanners/2025_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 102
+      }
+    }
+  },
+  {
+    "id": 2026,
+    "name": "poker-rakeback 10",
+    "segments": [
+      5131
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2026_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 26
+      },
+      "empty": {
+        "order": 83
+      }
+    }
+  },
+  {
+    "id": 2027,
+    "name": "Poker_Spin_slider_20%",
+    "segments": [
+      18187
+    ],
+    "route": "/Poker",
+    "offer": {
+      "has": 1,
+      "route": "/Poker"
+    },
+    "img": "/mbanners/2027_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 119
+      },
+      "poker": {
+        "order": 17
+      }
+    }
+  },
+  {
+    "id": 2073,
+    "name": "domino 2k",
+    "game": {
+      "id": 1430,
+      "pid": 79,
+      "gameId": "4934",
+      "gameType": "slots",
+      "gameName": "Aviator",
+      "inGame": true,
+      "openMode": "NewTab",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2073_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 3
+      }
+    }
+  },
+  {
+    "id": 2074,
+    "name": "Speed Roulette",
+    "game": {
+      "id": 102644,
+      "pid": 17,
+      "gameId": "9494",
+      "gameType": "casino",
+      "gameName": "Aviator Roulette",
+      "inGame": true,
+      "openMode": "InGame",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2074_en.jpg",
+    "byTags": {
+      "casino": {
+        "order": 1
+      }
+    }
+  },
+  {
+    "id": 2075,
+    "name": "reverification",
+    "segments": [
+      42695
+    ],
+    "route": "/Promo/reverification",
+    "img": "/mbanners/2075_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 46
+      },
+      "slots": {
+        "order": 15
+      }
+    }
+  },
+  {
+    "id": 2077,
+    "name": "53491",
+    "segments": [
+      53491
+    ],
+    "route": "/Slots/",
+    "img": "/mbanners/2077_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 25
+      },
+      "slots": {
+        "order": 11
+      }
+    }
+  },
+  {
+    "id": 2078,
+    "name": "42546 25%",
+    "segments": [
+      42546
+    ],
+    "route": "/Casino/",
+    "img": "/mbanners/2078_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 76
+      }
+    }
+  },
+  {
+    "id": 2085,
+    "name": "42537 WC",
+    "segments": [
+      42537
+    ],
+    "route": "/Promo/deposit-bonus-300",
+    "img": "/mbanners/2085_en.jpg",
+    "byTags": {
+      "slots": {
+        "order": 13
+      }
+    }
+  },
+  {
+    "id": 2086,
+    "name": "53993",
+    "segments": [
+      53993
+    ],
+    "route": "/Slots/",
+    "img": "/mbanners/2086_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 22
+      },
+      "slots": {
+        "order": 10
+      }
+    }
+  },
+  {
+    "id": 2090,
+    "name": "poker-rakeback 80",
+    "segments": [
+      5145
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2090_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 33
+      },
+      "empty": {
+        "order": 90
+      }
+    }
+  },
+  {
+    "id": 2091,
+    "name": "doublewinning",
+    "segments": [
+      16886
+    ],
+    "route": "/Promo/doublewinning",
+    "img": "/mbanners/2091_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 120
+      }
+    }
+  },
+  {
+    "id": 2092,
+    "name": "EGTDigital",
+    "route": "/Slots/EGTDigital/CloverChance",
+    "offer": {
+      "has": 1,
+      "route": "/Promo/jackpot-slot"
+    },
+    "img": "/mbanners/2092_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 9
+      },
+      "slots": {
+        "order": 1
+      }
+    }
+  },
+  {
+    "id": 2029,
+    "name": "reverification",
+    "segments": [
+      42693
+    ],
+    "route": "/Promo/reverification",
+    "img": "/mbanners/2029_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 44
+      },
+      "slots": {
+        "order": 18
+      }
+    }
+  },
+  {
+    "id": 2030,
+    "name": "Poker_Spin_100%",
+    "segments": [
+      17588
+    ],
+    "route": "/Games",
+    "offer": {
+      "has": 1,
+      "route": "/Games"
+    },
+    "img": "/mbanners/2030_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2031,
+    "name": "poker-rakeback 20",
+    "segments": [
+      5133
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2031_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 27
+      },
+      "empty": {
+        "order": 84
+      }
+    }
+  },
+  {
+    "id": 2032,
+    "name": "SPIN_OMAHA_20%_RET_15-03",
+    "segments": [
+      22148
+    ],
+    "route": "/Poker",
+    "offer": {
+      "has": 1,
+      "route": "/Poker"
+    },
+    "img": "/mbanners/2032_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 25
+      }
+    }
+  },
+  {
+    "id": 2033,
+    "name": "53779",
+    "route": "/Promo/vip-cash-back-30",
+    "img": "/mbanners/2033_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 34
+      }
+    }
+  },
+  {
+    "id": 2034,
+    "name": "SPORT_100%_VIP_19.02",
+    "route": "/Sportsbook",
+    "offer": {
+      "has": 1,
+      "route": "/Sportsbook"
+    },
+    "img": "/mbanners/2034_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2080,
+    "name": "41309",
+    "segments": [
+      41309
+    ],
+    "route": "/Promo/poker-spin-private-wager",
+    "img": "/mbanners/2080_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 81
+      },
+      "poker": {
+        "order": 15
+      }
+    }
+  },
+  {
+    "id": 2035,
+    "name": "Live_Casino_Cashback_20%",
+    "route": "/Casino/All/All",
+    "offer": {
+      "has": 1,
+      "route": null
+    },
+    "img": "/mbanners/2035_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2036,
+    "name": "ტესტ",
+    "segments": [
+      20350,
+      47059
+    ],
+    "route": "/Promo/olympus-wheel-teslaY",
+    "img": "/mbanners/2036_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 157
+      }
+    }
+  },
+  {
+    "id": 2037,
+    "name": "vip_popup_com",
+    "segments": [
+      10515,
+      12966
+    ],
+    "route": "/",
+    "img": "/mbanners/2037_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2039,
+    "name": "deposit-bonus-100 49143",
+    "segments": [
+      49143
+    ],
+    "offer": {
+      "has": 1,
+      "route": null
+    },
+    "img": "/mbanners/2039_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 54
+      }
+    }
+  },
+  {
+    "id": 2040,
+    "name": "51883",
+    "segments": [
+      51883
+    ],
+    "img": "/mbanners/2040_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 153
+      }
+    }
+  },
+  {
+    "id": 2041,
+    "name": "VIP_PROMO_101520",
+    "segments": [
+      13966
+    ],
+    "route": "/Slots/All/All",
+    "offer": {
+      "has": 1,
+      "route": "/Slots/All/All"
+    },
+    "img": "/mbanners/2041_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2043,
+    "name": "poker-pending-bonus-5",
+    "segments": [
+      46672,
+      46673,
+      46674,
+      46675,
+      46676,
+      46677
+    ],
+    "route": "/Promo/poker-pending-bonus-2022",
+    "img": "/mbanners/2043_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 61
+      },
+      "poker": {
+        "order": 8
+      }
+    }
+  },
+  {
+    "id": 2044,
+    "name": "aviator roulette",
+    "route": "/Casino/AviatorCasino",
+    "img": "/mbanners/2044_en.jpg",
+    "byTags": {
+      "casino": {
+        "order": 5
+      }
+    }
+  },
+  {
+    "id": 2045,
+    "name": "47504_47509_24710",
+    "segments": [
+      24710,
+      47504,
+      47509
+    ],
+    "route": "/Promo/p2p-spin-private-wager",
+    "img": "/mbanners/2045_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 68
+      },
+      "games": {
+        "order": 11
+      }
+    }
+  },
+  {
+    "id": 2046,
+    "name": "42538 WC",
+    "segments": [
+      42538
+    ],
+    "route": "/Promo/deposit-bonus-500",
+    "img": "/mbanners/2046_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 42
+      },
+      "slots": {
+        "order": 14
+      }
+    }
+  },
+  {
+    "id": 2047,
+    "name": "jackpot-slot",
+    "route": "/Promo/jackpot-slot",
+    "img": "/mbanners/2047_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 3
+      },
+      "slots": {
+        "order": 6
+      },
+      "games": {
+        "order": 1
+      },
+      "poker": {
+        "order": 3
+      },
+      "aviator": {
+        "order": 1
+      }
+    }
+  },
+  {
+    "id": 2048,
+    "name": "domino mobile",
+    "game": {
+      "id": 1430,
+      "pid": 79,
+      "gameId": "4934",
+      "gameType": "slots",
+      "gameName": "Aviator",
+      "inGame": true,
+      "openMode": "NewTab",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2048_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 8
+      }
+    }
+  },
+  {
+    "id": 2049,
+    "name": "deposit-promo-premium100",
+    "route": "/Promo/deposit-promo-premium100",
+    "img": "/mbanners/2049_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2082,
+    "name": "Book of Dead",
+    "game": {
+      "id": 557946,
+      "pid": 73,
+      "gameId": "3747",
+      "gameType": "slots",
+      "gameName": "Book of Dead",
+      "inGame": true,
+      "openMode": "InGame",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2082_en.jpg",
+    "byTags": {
+      "slots": {
+        "order": 2
+      }
+    }
+  },
+  {
+    "id": 2083,
+    "name": "47505_47510_24712",
+    "segments": [
+      24712,
+      47505,
+      47510
+    ],
+    "route": "/Promo/p2p-spin-private-wager",
+    "img": "/mbanners/2083_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 66
+      },
+      "games": {
+        "order": 13
+      }
+    }
+  },
+  {
+    "id": 2084,
+    "name": "blackjack party",
+    "game": {
+      "id": 102652,
+      "pid": 17,
+      "gameId": "9500",
+      "gameType": "casino",
+      "gameName": "Lightning Roulette",
+      "inGame": true,
+      "openMode": "InGame",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2084_en.jpg",
+    "byTags": {
+      "casino": {
+        "order": 7
+      }
+    }
+  },
+  {
+    "id": 2051,
+    "name": "aviator new mobile",
+    "route": "/Promo/aviator-game-new",
+    "img": "/mbanners/2051_en.jpg",
+    "byTags": {
+      "aviator": {
+        "order": 9
+      }
+    }
+  },
+  {
+    "id": 2052,
+    "name": "aviator blackjack",
+    "game": {
+      "id": 103082,
+      "pid": 17,
+      "gameId": "17755",
+      "gameType": "casino",
+      "gameName": "Live Auto-Roulette",
+      "inGame": true,
+      "openMode": "InGame",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2052_en.jpg",
+    "byTags": {
+      "casino": {
+        "order": 2
+      }
+    }
+  },
+  {
+    "id": 2053,
+    "name": "41308",
+    "segments": [
+      41308
+    ],
+    "route": "/Promo/poker-spin-private-wager",
+    "img": "/mbanners/2053_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 80
+      },
+      "poker": {
+        "order": 14
+      }
+    }
+  },
+  {
+    "id": 2054,
+    "name": "Live immersive roulette",
+    "game": {
+      "id": 102668,
+      "pid": 17,
+      "gameId": "1893",
+      "gameType": "casino",
+      "gameName": "Live Immersive Roulette",
+      "inGame": true,
+      "openMode": "InGame",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2054_en.jpg",
+    "byTags": {
+      "casino": {
+        "order": 3
+      }
+    }
+  },
+  {
+    "id": 2055,
+    "name": "Air_Race_egt-optin",
+    "segments": [
+      13766
+    ],
+    "route": "/Promo/air-race-2",
+    "img": "/mbanners/2055_en.jpg",
+    "byTags": {
+      "aviator": {
+        "order": 10
+      }
+    }
+  },
+  {
+    "id": 2056,
+    "name": "poker-rakeback 60",
+    "segments": [
+      5141
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2056_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 31
+      },
+      "empty": {
+        "order": 88
+      }
+    }
+  },
+  {
+    "id": 2058,
+    "name": "vip-cash-back-promo 31206",
+    "segments": [
+      31206
+    ],
+    "route": "/Promo/vip-cash-back-promo",
+    "img": "/mbanners/2058_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 98
+      }
+    }
+  },
+  {
+    "id": 2059,
+    "name": "47502_47507_24708",
+    "segments": [
+      24708,
+      47502,
+      47507
+    ],
+    "route": "/Promo/p2p-spin-private-wager",
+    "img": "/mbanners/2059_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 64
+      },
+      "games": {
+        "order": 6
+      }
+    }
+  },
+  {
+    "id": 2060,
+    "name": "poker-rakeback 40",
+    "segments": [
+      5137
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2060_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 29
+      },
+      "empty": {
+        "order": 86
+      }
+    }
+  },
+  {
+    "id": 2061,
+    "name": "poker tournament",
+    "segments": [
+      48707
+    ],
+    "offer": {
+      "has": 1,
+      "route": null
+    },
+    "img": "/mbanners/2061_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 70
+      }
+    }
+  },
+  {
+    "id": 2063,
+    "name": "prognoser general",
+    "route": "/Promo/prognoser",
+    "img": "/mbanners/2063_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 56
+      }
+    }
+  },
+  {
+    "id": 2064,
+    "name": "new poker launch",
+    "route": "/Promo/poker",
+    "img": "/mbanners/2064_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 20
+      }
+    }
+  },
+  {
+    "id": 2065,
+    "name": "30006 launge slider",
+    "segments": [
+      30006
+    ],
+    "img": "/mbanners/2065_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 72
+      }
+    }
+  },
+  {
+    "id": 2066,
+    "name": "Poker_Spin_slider_10%",
+    "segments": [
+      18186
+    ],
+    "route": "/Poker",
+    "offer": {
+      "has": 1,
+      "route": "/Poker"
+    },
+    "img": "/mbanners/2066_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 118
+      },
+      "poker": {
+        "order": 19
+      }
+    }
+  },
+  {
+    "id": 2067,
+    "name": "42535 WC",
+    "segments": [
+      42535
+    ],
+    "route": "/Promo/deposit-bonus-200",
+    "img": "/mbanners/2067_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 155
+      },
+      "slots": {
+        "order": 20
+      }
+    }
+  },
+  {
+    "id": 2068,
+    "name": "smsoff",
+    "segments": [
+      15566,
+      16370
+    ],
+    "route": "/Promo/smson",
+    "img": "/mbanners/2068_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 121
+      }
+    }
+  },
+  {
+    "id": 2094,
+    "name": "live baccarat",
+    "game": {
+      "id": 102694,
+      "pid": 17,
+      "gameId": "1892",
+      "gameType": "casino",
+      "gameName": "Freebet Blackjack",
+      "inGame": true,
+      "openMode": "InGame",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2094_en.jpg",
+    "byTags": {
+      "casino": {
+        "order": 6
+      }
+    }
+  },
+  {
+    "id": 2095,
+    "name": "42547 30%",
+    "segments": [
+      42547
+    ],
+    "route": "/Casino/",
+    "img": "/mbanners/2095_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 73
+      }
+    }
+  },
+  {
+    "id": 2097,
+    "name": "adjarabet_vip_users_giftcard",
+    "segments": [
+      15208
+    ],
+    "route": "Promo/",
+    "img": "/mbanners/2097_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 100
+      }
+    }
+  },
+  {
+    "id": 2098,
+    "name": "Turbo-games mobile",
+    "route": "/Promo/turbo-games",
+    "img": "/mbanners/2098_en.jpg",
+    "byTags": {
+      "turbogames": {
+        "order": 2
+      }
+    }
+  },
+  {
+    "id": 2099,
+    "name": "p2p-spin",
+    "route": "/Promo/p2p-spin",
+    "img": "/mbanners/2099_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 14
+      }
+    }
+  },
+  {
+    "id": 2100,
+    "name": "53780",
+    "route": "/Promo/vip-cash-back-50",
+    "img": "/mbanners/2100_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 35
+      }
+    }
+  },
+  {
+    "id": 2101,
+    "name": "poker-pending-bonus-10",
+    "segments": [
+      46678,
+      46679,
+      46680,
+      46681,
+      46682,
+      46683
+    ],
+    "route": "/Promo/poker-pending-bonus-2022",
+    "img": "/mbanners/2101_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 63
+      },
+      "poker": {
+        "order": 9
+      }
+    }
+  },
+  {
+    "id": 2102,
+    "name": "egt-express-cashback",
+    "segments": [
+      50212
+    ],
+    "route": "/Promo/egt-express-cashback",
+    "img": "/mbanners/2102_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 48
+      },
+      "slots": {
+        "order": 16
+      }
+    }
+  },
+  {
+    "id": 2103,
+    "name": "42543 10%",
+    "segments": [
+      42543
+    ],
+    "route": "/Casino/",
+    "img": "/mbanners/2103_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 77
+      }
+    }
+  },
+  {
+    "id": 2104,
+    "name": "26706",
+    "segments": [
+      26706
+    ],
+    "img": "/mbanners/2104_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 1
+      }
+    }
+  },
+  {
+    "id": 2105,
+    "name": "p2p_spin_20%",
+    "segments": [
+      17589
+    ],
+    "route": "/Games",
+    "offer": {
+      "has": 1,
+      "route": "/Games"
+    },
+    "img": "/mbanners/2105_en.jpg",
+    "byTags": {
+      "sportsbook": {
+        "order": 0
+      }
+    }
+  },
+  {
+    "id": 2106,
+    "name": "poker-pending-bonus-2",
+    "segments": [
+      46666,
+      46667,
+      46668,
+      46669,
+      46670,
+      46671
+    ],
+    "route": "/Promo/poker-pending-bonus-2022",
+    "img": "/mbanners/2106_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 60
+      },
+      "poker": {
+        "order": 7
+      }
+    }
+  },
+  {
+    "id": 2107,
+    "name": "53323",
+    "segments": [
+      53323
+    ],
+    "route": "/Slots/",
+    "img": "/mbanners/2107_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 33
+      }
+    }
+  },
+  {
+    "id": 2108,
+    "name": "42592",
+    "segments": [
+      42592
+    ],
+    "route": "/Promo/special-spin-cashback",
+    "img": "/mbanners/2108_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 96
+      },
+      "games": {
+        "order": 20
+      }
+    }
+  },
+  {
+    "id": 2109,
+    "name": "42593",
+    "segments": [
+      42593
+    ],
+    "route": "/Promo/special-spin-cashback",
+    "img": "/mbanners/2109_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 97
+      },
+      "games": {
+        "order": 22
+      }
+    }
+  },
+  {
+    "id": 2110,
+    "name": "30346 WC",
+    "segments": [
+      30346
+    ],
+    "route": "/Promo/deposit-bonus-slots200",
+    "img": "/mbanners/2110_en.jpg",
+    "byTags": {
+      "slots": {
+        "order": 12
+      }
+    }
+  },
+  {
+    "id": 2111,
+    "name": "bura 2k",
+    "game": {
+      "id": 1430,
+      "pid": 79,
+      "gameId": "4934",
+      "gameType": "slots",
+      "gameName": "Aviator",
+      "inGame": true,
+      "openMode": "NewTab",
+      "jackpot": "",
+      "loyality": ""
+    },
+    "img": "/mbanners/2111_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 4
+      }
+    }
+  },
+  {
+    "id": 2112,
+    "name": "poker-rakeback 50",
+    "segments": [
+      5139
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2112_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 30
+      },
+      "empty": {
+        "order": 87
+      }
+    }
+  },
+  {
+    "id": 2113,
+    "name": "42545 20%",
+    "segments": [
+      42545
+    ],
+    "route": "/Casino/",
+    "img": "/mbanners/2113_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 75
+      }
+    }
+  },
+  {
+    "id": 2114,
+    "name": "premium",
+    "segments": [
+      10039
+    ],
+    "route": "/Promo/premium",
+    "img": "/mbanners/2114_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 101
+      }
+    }
+  },
+  {
+    "id": 2115,
+    "name": "poker-rakeback 70",
+    "segments": [
+      5143
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2115_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 32
+      },
+      "empty": {
+        "order": 89
+      }
+    }
+  },
+  {
+    "id": 2116,
+    "name": "47503_47508_24709",
+    "segments": [
+      24709,
+      47503,
+      47508
+    ],
+    "route": "/Promo/p2p-spin-private-wager",
+    "img": "/mbanners/2116_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 65
+      },
+      "games": {
+        "order": 7
+      }
+    }
+  },
+  {
+    "id": 2117,
+    "name": "poker-rakeback 100",
+    "segments": [
+      5149
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2117_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 35
+      },
+      "empty": {
+        "order": 92
+      }
+    }
+  },
+  {
+    "id": 2118,
+    "name": "41306",
+    "segments": [
+      41306
+    ],
+    "route": "/Promo/poker-spin-private-wager",
+    "img": "/mbanners/2118_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 78
+      },
+      "poker": {
+        "order": 12
+      }
+    }
+  },
+  {
+    "id": 2119,
+    "name": "deposit-bonus-50 49142",
+    "segments": [
+      49142
+    ],
+    "offer": {
+      "has": 1,
+      "route": null
+    },
+    "img": "/mbanners/2119_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 55
+      }
+    }
+  },
+  {
+    "id": 2121,
+    "name": "42589",
+    "segments": [
+      42589
+    ],
+    "route": "/Promo/special-spin-cashback",
+    "img": "/mbanners/2121_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 93
+      },
+      "games": {
+        "order": 18
+      }
+    }
+  },
+  {
+    "id": 2122,
+    "name": "poker-rakeback 30",
+    "segments": [
+      5135
+    ],
+    "route": "/Promo/poker-rakeback",
+    "img": "/mbanners/2122_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 28
+      },
+      "empty": {
+        "order": 85
+      }
+    }
+  },
+  {
+    "id": 2123,
+    "name": "Reactoonz",
+    "route": "/Slots/PlayNGo/",
+    "img": "/mbanners/2123_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 16
+      },
+      "slots": {
+        "order": 9
+      }
+    }
+  },
+  {
+    "id": 2124,
+    "name": "41307",
+    "segments": [
+      41307
+    ],
+    "route": "/Promo/poker-spin-private-wager",
+    "img": "/mbanners/2124_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 79
+      },
+      "poker": {
+        "order": 13
+      }
+    }
+  },
+  {
+    "id": 2125,
+    "name": "vitamashot",
+    "route": "/Promo/vitamashot",
+    "img": "/mbanners/2125_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 17
+      }
+    }
+  },
+  {
+    "id": 2127,
+    "name": "mysafe",
+    "route": "/Promo/mysafe",
+    "img": "/mbanners/2127_en.jpg",
+    "byTags": {
+      "empty": {
+        "order": 18
+      }
+    }
+  },
+  {
+    "id": 2258,
+    "name": "jackpot-slot",
+    "route": "/Promo/jackpot-slot",
+    "img": "/mbanners/2258_en.jpg",
+    "byTags": {
+      "slots": {
+        "order": 3
+      }
+    }
+  },
+  {
+    "id": 2259,
+    "name": "jackpot-slot",
+    "route": "/Promo/jackpot-slot",
+    "img": "/mbanners/2259_en.jpg",
+    "byTags": {
+      "aviator": {
+        "order": 2
+      }
+    }
+  },
+  {
+    "id": 2261,
+    "name": "jackpot-slot",
+    "route": "/Promo/jackpot-slot",
+    "img": "/mbanners/2261_en.jpg",
+    "byTags": {
+      "games": {
+        "order": 2
+      }
+    }
+  },
+  {
+    "id": 2262,
+    "name": "jackpot-slot",
+    "route": "/Promo/jackpot-slot",
+    "img": "/mbanners/2262_en.jpg",
+    "byTags": {
+      "poker": {
+        "order": 1
+      }
+    }
+  }
+]

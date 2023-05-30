@@ -94,7 +94,10 @@ export const MainSlider = () => {
                           <Show when={loaded()[idx()]}>
                             <img
                               class="swiper-lazy _s_b-radius-md"
-                              src={createStaticUrl(`/mbanners/${slide.id}_${locale()}.jpg`)}
+                              src={
+                                "https://static-stagingcms.adjaradev.com/desktop/cms-nova/img" +
+                                `/mbanners/${slide.id}_${locale()}.webp`
+                              }
                               data-id={slide.name}
                               alt={slide.name}
                               style={{ height: "155%" }}
