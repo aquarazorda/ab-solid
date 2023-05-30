@@ -23,6 +23,7 @@ const Navigation = () => {
           >
             <div class="_s_flex _s_flex-d-column _s_flex-a-center _s_position-relative">
               <span
+                style={{ width: "24px", height: "24px" }}
                 class={`_s_color-primary-8 _s_icon _s_icon-md _s_aitem-color-primary-1 _s_mb-1 _s_adj-${item.icon}`}
               />
               <div class="_s_position-absolute _s_position-t-px--5" />

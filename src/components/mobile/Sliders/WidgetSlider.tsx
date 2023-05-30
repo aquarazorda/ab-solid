@@ -14,7 +14,7 @@ export const WidgetSliderHeader = (props: HeaderProps) => {
   const [t] = useLanguage();
 
   return (
-    <div class="_s_flex _s_flex-a-center _s_p-3">
+    <div class="_s_flex _s_flex-a-center _s_p-3" style={{ height: "48px" }}>
       <div class="_s_icon _s_icon-md _s_color-primary-3 _s_adj-slots" />
       <A href={`/mobile/${props.url}`}>
         <span class="_s_label _s_label-md _s_label-t-u _s_z-1">{t(props.title)}</span>
@@ -42,6 +42,7 @@ export const WidgetSlider = (props: Props) => {
   const [slider, { current, details }] = createSlider({
     slides: {
       perView: 2,
+      spacing: 8,
     },
     loop: true,
   });
@@ -67,30 +68,23 @@ export const WidgetSlider = (props: Props) => {
             const [imgLoaded, setImgLoaded] = createSignal(false);
 
             return (
-              <div
-                class="_s_cursor-pointer _s_display-f _s_overflow-hidden"
-                onClick={() => openGame(game.id)}
-              >
+              <div>
                 <Show when={loaded[idx()] && !imgLoaded()}>
-                  <div
-                    class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none _s_flex-a-center 
-                      _s_position-absolute"
-                  >
+                  <div class="_s_size-w-percent--25 _s_size-h-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none _s_flex-a-center">
                     <Loader />
                   </div>
                 </Show>
-                <div class="_s_size-w-percent--25 _s_flex _s_overflow-hidden _s_pl-1 _s_pr-1 _s_lg-pl-none _s_lg-pr-none">
-                  <Show when={loaded[idx()]}>
-                    <img
-                      loading="lazy"
-                      class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"
-                      src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
-                      alt={t(game.title.langId)}
-                      data-id="empty"
-                      onLoad={() => setImgLoaded(true)}
-                    />
-                  </Show>
-                </div>
+                <Show when={loaded[idx()]}>
+                  <img
+                    loading="lazy"
+                    onClick={() => openGame(game.id)}
+                    class="_s_size-w-percent--25 _s_flex _s_b-radius-sm _s_lg-b-radius-none"
+                    src={createStaticUrl(`/images/common/${game.id}_${locale()}.jpg`)}
+                    alt={t(game.title.langId)}
+                    data-id="empty"
+                    onLoad={() => setImgLoaded(true)}
+                  />
+                </Show>
               </div>
             );
           }}

@@ -1,19 +1,7 @@
-import {
-  Accessor,
-  For,
-  Index,
-  Show,
-  createEffect,
-  createSignal,
-  on,
-  onCleanup,
-  onMount,
-} from "solid-js";
+import { Accessor, For, Index, createEffect, createSignal, on, onCleanup, onMount } from "solid-js";
 import { createSlider } from "solid-slider";
 import { A, useRouteData } from "solid-start";
-import { Loader } from "~/components/Loader";
 import { BannerData } from "~/types/banner";
-import { createStaticUrl } from "~/utils/string";
 
 import "./HomeSlider.css";
 import { useLanguage } from "~/utils/language";
@@ -35,7 +23,7 @@ export const MainSlider = () => {
   const [slider, { current, next, moveTo }] = createSlider({
     loop: true,
     slides: {
-      perView: 1.1,
+      perView: 1,
       origin: "center",
       spacing: 8,
     },
@@ -49,7 +37,7 @@ export const MainSlider = () => {
     onCleanup(() => clearInterval(interval));
   });
 
-  onMount(() => setLoaded({ [0]: true, [slides?.()?.length - 1]: true }));
+  onMount(() => setLoaded({ [0]: true }));
 
   createEffect(
     on(current, () => {
@@ -83,27 +71,19 @@ export const MainSlider = () => {
                           href={slide.route || "/"}
                           aria-label={slide.name}
                         >
-                          <Show when={loaded()[idx()] && !imgLoaded()}>
-                            <div
-                              class="_s_lg-size-w-percent--25 _s_size-max-h-px--90 _s_size-h-percent--25
-                          _s_flex-a-center _s_position-absolute _s_flex"
-                            >
-                              <Loader />
-                            </div>
-                          </Show>
-                          <Show when={loaded()[idx()]}>
-                            <img
-                              class="swiper-lazy _s_b-radius-md"
-                              src={
-                                "https://static-stagingcms.adjaradev.com/desktop/cms-nova/img" +
-                                `/mbanners/${slide.id}_${locale()}.webp`
-                              }
-                              data-id={slide.name}
-                              alt={slide.name}
-                              style={{ height: "155%" }}
-                              onLoad={() => setImgLoaded(true)}
-                            />
-                          </Show>
+                          <img
+                            class="swiper-lazy _s_b-radius-md"
+                            src={
+                              loaded()[idx()]
+                                ? "https://static-stagingcms.adjaradev.com/desktop/cms-nova/img" +
+                                  `/mbanners/${slide.id}_${locale()}.webp`
+                                : ""
+                            }
+                            data-id={slide.name}
+                            alt={slide.name}
+                            style={{ height: "155%" }}
+                            onLoad={() => setImgLoaded(true)}
+                          />
                         </A>
                       </div>
                     </div>

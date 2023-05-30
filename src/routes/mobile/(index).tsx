@@ -1,4 +1,4 @@
-import { Show, Suspense, createMemo } from "solid-js";
+import { Show, createMemo } from "solid-js";
 import { A, useRouteData } from "solid-start";
 import { AviatorWidget } from "~/components/mobile/Sliders/Aviator";
 import { MainSlider, homePageSliderFilterFn } from "~/components/mobile/Sliders/HomeSlider";
